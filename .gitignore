@@ -13,6 +13,7 @@ dist/
 *.egg-info/
 .eggs/
 pip-wheel-metadata/
+.DS_Store
 
 # PyInstaller
 *.spec
