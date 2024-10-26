@@ -18,7 +18,7 @@ pipeline {
                 python3 -m venv venv
                 . venv/bin/activate
                 pip install -r requirements.txt
-
+                deactivate
                 '''
             }
         }
@@ -28,6 +28,7 @@ pipeline {
                 sh '''
                 . venv/bin/activate
                 pytest
+                deactivate
                 '''
             }
         }
@@ -39,6 +40,7 @@ pipeline {
                 . venv/bin/activate
                 python app.py &
                 echo $! > flask_pid.txt
+                deactivate
                 '''
             }
         }
@@ -58,7 +60,9 @@ pipeline {
                 script {
                     def response = sh(
                         script: '''
+                        . venv/bin/activate
                         curl -X GET http://localhost:8082/recommend/1
+                        deactivate
                         ''',
                         returnStdout: true
                     ).trim()
