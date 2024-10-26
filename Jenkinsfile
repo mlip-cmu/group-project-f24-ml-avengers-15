@@ -36,9 +36,9 @@ pipeline {
             steps {
                 echo 'Deploying the Flask application'
                 sh '''
-
                 . venv/bin/activate
                 python app.py &
+                echo $! > flask_pid.txt
                 '''
             }
         }
@@ -48,6 +48,7 @@ pipeline {
                 sh '''
                 echo "Setting up SSH Tunnel to Kafka"
                 ssh -L ${LOCAL_PORT}:localhost:${KAFKA_PORT} ${SSH_USER}@${SERVER_IP} -NT &
+                echo $! > ssh_tunnel_pid.txt
                 '''
             }
         }
@@ -69,8 +70,17 @@ pipeline {
 
     post {
         always {
-            echo 'Cleaning up background processes'
-            sh 'kill $(jobs -p)'  
+            echo 'Cleaning up specific background processes'
+            sh '''
+            if [ -f flask_pid.txt ]; then
+                kill $(cat flask_pid.txt)
+                rm flask_pid.txt
+            fi
+            if [ -f ssh_tunnel_pid.txt ]; then
+                kill $(cat ssh_tunnel_pid.txt)
+                rm ssh_tunnel_pid.txt
+            fi
+            '''
         }
     }
 }
