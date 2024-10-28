@@ -35,4 +35,3 @@ def evaluate_snapshot(csv_path: str):
     except Exception as e:
         with open("online_evaluation_output.txt", 'w') as f:
             f.write(f"An error occurred while calculating Precision@K: {e}")
-
