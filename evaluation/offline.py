@@ -50,9 +50,12 @@ if __name__ == "__main__":
     data_leakage = train_ids.intersection(test_ids)
     if data_leakage:
         print(f'Warning: Data leakage detected with {len(data_leakage)} overlapping user IDs!')
+        test_df_surprise = test_df_surprise[~test_df_surprise['user_id'].isin(data_leakage)]
     else:
         print('No data leakage detected.')
 
+    testset = [(uid, iid, r) for (uid, iid, r, _) in test_df_surprise.itertuples(index=False)]
+    predictions = model.test(testset)
 
     # We need to create a DataFrame with user_id, movie_id, true_rating, and predicted_rating
     predictions_df = pd.DataFrame({
