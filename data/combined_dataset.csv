@@ -1,0 +1,2546 @@
+user_id,age,occupation,gender,movie_id,rating
+38,34,executive/managerial,M,the+lady+in+number+6+2013,3
+32826,27,college/grad student,M,gentlemans+agreement+1947,4
+65596,58,academic/educator,M,christmas+holiday+1944,4
+115,34,college/grad student,M,back+to+the+future+1985,3
+115,34,college/grad student,M,days+of+thunder+1990,1
+115,34,college/grad student,M,amlie+2001,4
+115,34,college/grad student,M,ghost+dog+the+way+of+the+samurai+1999,4
+115,34,college/grad student,M,jackie+brown+1997,4
+115,34,college/grad student,M,toy+story+1995,1
+65656,59,academic/educator,M,ordinary+decent+criminal+2000,3
+32892,33,college/grad student,M,the+matrix+1999,4
+128,34,executive/managerial,M,the+maze+runner+2014,3
+32902,29,scientist,M,happy+together+1989,4
+65686,26,college/grad student,M,frank+herberts+dune+2000,4
+65703,31,college/grad student,M,black+peter+1964,4
+65714,25,artist,M,big+hero+6+2014,5
+65714,25,artist,M,the+ashes+1965,4
+196,27,retired,M,inception+2010,5
+232,21,self-employed,M,two+shots+fired+2014,3
+257,26,college/grad student,M,con+air+1997,3
+257,26,college/grad student,M,dead+man+walking+1995,3
+257,26,college/grad student,M,air+force+one+1997,3
+257,26,college/grad student,M,rob+roy+1995,2
+257,26,college/grad student,M,trainspotting+1996,5
+65895,32,executive/managerial,M,wild+man+blues+1997,3
+65939,30,other or not specified,M,the+plough+and+the+stars+1936,4
+65944,32,executive/managerial,M,state+of+siege+1972,3
+33186,34,college/grad student,M,dial+m+for+murder+1954,4
+33337,30,executive/managerial,M,taxi+driver+1976,5
+33337,30,executive/managerial,M,three+colors+red+1994,5
+33337,30,executive/managerial,M,mission+impossible+1996,2
+33337,30,executive/managerial,M,batman+forever+1995,3
+33337,30,executive/managerial,M,ace+ventura+pet+detective+1994,3
+33391,34,college/grad student,M,delhi-6+2009,3
+628,29,customer service,M,star+wars+1977,5
+628,29,customer service,M,the+rocky+horror+picture+show+1975,4
+628,29,customer service,M,to+kill+a+mockingbird+1962,5
+628,29,customer service,M,the+blues+brothers+1980,5
+628,29,customer service,M,the+lost+world+jurassic+park+1997,3
+628,29,customer service,M,the+wrong+trousers+1993,5
+628,29,customer service,M,the+lord+of+the+rings+the+two+towers+2002,5
+33408,31,scientist,M,the+shining+1980,4
+696,71,academic/educator,M,raiders+of+the+lost+ark+1981,3
+699,33,self-employed,M,sixteen+candles+1984,3
+719,33,academic/educator,M,working+girl+1988,3
+719,33,academic/educator,M,the+shawshank+redemption+1994,5
+719,33,academic/educator,M,the+big+lebowski+1998,5
+719,33,academic/educator,M,like+water+for+chocolate+1992,2
+719,33,academic/educator,M,the+hunt+for+red+october+1990,5
+720,67,executive/managerial,M,pink+floyd+the+wall+1982,4
+730,29,executive/managerial,M,trading+places+1983,3
+730,29,executive/managerial,M,terminator+2+judgment+day+1991,3
+730,29,executive/managerial,M,jurassic+park+1993,1
+730,29,executive/managerial,M,mad+max+1979,3
+730,29,executive/managerial,M,the+negotiator+1998,4
+730,29,executive/managerial,M,the+fugitive+1993,5
+730,29,executive/managerial,M,mission+impossible+ii+2000,4
+730,29,executive/managerial,M,das+boot+1981,3
+730,29,executive/managerial,M,saving+private+ryan+1998,3
+730,29,executive/managerial,M,enemy+of+the+state+1998,5
+730,29,executive/managerial,M,braveheart+1995,5
+730,29,executive/managerial,M,charlies+angels+2000,4
+730,29,executive/managerial,M,the+fifth+element+1997,4
+33528,26,college/grad student,M,lon+chaney+a+thousand+faces+2000,3
+33528,26,college/grad student,M,a+man+escaped+1956,5
+759,33,other or not specified,M,strangers+on+a+train+1951,4
+769,18,K-12 student,M,how+to+irritate+people+1969,3
+782,30,scientist,M,star+trek+generations+1994,4
+782,30,scientist,M,mortal+kombat+1995,3
+782,30,scientist,M,wyatt+earp+1994,4
+859,27,executive/managerial,M,west+of+the+divide+1934,3
+937,25,college/grad student,M,drifting+clouds+1996,4
+33708,29,executive/managerial,M,the+fault+in+our+stars+2014,4
+961,25,college/grad student,M,my+best+girl+1927,3
+987,25,sales/marketing,M,the+descent+2005,3
+33807,33,college/grad student,M,braveheart+1995,5
+33807,33,college/grad student,M,entrapment+1999,4
+33807,33,college/grad student,M,batman++robin+1997,2
+33807,33,college/grad student,M,arachnophobia+1990,3
+33807,33,college/grad student,M,phantasm+1979,4
+33807,33,college/grad student,M,die+hard+2+1990,4
+33807,33,college/grad student,M,the+negotiator+1998,3
+33807,33,college/grad student,M,austin+powers+the+spy+who+shagged+me+1999,4
+33807,33,college/grad student,M,ratatouille+2007,4
+1143,26,college/grad student,M,hannah+and+her+sisters+1986,4
+1153,26,doctor/health care,M,logans+run+1976,3
+33931,32,college/grad student,M,batman+mask+of+the+phantasm+1993,3
+33975,33,self-employed,F,brief+encounter+1945,4
+34103,26,sales/marketing,M,ghost+rider+2007,4
+34103,26,sales/marketing,M,childs+play+3+1991,1
+34103,26,sales/marketing,M,titanic+1997,2
+34103,26,sales/marketing,M,robocop+2+1990,1
+34112,31,homemaker,F,badlands+1973,4
+34172,25,self-employed,M,the+dark+knight+rises+2012,5
+34176,27,executive/managerial,M,south+park+bigger_+longer++uncut+1999,5
+34176,27,executive/managerial,M,love+actually+2003,4
+34176,27,executive/managerial,M,mystic+river+2003,5
+34176,27,executive/managerial,M,training+day+2001,4
+34176,27,executive/managerial,M,cast+away+2000,4
+34176,27,executive/managerial,M,the+pianist+2002,4
+34176,27,executive/managerial,M,the+piano+1993,4
+34176,27,executive/managerial,M,space+cowboys+2000,3
+34176,27,executive/managerial,M,charlies+angels+full+throttle+2003,3
+1487,25,executive/managerial,M,reservoir+dogs+1992,4
+34267,31,other or not specified,F,the+notebook+2004,4
+34267,31,other or not specified,F,titanic+1997,3
+34267,31,other or not specified,F,music+and+lyrics+2007,5
+34267,31,other or not specified,F,taxi+1998,3
+34267,31,other or not specified,F,wrongfully+accused+1998,4
+34267,31,other or not specified,F,the+matrix+1999,2
+34267,31,other or not specified,F,rocky+1976,2
+34270,28,college/grad student,M,despicable+me+2+2013,4
+1538,27,executive/managerial,M,boy_+did+i+get+a+wrong+number+1966,3
+34324,31,sales/marketing,M,the+waterboy+1998,3
+34324,31,sales/marketing,M,the+original+kings+of+comedy+2000,4
+34324,31,sales/marketing,M,chicken+run+2000,3
+34324,31,sales/marketing,M,vanilla+sky+2001,2
+34324,31,sales/marketing,M,the+graduate+1967,3
+1610,25,scientist,F,the+good_+the+bad+and+the+ugly+1966,4
+1615,33,scientist,M,the+green+mile+1999,4
+34430,18,college/grad student,M,panic+room+2002,4
+34430,18,college/grad student,M,aliens+1986,5
+34430,18,college/grad student,M,blow+2001,5
+34430,18,college/grad student,M,training+day+2001,4
+34430,18,college/grad student,M,the+jackal+1997,4
+34430,18,college/grad student,M,kiss+kiss+bang+bang+2005,5
+34430,18,college/grad student,M,what+women+want+2000,4
+1755,40,sales/marketing,M,alice+in+wonderland+1951,5
+1758,18,sales/marketing,M,reservoir+dogs+1992,5
+1774,27,scientist,M,a+better+tomorrow+iii+love+and+death+in+saigon+1989,3
+1774,27,scientist,M,theremin+an+electronic+odyssey+1994,3
+1803,27,K-12 student,F,titan+a.e.+2000,3
+1803,27,K-12 student,F,spellbound+2002,5
+1803,27,K-12 student,F,the+empire+strikes+back+1980,4
+1803,27,K-12 student,F,anastasia+1997,4
+1803,27,K-12 student,F,alien+1979,4
+1837,31,artist,M,morning+for+the+osone+family+1946,4
+1837,31,artist,M,the+godfather+1972,4
+1840,34,scientist,M,dilwale+dulhania+le+jayenge+1995,3
+1840,34,scientist,M,indiana+jones+and+the+last+crusade+1989,5
+1840,34,scientist,M,the+last+samurai+2003,3
+1840,34,scientist,M,the+matrix+1999,5
+1840,34,scientist,M,waiting+for+guffman+1996,4
+1840,34,scientist,M,major+league+1989,4
+1840,34,scientist,M,enemy+of+the+state+1998,4
+1840,34,scientist,M,almost+famous+2000,4
+1840,34,scientist,M,carlitos+way+1993,4
+1840,34,scientist,M,unforgiven+1992,4
+34630,32,homemaker,F,grumpy+old+men+1993,3
+34630,32,homemaker,F,at+first+sight+1999,1
+34630,32,homemaker,F,the+wizard+of+oz+1939,1
+34630,32,homemaker,F,sneakers+1992,3
+34630,32,homemaker,F,miracle+2004,4
+34630,32,homemaker,F,back+to+the+future+1985,4
+34630,32,homemaker,F,the+santa+clause+1994,1
+34630,32,homemaker,F,into+eternity+2010,3
+34663,18,K-12 student,F,e.t.+the+extra-terrestrial+1982,5
+1946,33,sales/marketing,M,the+conclave+2006,3
+1972,34,clerical/admin,M,from+russia+with+love+1963,4
+1995,26,executive/managerial,M,batman+1989,3
+1995,26,executive/managerial,M,addams+family+values+1993,2
+1995,26,executive/managerial,M,dances+with+wolves+1990,1
+1995,26,executive/managerial,M,pulp+fiction+1994,2
+1995,26,executive/managerial,M,while+you+were+sleeping+1995,3
+1995,26,executive/managerial,M,clear+and+present+danger+1994,2
+1995,26,executive/managerial,M,aladdin+1992,4
+1996,46,academic/educator,F,the+forbidden+christ+1951,3
+2016,26,college/grad student,M,indiana+jones+and+the+last+crusade+1989,4
+34792,29,executive/managerial,M,laid+to+rest+2009,2
+2082,19,sales/marketing,M,donnie+brasco+1997,4
+2082,19,sales/marketing,M,erin+brockovich+2000,4
+2082,19,sales/marketing,M,charlies+angels+full+throttle+2003,2
+2082,19,sales/marketing,M,pay+it+forward+2000,2
+2082,19,sales/marketing,M,cant+hardly+wait+1998,4
+34853,32,K-12 student,M,the+clay+bird+2002,3
+34962,29,clerical/admin,M,inception+2010,4
+35045,27,college/grad student,M,the+devils+advocate+1997,3
+35057,25,artist,F,curious+george+2006,4
+2405,28,college/grad student,M,jurassic+park+1993,5
+2405,28,college/grad student,M,school+of+rock+2003,3
+2405,28,college/grad student,M,the+sixth+sense+1999,3
+2405,28,college/grad student,M,the+rock+1996,4
+2405,28,college/grad student,M,the+bourne+identity+2002,3
+2405,28,college/grad student,M,love+actually+2003,3
+2433,31,clerical/admin,F,east+side_+west+side+1949,3
+35214,29,executive/managerial,F,bolt+2008,5
+35217,32,self-employed,M,dr.+no+1962,3
+35217,32,self-employed,M,police+academy+2+their+first+assignment+1985,3
+35217,32,self-employed,M,ace+ventura+pet+detective+1994,4
+35217,32,self-employed,M,hot+to+trot+1988,3
+35217,32,self-employed,M,blazing+saddles+1974,4
+35217,32,self-employed,M,the+cable+guy+1996,2
+35217,32,self-employed,M,the+specialist+1994,3
+35217,32,self-employed,M,patch+adams+1998,4
+35217,32,self-employed,M,my+dog+skip+2000,4
+2557,31,executive/managerial,M,young+sherlock+holmes+1985,3
+2557,31,executive/managerial,M,bolt+2008,4
+2592,29,academic/educator,F,kronks+new+groove+2005,3
+2593,32,college/grad student,M,the+bands+visit+2007,3
+2612,30,executive/managerial,M,mary+poppins+1964,4
+2612,30,executive/managerial,M,the+silence+of+the+lambs+1991,4
+2612,30,executive/managerial,M,phenomenon+1996,3
+2612,30,executive/managerial,M,speed+1994,4
+2612,30,executive/managerial,M,milk+money+1994,3
+35412,25,college/grad student,M,up+2009,5
+2674,34,college/grad student,M,spartacus+1960,2
+35472,29,college/grad student,M,finding+nemo+2003,5
+35559,33,college/grad student,M,willy+wonka++the+chocolate+factory+1971,3
+35559,33,college/grad student,M,dragonheart+1996,4
+35559,33,college/grad student,M,star+wars+1977,5
+35603,29,college/grad student,F,it+follows+2015,3
+35608,27,college/grad student,M,queen+margot+1994,5
+35647,27,retired,F,rushmore+1998,5
+35647,27,retired,F,babe+1995,4
+35647,27,retired,F,the+wood+1999,3
+35647,27,retired,F,interview+with+the+vampire+1994,2
+35647,27,retired,F,a+clockwork+orange+1971,5
+35647,27,retired,F,othello+1995,5
+35647,27,retired,F,all+about+my+mother+1999,4
+35647,27,retired,F,dead+poets+society+1989,4
+35647,27,retired,F,the+american+president+1995,2
+35647,27,retired,F,memento+2000,5
+35647,27,retired,F,up+close++personal+1996,3
+35698,27,self-employed,M,my+best+friends+wife+1998,3
+2984,26,executive/managerial,M,the+day+the+earth+froze+1959,3
+35762,32,sales/marketing,M,assault+on+precinct+13+2005,3
+35762,32,sales/marketing,M,hellboy+2004,3
+35762,32,sales/marketing,M,unbreakable+2000,4
+35762,32,sales/marketing,M,panic+room+2002,4
+35762,32,sales/marketing,M,clerks+1994,5
+35762,32,sales/marketing,M,s.f.w.+1994,4
+35762,32,sales/marketing,M,requiem+for+a+dream+2000,4
+35790,26,tradesman/craftsman,M,running+scared+1986,5
+3032,30,scientist,M,due+date+2010,3
+3032,30,scientist,M,the+misfits+1961,3
+35858,28,college/grad student,M,coyote+ugly+2000,4
+35858,28,college/grad student,M,the+fugitive+1993,5
+35858,28,college/grad student,M,radio+2003,5
+35858,28,college/grad student,M,mystic+river+2003,5
+3120,31,other or not specified,F,absolute+power+1997,3
+3120,31,other or not specified,F,twister+1996,3
+3120,31,other or not specified,F,a+time+to+kill+1996,3
+3120,31,other or not specified,F,titanic+1997,5
+3120,31,other or not specified,F,scream+1996,4
+35892,26,college/grad student,F,blood+night+the+legend+of+mary+hatchet+2009,3
+35906,27,scientist,M,a+burning+hot+summer+2011,4
+35906,27,scientist,M,pirates+of+the+caribbean+the+curse+of+the+black+pearl+2003,3
+35909,26,college/grad student,M,philadelphia+1993,3
+35909,26,college/grad student,M,broken+arrow+1996,2
+35909,26,college/grad student,M,ghost+1990,3
+35951,29,college/grad student,M,pure+country+1992,3
+36039,34,executive/managerial,M,fury+2014,4
+3276,42,executive/managerial,M,spy+kids+2001,4
+3281,15,self-employed,F,silent+souls+2010,4
+3281,15,self-employed,F,revenge+of+the+nerds+1984,4
+3281,15,self-employed,F,40+days+and+40+nights+2002,3
+3281,15,self-employed,F,mrs.+doubtfire+1993,4
+3281,15,self-employed,F,i+still+know+what+you+did+last+summer+1998,2
+3281,15,self-employed,F,dazed+and+confused+1993,4
+3281,15,self-employed,F,a+time+to+kill+1996,4
+3281,15,self-employed,F,o+2001,3
+3281,15,self-employed,F,wedding+crashers+2005,4
+3281,15,self-employed,F,clerks+1994,5
+3283,33,other or not specified,F,time+2006,4
+3320,32,sales/marketing,M,pirates+of+the+caribbean+the+curse+of+the+black+pearl+2003,4
+36094,33,scientist,M,cartoon+all-stars+to+the+rescue+1990,3
+36108,25,college/grad student,M,star+wars+episode+iii+-+revenge+of+the+sith+2005,4
+3383,34,scientist,M,the+wrong+trousers+1993,5
+3467,30,college/grad student,M,death+on+the+nile+1978,5
+36246,51,retired,F,slap+her...+shes+french+2002,2
+3493,27,college/grad student,M,pepi_+luci_+bom+1980,4
+3512,29,scientist,M,the+kings+of+mykonos+2010,4
+3563,30,homemaker,M,the+shawshank+redemption+1994,4
+3563,30,homemaker,M,kiev+frescoes+1966,4
+3653,34,college/grad student,M,the+prestige+2006,4
+3653,34,college/grad student,M,as+good+as+it+gets+1997,5
+3653,34,college/grad student,M,lost+in+translation+2003,4
+3653,34,college/grad student,M,matchstick+men+2003,5
+3653,34,college/grad student,M,north+by+northwest+1959,4
+3653,34,college/grad student,M,the+secret+in+their+eyes+2009,5
+3679,27,self-employed,M,the+hunger+games+mockingjay+-+part+1+2014,5
+36478,33,executive/managerial,M,the+piano+1993,2
+36478,33,executive/managerial,M,the+usual+suspects+1995,5
+36478,33,executive/managerial,M,babe+1995,5
+36478,33,executive/managerial,M,se7en+1995,5
+36478,33,executive/managerial,M,pretty+woman+1990,3
+36478,33,executive/managerial,M,legends+of+the+fall+1994,3
+36478,33,executive/managerial,M,ace+ventura+pet+detective+1994,3
+36478,33,executive/managerial,M,the+silence+of+the+lambs+1991,3
+36478,33,executive/managerial,M,ghost+1990,3
+36478,33,executive/managerial,M,die+hard+with+a+vengeance+1995,5
+36478,33,executive/managerial,M,all+dogs+go+to+heaven+2+1996,5
+3754,26,executive/managerial,M,smillas+sense+of+snow+1997,3
+3777,32,college/grad student,M,saving+sarah+cain+2007,4
+3777,32,college/grad student,M,out+of+sight+1998,4
+3777,32,college/grad student,M,pulp+fiction+1994,5
+3777,32,college/grad student,M,rocky+1976,4
+3777,32,college/grad student,M,schindlers+list+1993,4
+3777,32,college/grad student,M,donnie+brasco+1997,5
+3840,33,executive/managerial,M,cremaster+5+1997,4
+36615,27,tradesman/craftsman,M,snatch+2000,5
+36615,27,tradesman/craftsman,M,the+karate+kid_+part+iii+1989,3
+36615,27,tradesman/craftsman,M,the+godfather+1972,4
+36615,27,tradesman/craftsman,M,the+godfather+part+ii+1974,4
+36615,27,tradesman/craftsman,M,bio-dome+1996,4
+36615,27,tradesman/craftsman,M,the+bourne+identity+1988,1
+36615,27,tradesman/craftsman,M,the+last+airbender+2010,4
+36615,27,tradesman/craftsman,M,d2+the+mighty+ducks+1994,4
+3854,29,scientist,M,dead+mans+walk+1996,3
+36627,37,college/grad student,M,striptease+1996,3
+36627,37,college/grad student,M,grumpier+old+men+1995,5
+36627,37,college/grad student,M,aladdin+1992,4
+36627,37,college/grad student,M,the+bridges+of+madison+county+1995,4
+36627,37,college/grad student,M,toy+story+1995,5
+36627,37,college/grad student,M,the+jungle+book+1994,4
+36650,18,self-employed,M,chappie+2015,3
+36650,18,self-employed,M,monty+python+and+the+holy+grail+1975,4
+36650,18,self-employed,M,blinky+2011,5
+36650,18,self-employed,M,the+meaning+of+life+1983,3
+36650,18,self-employed,M,of+mice+and+men+1992,4
+36650,18,self-employed,M,the+lord+of+the+rings+the+return+of+the+king+2003,5
+36650,18,self-employed,M,contact+1997,4
+36650,18,self-employed,M,mission+impossible+ii+2000,3
+36650,18,self-employed,M,big+1988,3
+36650,18,self-employed,M,the+abyss+1989,4
+36650,18,self-employed,M,pinocchio+1940,4
+36650,18,self-employed,M,the+kentucky+fried+movie+1977,5
+36676,27,writer,M,the+invasion+2007,2
+36705,30,college/grad student,M,the+magnificent+one+1973,4
+36746,25,college/grad student,F,anchors+aweigh+1945,4
+3994,26,college/grad student,M,the+best+of+youth+2003,4
+3994,26,college/grad student,M,true+romance+1993,2
+3994,26,college/grad student,M,louis+c.k.+hilarious+2010,4
+3994,26,college/grad student,M,the+fog+of+war+2003,3
+3994,26,college/grad student,M,my+cousin+vinny+1992,2
+3994,26,college/grad student,M,forrest+gump+1994,5
+4026,27,other or not specified,M,the+good_+the+bad+and+the+ugly+1966,4
+4026,27,other or not specified,M,lars+and+the+real+girl+2007,3
+4055,8,sales/marketing,M,night+of+the+lepus+1972,5
+4069,27,executive/managerial,F,stille+nacht+2004,5
+4220,20,college/grad student,M,night+at+the+museum+2006,4
+4220,20,college/grad student,M,the+birdcage+1996,3
+4220,20,college/grad student,M,erin+brockovich+2000,4
+4220,20,college/grad student,M,the+piano+1993,2
+4220,20,college/grad student,M,the+day+the+earth+stood+still+1951,4
+4220,20,college/grad student,M,2001+a+space+odyssey+1968,2
+4220,20,college/grad student,M,saving+private+ryan+1998,3
+4220,20,college/grad student,M,6+bullets+2012,4
+37023,33,scientist,F,shutter+island+2010,4
+4259,34,executive/managerial,M,batman+begins+2005,3
+4259,34,executive/managerial,M,harry+potter+and+the+goblet+of+fire+2005,4
+37035,26,college/grad student,M,k-pax+2001,2
+37035,26,college/grad student,M,planet+of+the+apes+2001,2
+37035,26,college/grad student,M,dr.+t+and+the+women+2000,1
+37035,26,college/grad student,M,the+princess+bride+1987,5
+37035,26,college/grad student,M,u-571+2000,3
+37080,26,executive/managerial,M,gattaca+1997,3
+37080,26,executive/managerial,M,whos+singin+over+there+1980,4
+4386,34,college/grad student,M,star+trek+vi+the+undiscovered+country+1991,2
+4386,34,college/grad student,M,pee-wees+big+adventure+1985,1
+4386,34,college/grad student,M,the+bridge+on+the+river+kwai+1957,4
+4386,34,college/grad student,M,spider-man+2002,3
+4386,34,college/grad student,M,spider-man+2+2004,4
+4416,28,scientist,M,day+of+wrath+1943,4
+37182,27,self-employed,M,the+warriors+1979,4
+37182,27,self-employed,M,almost+famous+2000,3
+37182,27,self-employed,M,alaska+spirit+of+the+wild+1998,4
+37182,27,self-employed,M,a+christmas+carol+1938,4
+37182,27,self-employed,M,a+simple+plan+1998,4
+37182,27,self-employed,M,one+flew+over+the+cuckoos+nest+1975,5
+37182,27,self-employed,M,schindlers+list+1993,5
+37197,27,scientist,M,barneys+version+2010,3
+37209,28,college/grad student,M,veronica+mars+2014,3
+37255,29,sales/marketing,M,pirates+of+the+caribbean+at+worlds+end+2007,3
+4500,26,sales/marketing,F,adaptation.+2002,4
+4500,26,sales/marketing,F,the+graduate+1967,5
+4500,26,sales/marketing,F,duck+soup+1933,4
+4500,26,sales/marketing,F,much+ado+about+nothing+1993,4
+4500,26,sales/marketing,F,sling+blade+1996,5
+4500,26,sales/marketing,F,live+and+let+die+1973,4
+37296,34,sales/marketing,M,charlie+chan+at+the+opera+1936,2
+37305,29,programmer,M,caddyshack+1980,4
+37305,29,programmer,M,airplane+1980,5
+37305,29,programmer,M,monty+python+and+the+holy+grail+1975,4
+37305,29,programmer,M,superman+1978,4
+37305,29,programmer,M,almost+famous+2000,4
+37305,29,programmer,M,ghostbusters+1984,4
+37305,29,programmer,M,romancing+the+stone+1984,3
+37305,29,programmer,M,harry+potter+and+the+deathly+hallows+part+1+2010,5
+37310,26,other or not specified,M,pans+labyrinth+2006,5
+37361,31,college/grad student,M,sleeping+beauty+1959,4
+4666,25,K-12 student,M,sink+the+bismarck+1960,5
+4697,32,sales/marketing,F,amlie+2001,4
+4697,32,sales/marketing,F,saving+private+ryan+1998,3
+4697,32,sales/marketing,F,crouching+tiger_+hidden+dragon+2000,3
+4697,32,sales/marketing,F,the+rocky+horror+picture+show+1975,3
+4697,32,sales/marketing,F,laura+1944,4
+4697,32,sales/marketing,F,dirty+dancing+1987,3
+4697,32,sales/marketing,F,the+lodger+a+story+of+the+london+fog+1927,4
+4697,32,sales/marketing,F,beavis+and+butt-head+do+america+1996,4
+4697,32,sales/marketing,F,jurassic+park+1993,3
+4697,32,sales/marketing,F,the+shawshank+redemption+1994,5
+4697,32,sales/marketing,F,aladdin+1992,4
+4697,32,sales/marketing,F,colonel+chabert+1994,3
+37492,29,executive/managerial,M,avatar+2009,4
+37492,29,executive/managerial,M,frankenstein+1931,3
+37504,26,executive/managerial,M,dawn+of+the+planet+of+the+apes+2014,3
+37561,30,executive/managerial,M,apollo+13+1995,3
+37561,30,executive/managerial,M,shy+people+1987,4
+37571,32,K-12 student,M,star+wars+1977,4
+4854,18,homemaker,M,42nd+street+1933,3
+37664,32,college/grad student,F,harry+potter+and+the+deathly+hallows+part+1+2010,5
+37742,33,college/grad student,M,haunter+2013,3
+5053,32,college/grad student,M,louis+c.k.+oh+my+god+2013,5
+5053,32,college/grad student,M,coffin+rock+2009,4
+37882,19,scientist,M,chicken+run+2000,1
+37882,19,scientist,M,the+substitute+1996,2
+37882,19,scientist,M,apocalypse+now+1979,2
+37882,19,scientist,M,wolf+1994,4
+5130,34,sales/marketing,M,i_+robot+2004,2
+5130,34,sales/marketing,M,mississippi+burning+1988,3
+5130,34,sales/marketing,M,star+wars+the+clone+wars+2008,3
+5130,34,sales/marketing,M,monty+python+and+the+holy+grail+1975,2
+5130,34,sales/marketing,M,moonrise+kingdom+2012,4
+5130,34,sales/marketing,M,snatch+2000,3
+5198,28,sales/marketing,M,colonel+chabert+1994,4
+5198,28,sales/marketing,M,children+of+heaven+1997,3
+38014,32,executive/managerial,M,under+ten+flags+1960,3
+38014,32,executive/managerial,M,girl_+interrupted+1999,3
+5278,41,executive/managerial,F,the+good_+the+bad+and+the+ugly+1966,5
+5282,27,executive/managerial,M,the+fifth+element+1997,4
+38073,25,sales/marketing,M,frank+herberts+children+of+dune+2003,3
+38087,30,other or not specified,F,i+melt+with+you+2011,4
+38087,30,other or not specified,F,the+keeper+2009,4
+38095,26,other or not specified,M,treasure+planet+2002,3
+38185,75,retired,F,patterns+1956,4
+5419,29,college/grad student,M,toy+story+3+2010,5
+5502,82,retired,F,the+house+of+small+cubes+2008,4
+38320,28,other or not specified,M,dinner+at+eight+1933,4
+38356,31,executive/managerial,M,hollywood+between+paranoia+and+sci-fi.+the+power+of+myth+2011,3
+5618,28,college/grad student,M,carnage+2011,5
+5618,28,college/grad student,M,the+invisible+woman+2013,4
+5657,39,self-employed,M,gladiator+2000,4
+5658,25,sales/marketing,F,control+2004,3
+5682,32,scientist,M,an+ideal+husband+1999,3
+38451,25,college/grad student,M,while+you+were+sleeping+1995,3
+38451,25,college/grad student,M,the+fugitive+1993,5
+38451,25,college/grad student,M,unstrung+heroes+1995,3
+38451,25,college/grad student,M,congo+1995,2
+38451,25,college/grad student,M,true+lies+1994,3
+38451,25,college/grad student,M,antonias+line+1995,4
+38451,25,college/grad student,M,leaving+las+vegas+1995,5
+5700,30,self-employed,F,the+wolf+of+wall+street+2013,3
+5700,30,self-employed,F,life+partners+2014,3
+5765,30,self-employed,M,the+big+lebowski+1998,5
+5765,30,self-employed,M,mystery+men+1999,4
+5765,30,self-employed,M,up+2009,4
+5765,30,self-employed,M,bill++teds+excellent+adventure+1989,3
+5765,30,self-employed,M,the+lord+of+the+rings+the+two+towers+2002,4
+5765,30,self-employed,M,the+nightmare+before+christmas+1993,4
+5765,30,self-employed,M,the+dark+knight+2008,4
+5765,30,self-employed,M,o+brother_+where+art+thou+2000,4
+5765,30,self-employed,M,the+spy+who+loved+me+1977,4
+38620,33,sales/marketing,M,harry+potter+and+the+deathly+hallows+part+1+2010,3
+5936,32,college/grad student,F,the+waiting+room+2012,4
+38711,32,sales/marketing,M,terminator+2+judgment+day+1991,4
+38715,34,college/grad student,M,madhouse+2004,3
+5951,32,self-employed,M,starting+out+in+the+evening+2007,4
+38752,32,college/grad student,M,the+package+1989,3
+38752,32,college/grad student,M,groove+2000,4
+38754,32,programmer,M,oceans+eleven+2001,4
+6014,31,executive/managerial,M,up+2009,4
+6014,31,executive/managerial,M,terminator+2+judgment+day+1991,3
+6014,31,executive/managerial,M,a+christmas+carol+1938,4
+6014,31,executive/managerial,M,hands+on+a+hard+body+the+documentary+1997,3
+6014,31,executive/managerial,M,the+princess+bride+1987,3
+6014,31,executive/managerial,M,the+adventures+of+robin+hood+1938,5
+6046,12,sales/marketing,M,transporter+3+2008,3
+38824,10,artist,F,desperado+1995,5
+38824,10,artist,F,charlottes+web+1973,3
+38824,10,artist,F,romancing+the+stone+1984,4
+38824,10,artist,F,ferris+buellers+day+off+1986,4
+38824,10,artist,F,u.s.+marshals+1998,3
+38824,10,artist,F,the+birdcage+1996,3
+38824,10,artist,F,citizen+kane+1941,1
+38824,10,artist,F,the+net+1995,4
+38824,10,artist,F,sleeping+beauty+1959,5
+38824,10,artist,F,the+nightmare+before+christmas+1993,3
+38824,10,artist,F,mr.+hollands+opus+1995,3
+38824,10,artist,F,back+to+the+future+part+ii+1989,4
+38827,34,executive/managerial,F,the+chronicles+of+narnia+the+lion_+the+witch+and+the+wardrobe+2005,4
+38964,32,self-employed,F,baton+rouge+1988,3
+38964,32,self-employed,F,back+to+the+future+1985,5
+38964,32,self-employed,F,jaws+1975,5
+38964,32,self-employed,F,to+wong+foo_+thanks+for+everything+julie+newmar+1995,3
+38964,32,self-employed,F,jane+eyre+1996,3
+38964,32,self-employed,F,the+princess+bride+1987,4
+6268,34,self-employed,M,the+boy+in+the+striped+pyjamas+2008,4
+39047,32,sales/marketing,M,monsters_+inc.+2001,4
+6370,34,college/grad student,F,pulp+fiction+1994,5
+6370,34,college/grad student,F,pirates+of+the+caribbean+the+curse+of+the+black+pearl+2003,2
+6370,34,college/grad student,F,crocodile+dundee+ii+1988,1
+6370,34,college/grad student,F,monsters+ball+2001,4
+6370,34,college/grad student,F,let+the+right+one+in+2008,5
+6370,34,college/grad student,F,titanic+1997,5
+6370,34,college/grad student,F,nurse+betty+2000,5
+6370,34,college/grad student,F,se7en+1995,4
+6370,34,college/grad student,F,shrek+2001,4
+39157,25,college/grad student,M,santa+sangre+1989,4
+39203,32,college/grad student,F,lock_+stock+and+two+smoking+barrels+1998,4
+39203,32,college/grad student,F,death+becomes+her+1992,3
+39203,32,college/grad student,F,national+lampoons+christmas+vacation+1989,4
+39203,32,college/grad student,F,made+in+america+1993,4
+39203,32,college/grad student,F,life+of+brian+1979,5
+39203,32,college/grad student,F,evita+1996,3
+39203,32,college/grad student,F,pulp+fiction+1994,5
+39203,32,college/grad student,F,all+about+my+mother+1999,5
+39203,32,college/grad student,F,drop+dead+gorgeous+1999,5
+6441,30,technician/engineer,M,men+in+black+ii+2002,4
+6443,30,executive/managerial,M,penguins+of+madagascar+2014,3
+6453,26,scientist,M,the+legend+of+sarila+2013,5
+39225,29,executive/managerial,M,royal+wedding+1951,3
+39225,29,executive/managerial,M,overlord+1975,4
+6466,20,college/grad student,M,heat+1995,3
+6466,20,college/grad student,M,the+cable+guy+1996,2
+6466,20,college/grad student,M,the+american+president+1995,3
+6466,20,college/grad student,M,spy+hard+1996,2
+6466,20,college/grad student,M,a+time+to+kill+1996,5
+6466,20,college/grad student,M,executive+decision+1996,3
+6466,20,college/grad student,M,tin+cup+1996,4
+6466,20,college/grad student,M,broken+arrow+1996,4
+6466,20,college/grad student,M,twister+1996,4
+6466,20,college/grad student,M,toy+story+1995,4
+39239,25,college/grad student,M,princess+mononoke+1997,4
+6493,9,K-12 student,M,sleeping+beauty+1959,5
+39281,26,scientist,M,pandorum+2009,4
+6515,26,college/grad student,M,dances+with+wolves+1990,3
+6515,26,college/grad student,M,fargo+1996,4
+6515,26,college/grad student,M,while+you+were+sleeping+1995,5
+6515,26,college/grad student,M,waterworld+1995,4
+6515,26,college/grad student,M,braveheart+1995,4
+6515,26,college/grad student,M,the+fugitive+1993,5
+6515,26,college/grad student,M,dumb+and+dumber+1994,4
+6515,26,college/grad student,M,the+silence+of+the+lambs+1991,5
+6515,26,college/grad student,M,the+firm+1993,4
+6515,26,college/grad student,M,the+birdcage+1996,5
+6515,26,college/grad student,M,home+alone+1990,3
+6515,26,college/grad student,M,jurassic+park+1993,5
+6515,26,college/grad student,M,die+hard+with+a+vengeance+1995,3
+39339,61,doctor/health care,M,one+hundred+and+one+dalmatians+1961,4
+39339,61,doctor/health care,M,mulan+ii+2004,4
+6576,28,college/grad student,M,the+birdcage+1996,3
+6576,28,college/grad student,M,ghost+1990,5
+6576,28,college/grad student,M,stargate+1994,4
+6576,28,college/grad student,M,congo+1995,3
+6576,28,college/grad student,M,the+american+president+1995,4
+6576,28,college/grad student,M,pretty+woman+1990,4
+6576,28,college/grad student,M,species+1995,3
+6576,28,college/grad student,M,judge+dredd+1995,4
+6578,34,sales/marketing,M,white+of+the+eye+1988,3
+39436,27,scientist,M,the+dark+knight+rises+2012,4
+39436,27,scientist,M,koko+a+talking+gorilla+1978,3
+39436,27,scientist,M,come+dance+with+me+1959,5
+6750,22,scientist,M,enchanted+april+1991,4
+39604,32,sales/marketing,M,sal_+or+the+120+days+of+sodom+1975,3
+39638,25,executive/managerial,M,quiz+show+1994,4
+39638,25,executive/managerial,M,tommy+boy+1995,2
+39638,25,executive/managerial,M,the+silence+of+the+lambs+1991,5
+39638,25,executive/managerial,M,french+kiss+1995,3
+39638,25,executive/managerial,M,the+client+1994,3
+39638,25,executive/managerial,M,outbreak+1995,5
+39638,25,executive/managerial,M,stargate+1994,4
+6900,65,retired,F,cant+hardly+wait+1998,1
+6900,65,retired,F,to+kill+a+mockingbird+1962,4
+6900,65,retired,F,miss+congeniality+2000,2
+6900,65,retired,F,gods+and+monsters+1998,3
+6900,65,retired,F,three+colors+red+1994,4
+6900,65,retired,F,girl_+interrupted+1999,3
+6900,65,retired,F,the+muppet+movie+1979,5
+6900,65,retired,F,chasing+amy+1997,4
+6900,65,retired,F,good+will+hunting+1997,3
+6900,65,retired,F,the+graduate+1967,5
+6900,65,retired,F,grosse+pointe+blank+1997,4
+6900,65,retired,F,american+splendor+2003,5
+6900,65,retired,F,raising+arizona+1987,4
+6900,65,retired,F,big+1988,3
+6900,65,retired,F,city+slickers+ii+the+legend+of+curlys+gold+1994,4
+6942,33,college/grad student,F,becoming+chaz+2011,2
+6942,33,college/grad student,F,ghostbusters+1984,4
+39716,27,scientist,M,dangerous+minds+1995,5
+39716,27,scientist,M,dances+with+wolves+1990,5
+39716,27,scientist,M,mr.+hollands+opus+1995,4
+39716,27,scientist,M,hackers+1995,3
+39716,27,scientist,M,renaissance+man+1994,3
+39716,27,scientist,M,executive+decision+1996,3
+39716,27,scientist,M,what+lies+beneath+2000,3
+39725,30,executive/managerial,M,miracle+on+34th+street+1994,5
+39725,30,executive/managerial,M,priest+1994,5
+39725,30,executive/managerial,M,cocoon+1985,4
+39725,30,executive/managerial,M,the+bridges+of+madison+county+1995,5
+39725,30,executive/managerial,M,a+beautiful+mind+2001,5
+39725,30,executive/managerial,M,grumpier+old+men+1995,5
+39725,30,executive/managerial,M,the+prime+of+miss+jean+brodie+1969,5
+39725,30,executive/managerial,M,the+good+girl+2002,4
+39725,30,executive/managerial,M,the+ref+1994,5
+39725,30,executive/managerial,M,best+in+show+2000,5
+6959,34,scientist,M,i+remember+mama+1948,4
+6980,28,executive/managerial,M,last+night+2010,3
+39766,42,clerical/admin,M,mad+max+1979,4
+39766,42,clerical/admin,M,ferris+buellers+day+off+1986,3
+39766,42,clerical/admin,M,comedy+of+power+2006,3
+39766,42,clerical/admin,M,primal+fear+1996,4
+39766,42,clerical/admin,M,spider-man+3+2007,3
+39766,42,clerical/admin,M,true+lies+1994,3
+39794,25,college/grad student,M,the+underneath+1995,4
+39794,25,college/grad student,M,junior+1994,4
+39794,25,college/grad student,M,heavenly+creatures+1994,4
+39794,25,college/grad student,M,the+pallbearer+1996,3
+39794,25,college/grad student,M,toy+story+1995,5
+39794,25,college/grad student,M,cold+comfort+farm+1995,5
+39829,27,sales/marketing,M,bridge+to+terabithia+2007,3
+39907,23,sales/marketing,M,reservoir+dogs+1992,4
+39934,28,college/grad student,M,pulp+fiction+1994,5
+39934,28,college/grad student,M,office+space+1999,5
+39934,28,college/grad student,M,the+princess+bride+1987,5
+39934,28,college/grad student,M,kiss+kiss+bang+bang+2005,4
+7241,34,executive/managerial,M,happy+christmas+2014,4
+40092,34,college/grad student,M,mickey+blue+eyes+1999,2
+7336,17,sales/marketing,M,enid+2009,3
+7353,70,retired,F,meeting+people+is+easy+1998,4
+7386,21,homemaker,M,the+day+the+earth+stood+still+1951,4
+40206,25,sales/marketing,M,sunless+1983,4
+40216,22,sales/marketing,F,the+trail+of+the+lonesome+pine+1936,4
+7499,27,college/grad student,F,the+adventures+of+baron+munchausen+1988,2
+7499,27,college/grad student,F,message+in+a+bottle+1999,3
+7499,27,college/grad student,F,highlander+ii+the+quickening+1991,3
+7499,27,college/grad student,F,indecent+proposal+1993,3
+7499,27,college/grad student,F,forrest+gump+1994,5
+7499,27,college/grad student,F,black+beauty+1994,2
+40329,34,executive/managerial,M,star+wars+1977,5
+40329,34,executive/managerial,M,the+empire+strikes+back+1980,5
+40329,34,executive/managerial,M,flight+of+the+navigator+1986,2
+40329,34,executive/managerial,M,x2+2003,3
+40329,34,executive/managerial,M,shrek+2001,3
+40329,34,executive/managerial,M,good+will+hunting+1997,3
+40329,34,executive/managerial,M,titanic+1997,4
+40329,34,executive/managerial,M,the+hoax+2006,3
+7592,34,sales/marketing,M,white+heat+1949,4
+7592,34,sales/marketing,M,l.a.+confidential+1997,4
+7592,34,sales/marketing,M,time+bandits+1981,3
+7592,34,sales/marketing,M,romeo+and+juliet+1968,4
+7592,34,sales/marketing,M,king+kong+1933,3
+7592,34,sales/marketing,M,on+her+majestys+secret+service+1969,3
+7592,34,sales/marketing,M,x-men+2000,2
+7592,34,sales/marketing,M,animal+house+1978,3
+7592,34,sales/marketing,M,raging+bull+1980,3
+40371,27,self-employed,M,who+framed+roger+rabbit+1988,3
+40371,27,self-employed,M,the+truman+show+1998,4
+40371,27,self-employed,M,the+borrowers+1997,2
+40371,27,self-employed,M,east+is+east+1999,4
+40371,27,self-employed,M,dumb+and+dumber+1994,5
+40371,27,self-employed,M,taxi+driver+1976,3
+40371,27,self-employed,M,mission+impossible+1996,3
+40371,27,self-employed,M,spider-man+2002,3
+40375,20,sales/marketing,M,chely+wright+wish+me+away+2011,4
+40384,28,sales/marketing,M,the+hobbit+the+desolation+of+smaug+2013,4
+40403,26,K-12 student,M,despicable+me+2+2013,2
+40430,26,sales/marketing,M,return+of+the+jedi+1983,4
+40430,26,sales/marketing,M,the+fifth+element+1997,3
+40430,26,sales/marketing,M,absolute+power+1997,3
+40430,26,sales/marketing,M,hulk+2003,4
+40430,26,sales/marketing,M,district+9+2009,4
+40430,26,sales/marketing,M,desperado+1995,4
+40430,26,sales/marketing,M,up+2009,4
+40430,26,sales/marketing,M,total+recall+1990,4
+40430,26,sales/marketing,M,jerry+maguire+1996,3
+40430,26,sales/marketing,M,children+of+men+2006,4
+40430,26,sales/marketing,M,ninja+scroll+1993,4
+40430,26,sales/marketing,M,dumb+and+dumber+1994,5
+40430,26,sales/marketing,M,jurassic+park+1993,3
+40440,33,college/grad student,M,man+facing+southeast+1986,4
+40440,33,college/grad student,M,e.t.+the+extra-terrestrial+1982,4
+40484,27,college/grad student,M,mozarts+sister+2010,4
+7825,30,scientist,M,pirates+of+the+caribbean+the+curse+of+the+black+pearl+2003,4
+7825,30,scientist,M,born+on+the+fourth+of+july+1989,1
+7825,30,scientist,M,armageddon+1998,2
+7825,30,scientist,M,mad+max+beyond+thunderdome+1985,2
+7825,30,scientist,M,forrest+gump+1994,4
+7825,30,scientist,M,the+lord+of+the+rings+the+two+towers+2002,4
+7825,30,scientist,M,star+trek+vi+the+undiscovered+country+1991,3
+7832,27,executive/managerial,M,dawn+of+the+planet+of+the+apes+2014,4
+7839,31,other or not specified,M,judge+dredd+1995,3
+7839,31,other or not specified,M,national+security+2003,4
+7839,31,other or not specified,M,mission+impossible+ii+2000,3
+7839,31,other or not specified,M,hot+shots+part+deux+1993,3
+7839,31,other or not specified,M,arachnophobia+1990,4
+7839,31,other or not specified,M,robin+hood+men+in+tights+1993,2
+7877,34,self-employed,M,made+in+america+1993,3
+7877,34,self-employed,M,miracle+on+34th+street+1994,5
+7877,34,self-employed,M,the+mask+1994,2
+7877,34,self-employed,M,the+parent+trap+1961,5
+7877,34,self-employed,M,now+and+then+1995,3
+7877,34,self-employed,M,home+alone+1990,3
+7877,34,self-employed,M,gnomeo++juliet+2011,3
+7961,32,college/grad student,M,the+firm+1993,4
+7961,32,college/grad student,M,the+brady+bunch+movie+1995,4
+7961,32,college/grad student,M,the+fugitive+1993,4
+7961,32,college/grad student,M,natural+born+killers+1994,2
+7961,32,college/grad student,M,mrs.+doubtfire+1993,3
+7961,32,college/grad student,M,nine+months+1995,3
+7961,32,college/grad student,M,cliffhanger+1993,4
+7961,32,college/grad student,M,tommy+boy+1995,3
+7961,32,college/grad student,M,dave+1993,4
+7961,32,college/grad student,M,city+slickers+ii+the+legend+of+curlys+gold+1994,2
+40791,21,college/grad student,M,the+prince+of+tides+1991,4
+8075,28,college/grad student,M,chinese+roulette+1976,4
+8075,28,college/grad student,M,the+three+lives+of+thomasina+1963,4
+8094,26,scientist,M,back+to+the+future+1985,3
+8094,26,scientist,M,let+it+rain+2008,3
+40893,31,scientist,F,big+hero+6+2014,4
+40893,31,scientist,F,awakenings+1990,5
+40928,25,scientist,M,pleasantville+1998,3
+40928,25,scientist,M,e.t.+the+extra-terrestrial+1982,5
+40928,25,scientist,M,happy+gilmore+1996,5
+40928,25,scientist,M,blow+2001,5
+40928,25,scientist,M,lock_+stock+and+two+smoking+barrels+1998,4
+40928,25,scientist,M,pushing+tin+1999,3
+40928,25,scientist,M,the+godfather+part+ii+1974,5
+40928,25,scientist,M,wargames+1983,5
+40928,25,scientist,M,catch+me+if+you+can+2002,4
+40928,25,scientist,M,in+the+line+of+fire+1993,3
+40928,25,scientist,M,thirteen+days+2000,5
+8174,34,college/grad student,M,late+spring+1949,5
+40966,33,self-employed,M,being+john+malkovich+1999,5
+40966,33,self-employed,M,babe+1995,5
+40966,33,self-employed,M,e.t.+the+extra-terrestrial+1982,2
+40966,33,self-employed,M,herbie+goes+to+monte+carlo+1977,1
+40966,33,self-employed,M,crouching+tiger_+hidden+dragon+2000,5
+40966,33,self-employed,M,pulp+fiction+1994,5
+40966,33,self-employed,M,best+in+show+2000,5
+40966,33,self-employed,M,back+to+the+future+1985,1
+40966,33,self-employed,M,good+morning_+vietnam+1987,3
+40966,33,self-employed,M,robin+hood+1973,3
+41015,28,scientist,M,scooby-doo+and+the+witchs+ghost+1999,4
+41015,28,scientist,M,first+blood+1982,5
+41015,28,scientist,M,dragonheart+1996,4
+41015,28,scientist,M,brazil+1985,2
+41015,28,scientist,M,escape+from+new+york+1981,5
+41015,28,scientist,M,dead+poets+society+1989,4
+41015,28,scientist,M,the+untouchables+1987,4
+41015,28,scientist,M,akira+1988,5
+41015,28,scientist,M,honey_+i+shrunk+the+kids+1989,4
+41015,28,scientist,M,terminator+2+judgment+day+1991,4
+8323,28,executive/managerial,M,the+juror+1996,3
+41091,30,sales/marketing,M,the+sword+in+the+stone+1963,5
+41147,31,other or not specified,F,joes+apartment+1996,3
+41147,31,other or not specified,F,everyone+loves+alice+2002,4
+41173,30,college/grad student,M,mr.++mrs.+smith+2005,3
+41183,34,executive/managerial,M,haunted+echoes+2008,3
+41183,34,executive/managerial,M,how+wang-fo+was+saved+1987,3
+8546,33,college/grad student,F,derrida+2002,3
+8589,26,executive/managerial,M,the+worthless+1982,4
+41413,26,self-employed,M,monty+python+and+the+holy+grail+1975,4
+41420,33,college/grad student,M,interstellar+2014,5
+41429,30,college/grad student,F,pocahontas+1995,5
+41429,30,college/grad student,F,the+naked+gun+33+the+final+insult+1994,4
+41429,30,college/grad student,F,chicken+run+2000,4
+41429,30,college/grad student,F,johnny+mnemonic+1995,2
+8667,31,executive/managerial,M,mrs.+doubtfire+1993,4
+8667,31,executive/managerial,M,batman+forever+1995,4
+8667,31,executive/managerial,M,disclosure+1994,4
+8667,31,executive/managerial,M,beauty+and+the+beast+1991,3
+8667,31,executive/managerial,M,interview+with+the+vampire+1994,4
+8667,31,executive/managerial,M,jurassic+park+1993,5
+8667,31,executive/managerial,M,ace+ventura+pet+detective+1994,4
+8667,31,executive/managerial,M,outbreak+1995,4
+8667,31,executive/managerial,M,speed+1994,4
+8667,31,executive/managerial,M,the+shawshank+redemption+1994,5
+8670,33,executive/managerial,M,the+incredibles+2004,5
+41515,34,college/grad student,M,national+lampoons+christmas+vacation+1989,4
+41515,34,college/grad student,M,look+whos+talking+1989,4
+41515,34,college/grad student,M,bowling+for+columbine+2002,4
+41515,34,college/grad student,M,murderball+2005,5
+41515,34,college/grad student,M,the+princess+bride+1987,4
+41515,34,college/grad student,M,the+karate+kid+1984,4
+41515,34,college/grad student,M,the+sixth+sense+1999,4
+41567,29,college/grad student,M,charlie+chans+murder+cruise+1940,4
+41567,29,college/grad student,M,batman++robin+1997,3
+41567,29,college/grad student,M,recess+schools+out+2001,3
+41567,29,college/grad student,M,cats++dogs+2001,4
+41567,29,college/grad student,M,the+blair+witch+project+1999,5
+41567,29,college/grad student,M,chicken+run+2000,4
+41567,29,college/grad student,M,congo+1995,3
+41569,31,executive/managerial,M,knight+of+cups+2015,3
+8911,34,self-employed,M,raging+phoenix+2009,4
+8943,34,sales/marketing,M,the+wizard+of+oz+1939,4
+8943,34,sales/marketing,M,this+is+spinal+tap+1984,5
+8943,34,sales/marketing,M,welcome+to+the+dollhouse+1995,3
+8943,34,sales/marketing,M,papillon+1973,3
+8943,34,sales/marketing,M,the+wrong+trousers+1993,3
+8943,34,sales/marketing,M,midnight+run+1988,3
+8943,34,sales/marketing,M,donnie+brasco+1997,3
+8988,25,college/grad student,M,v+for+vendetta+2006,4
+8988,25,college/grad student,M,a+trip+to+the+moon+1902,4
+8988,25,college/grad student,M,cowboy+bebop+the+movie+2001,4
+8988,25,college/grad student,M,cube+1997,4
+8988,25,college/grad student,M,dazed+and+confused+1993,2
+9007,32,executive/managerial,M,glowing+stars+2009,3
+41779,26,technician/engineer,M,the+last+blitzkrieg+1959,4
+9059,59,artist,M,mirror+mirror+2012,4
+41851,30,executive/managerial,M,topsy-turvy+1999,5
+9116,31,clerical/admin,M,princess+mononoke+1997,4
+9116,31,clerical/admin,M,seven+samurai+1954,2
+41902,32,college/grad student,M,quantum+of+solace+2008,4
+9158,27,sales/marketing,M,oslo_+august+31st+2011,3
+41973,33,college/grad student,M,reversal+of+fortune+1990,4
+42048,26,academic/educator,F,raiders+of+the+lost+ark+1981,5
+9355,33,retired,M,the+matrix+1999,4
+42127,27,retired,M,ice+age+the+meltdown+2006,4
+42127,27,retired,M,black+sheep+1996,4
+42127,27,retired,M,the+usual+suspects+1995,5
+42127,27,retired,M,van+helsing+2004,5
+42127,27,retired,M,pi+1998,5
+42127,27,retired,M,amlie+2001,5
+42127,27,retired,M,live+free+or+die+hard+2007,4
+42127,27,retired,M,oceans+thirteen+2007,4
+42158,34,other or not specified,F,harry+potter+and+the+half-blood+prince+2009,5
+42166,50,executive/managerial,M,friday+the+13th+1980,1
+42166,50,executive/managerial,M,the+maltese+falcon+1941,5
+42166,50,executive/managerial,M,breakfast+at+tiffanys+1961,4
+42166,50,executive/managerial,M,star+wars+1977,5
+42166,50,executive/managerial,M,citizen+kane+1941,5
+42166,50,executive/managerial,M,true+grit+1969,4
+42194,27,scientist,M,se7en+1995,5
+42191,29,self-employed,F,the+avengers+2012,4
+42211,26,other or not specified,F,everything+or+nothing+2012,3
+42275,31,other or not specified,M,a+scanner+darkly+2006,5
+42291,30,college/grad student,M,terminator+2+judgment+day+1991,4
+42291,30,college/grad student,M,jurassic+park+1993,5
+42291,30,college/grad student,M,beauty+and+the+beast+1991,4
+42291,30,college/grad student,M,the+lion+king+1994,5
+42291,30,college/grad student,M,waterworld+1995,3
+42295,26,executive/managerial,M,the+guys+2002,4
+42351,34,college/grad student,M,fahrenheit+451+1966,4
+9586,26,homemaker,M,head-on+2004,4
+9685,29,college/grad student,M,wild+wild+west+1999,1
+9685,29,college/grad student,M,boogie+nights+1997,5
+9685,29,college/grad student,M,demolition+man+1993,3
+9685,29,college/grad student,M,con+air+1997,1
+9685,29,college/grad student,M,super+size+me+2004,4
+9685,29,college/grad student,M,top+gun+1986,3
+9685,29,college/grad student,M,twelve+monkeys+1995,5
+42525,29,college/grad student,M,...and+justice+for+all+1979,4
+42525,29,college/grad student,M,it+follows+2015,5
+9794,25,executive/managerial,M,saving+private+ryan+1998,4
+9861,33,college/grad student,M,harry+potter+and+the+deathly+hallows+part+2+2011,4
+9911,30,executive/managerial,M,a+lot+like+love+2005,4
+9967,50,academic/educator,M,lego+dc+comics+super+heroes+justice+league+vs.+bizarro+league+2015,4
+42738,32,K-12 student,F,zu+warriors+from+the+magic+mountain+1983,4
+10036,28,executive/managerial,F,the+great+debaters+2007,4
+10063,18,academic/educator,F,the+little+rascals+save+the+day+2014,5
+10077,32,executive/managerial,M,se7en+1995,3
+42854,29,sales/marketing,M,z+1969,4
+10105,26,college/grad student,F,poor+white+trash+2000,3
+10140,28,sales/marketing,M,dolphin+tale+2011,3
+42930,33,college/grad student,F,the+terminator+1984,4
+42988,25,college/grad student,M,once+upon+a+time+in+anatolia+2011,4
+43015,27,college/grad student,M,cinderella+2015,5
+43031,32,college/grad student,M,star+wars+1977,5
+43031,32,college/grad student,M,shrek+2+2004,4
+43031,32,college/grad student,M,rush+hour+1998,3
+43031,32,college/grad student,M,the+lord+of+the+rings+the+two+towers+2002,4
+43031,32,college/grad student,M,die+hard+with+a+vengeance+1995,4
+43031,32,college/grad student,M,monsters_+inc.+2001,4
+43031,32,college/grad student,M,pearl+harbor+2001,4
+43031,32,college/grad student,M,kill+bill+vol.+2+2004,4
+10267,27,executive/managerial,M,batman+forever+1995,3
+10267,27,executive/managerial,M,ace+ventura+pet+detective+1994,1
+10267,27,executive/managerial,M,true+lies+1994,4
+10267,27,executive/managerial,M,die+hard+with+a+vengeance+1995,3
+10267,27,executive/managerial,M,schindlers+list+1993,5
+10267,27,executive/managerial,M,outbreak+1995,3
+10267,27,executive/managerial,M,jurassic+park+1993,3
+10267,27,executive/managerial,M,cliffhanger+1993,3
+10267,27,executive/managerial,M,the+fugitive+1993,4
+10267,27,executive/managerial,M,dumb+and+dumber+1994,1
+10299,28,executive/managerial,M,as+good+as+it+gets+1997,3
+10299,28,executive/managerial,M,rabbit-proof+fence+2002,3
+10299,28,executive/managerial,M,live+and+let+die+1973,3
+10299,28,executive/managerial,M,scent+of+a+woman+1992,3
+10299,28,executive/managerial,M,the+deer+hunter+1978,3
+10299,28,executive/managerial,M,the+joy+luck+club+1993,4
+10299,28,executive/managerial,M,dead+man+walking+1995,3
+10299,28,executive/managerial,M,legends+of+the+fall+1994,1
+43089,29,executive/managerial,M,four+minutes+2006,4
+10373,19,college/grad student,M,highlander+endgame+2000,1
+10373,19,college/grad student,M,suicide+kings+1997,3
+10373,19,college/grad student,M,airplane+1980,1
+10373,19,college/grad student,M,28+days+2000,3
+10373,19,college/grad student,M,twelve+monkeys+1995,3
+10373,19,college/grad student,M,damien+omen+ii+1978,2
+10387,27,artist,M,the+usual+suspects+1995,5
+10387,27,artist,M,music+and+lyrics+2007,2
+10387,27,artist,M,the+bourne+supremacy+2004,3
+10387,27,artist,M,shaolin+soccer+2001,4
+10387,27,artist,M,kill+bill+vol.+2+2004,5
+10387,27,artist,M,waking+life+2001,3
+10416,33,college/grad student,M,babylon+5+the+legend+of+the+rangers+-+to+live+and+die+in+starlight+2002,3
+10438,32,college/grad student,M,true+lies+1994,4
+43217,38,sales/marketing,M,blood+and+sand+1941,3
+43239,33,other or not specified,M,trick+r+treat+2007,5
+43239,33,other or not specified,M,perfume+the+story+of+a+murderer+2006,4
+43239,33,other or not specified,M,land+of+the+dead+2005,4
+43239,33,other or not specified,M,time+to+kill+1989,5
+10506,28,scientist,M,touch+of+evil+1958,4
+43365,29,scientist,M,high+sierra+1941,4
+10615,30,homemaker,M,runaway+brain+1995,3
+43429,34,executive/managerial,M,the+lost+one+1951,4
+43429,34,executive/managerial,M,star+wars+1977,4
+43461,31,executive/managerial,M,pillow+talk+1959,4
+10724,24,sales/marketing,M,a+double+life+1947,2
+10736,28,executive/managerial,M,ong-bak+the+thai+warrior+2003,3
+10747,27,college/grad student,M,the+muse+1999,4
+10769,33,college/grad student,M,spirit+stallion+of+the+cimarron+2002,3
+10769,33,college/grad student,M,inglourious+basterds+2009,5
+10830,28,self-employed,M,zipper+2015,4
+10952,27,executive/managerial,M,nightcrawler+2014,5
+43727,33,academic/educator,F,willy+wonka++the+chocolate+factory+1971,3
+10961,21,self-employed,M,the+gods+must+be+crazy+1980,4
+11024,9,K-12 student,M,the+devil+and+daniel+webster+1941,4
+11024,9,K-12 student,M,the+golden+child+1986,3
+11024,9,K-12 student,M,what+dreams+may+come+1998,3
+11024,9,K-12 student,M,ghostbusters+ii+1989,3
+11024,9,K-12 student,M,masters+of+the+universe+1987,3
+11024,9,K-12 student,M,harry+potter+and+the+prisoner+of+azkaban+2004,5
+11024,9,K-12 student,M,batman+returns+1992,5
+43854,32,college/grad student,F,hustle++flow+2005,3
+43854,32,college/grad student,F,pink+floyd+the+wall+1982,5
+43854,32,college/grad student,F,the+corporation+2003,5
+43854,32,college/grad student,F,the+manchurian+candidate+2004,5
+43854,32,college/grad student,F,fight+club+1999,5
+43854,32,college/grad student,F,milk+2008,5
+11088,34,sales/marketing,M,americas+heart+and+soul+2004,3
+11094,27,sales/marketing,F,7+dwarves+the+forest+is+not+enough+2006,3
+11232,21,homemaker,M,three+2010,4
+44036,25,sales/marketing,M,who+framed+roger+rabbit+1988,4
+44036,25,sales/marketing,M,ghost+in+the+shell+1995,3
+44036,25,sales/marketing,M,glory+1989,4
+44036,25,sales/marketing,M,get+shorty+1995,5
+44036,25,sales/marketing,M,the+killing+fields+1984,4
+11303,30,academic/educator,F,for+love+of+the+game+1999,3
+11303,30,academic/educator,F,american+beauty+1999,4
+11303,30,academic/educator,F,the+bone+collector+1999,2
+11303,30,academic/educator,F,cruel+intentions+1999,4
+11303,30,academic/educator,F,pulp+fiction+1994,5
+11303,30,academic/educator,F,the+big+lebowski+1998,3
+11303,30,academic/educator,F,schindlers+list+1993,3
+11303,30,academic/educator,F,fargo+1996,4
+11303,30,academic/educator,F,braveheart+1995,2
+11303,30,academic/educator,F,sense+and+sensibility+1995,5
+11303,30,academic/educator,F,rounders+1998,2
+11303,30,academic/educator,F,the+shawshank+redemption+1994,5
+11303,30,academic/educator,F,the+fifth+element+1997,4
+44079,29,customer service,M,the+scout+1994,1
+44079,29,customer service,M,renaissance+man+1994,3
+44079,29,customer service,M,scream+1996,3
+44079,29,customer service,M,sleepless+in+seattle+1993,4
+44079,29,customer service,M,friday+1995,4
+44079,29,customer service,M,miracle+on+34th+street+1994,4
+44079,29,customer service,M,boxing+helena+1993,1
+44079,29,customer service,M,the+first+wives+club+1996,3
+44079,29,customer service,M,ice+age+2002,4
+11401,31,sales/marketing,M,ghostbusters+1984,3
+44176,29,self-employed,M,wait+until+dark+1967,4
+44176,29,self-employed,M,do+not+disturb+1965,4
+44242,29,self-employed,M,the+hurricane+1999,4
+44242,29,self-employed,M,despicable+me+2010,4
+44242,29,self-employed,M,the+adventures+of+pinocchio+1996,3
+44242,29,self-employed,M,night+has+a+thousand+eyes+1948,4
+11502,21,executive/managerial,M,the+imitation+game+2014,4
+44317,40,scientist,M,underdogs+2013,3
+11549,26,self-employed,M,traffic+2000,5
+11549,26,self-employed,M,robin+hood+men+in+tights+1993,4
+11549,26,self-employed,M,the+blair+witch+project+1999,3
+11549,26,self-employed,M,crocodile+dundee+1986,4
+44417,29,executive/managerial,F,the+young+and+prodigious+t.s.+spivet+2013,3
+11664,22,sales/marketing,M,sleepy+hollow+1999,4
+11664,22,sales/marketing,M,bad+boys+1995,4
+11664,22,sales/marketing,M,twister+1996,3
+11664,22,sales/marketing,M,scream+1996,3
+11664,22,sales/marketing,M,fantasia+1940,2
+11664,22,sales/marketing,M,groundhog+day+1993,3
+11664,22,sales/marketing,M,waynes+world+1992,3
+44479,33,scientist,M,pulp+fiction+1994,4
+44479,33,scientist,M,blade+runner+1982,3
+44479,33,scientist,M,top+hat+1935,2
+44479,33,scientist,M,e.t.+the+extra-terrestrial+1982,3
+44479,33,scientist,M,the+odd+couple+1968,3
+44479,33,scientist,M,the+mosquito+coast+1986,3
+44479,33,scientist,M,mumford+1999,4
+44479,33,scientist,M,a+fish+called+wanda+1988,5
+44479,33,scientist,M,tea+with+mussolini+1999,3
+11738,29,college/grad student,M,romeo+must+die+2000,4
+44524,30,homemaker,M,eyes+without+a+face+1960,4
+11770,53,executive/managerial,M,pirates+of+the+caribbean+the+curse+of+the+black+pearl+2003,5
+11828,29,college/grad student,M,the+man+who+knew+too+much+1956,4
+44649,26,scientist,M,conspirators+of+pleasure+1996,4
+44649,26,scientist,M,pirates+of+the+caribbean+on+stranger+tides+2011,3
+11910,31,college/grad student,M,o+contador+de+histrias+2009,4
+44868,32,executive/managerial,M,days+of+being+wild+1990,3
+44985,31,sales/marketing,M,the+untouchables+1987,5
+45013,31,executive/managerial,M,brave+2012,3
+45020,26,self-employed,M,reality+bites+1994,4
+45020,26,self-employed,M,tank+girl+1995,2
+45020,26,self-employed,M,starship+troopers+1997,3
+45020,26,self-employed,M,condorman+1981,3
+45020,26,self-employed,M,the+usual+suspects+1995,4
+45020,26,self-employed,M,eat+drink+man+woman+1994,5
+45020,26,self-employed,M,the+princess+bride+1987,3
+45020,26,self-employed,M,like+water+for+chocolate+1992,4
+45043,28,sales/marketing,M,away+we+go+2009,3
+45071,30,clerical/admin,M,getting+go+the+go+doc+project+2013,4
+12440,32,scientist,M,interstellar+2014,3
+12473,31,homemaker,M,easy+street+1917,4
+45336,59,executive/managerial,M,lone+wolf+and+cub+baby+cart+in+the+land+of+demons+1973,3
+45392,34,college/grad student,M,waterworld+1995,5
+45392,34,college/grad student,M,star+trek+first+contact+1996,4
+45392,34,college/grad student,M,the+lord+of+the+rings+the+two+towers+2002,4
+45416,27,tradesman/craftsman,M,leaving+las+vegas+1995,4
+45416,27,tradesman/craftsman,M,the+nutty+professor+1996,3
+45416,27,tradesman/craftsman,M,independence+day+1996,2
+45416,27,tradesman/craftsman,M,the+juror+1996,3
+45416,27,tradesman/craftsman,M,happy+gilmore+1996,4
+45416,27,tradesman/craftsman,M,the+cable+guy+1996,1
+45416,27,tradesman/craftsman,M,primal+fear+1996,5
+45416,27,tradesman/craftsman,M,broken+arrow+1996,2
+45416,27,tradesman/craftsman,M,striptease+1996,3
+45416,27,tradesman/craftsman,M,dragonheart+1996,4
+45418,29,sales/marketing,M,spider-man+2002,4
+45418,29,sales/marketing,M,welcome+to+sarajevo+1997,3
+12699,27,programmer,M,devils+knot+2013,3
+12790,29,scientist,M,some+kind+of+wonderful+1987,4
+45584,25,artist,F,a+star+is+born+1937,4
+45584,25,artist,F,gunfighters+1947,4
+12830,33,executive/managerial,M,dead+awake+2010,4
+12854,29,college/grad student,M,uncle+boonmee+who+can+recall+his+past+lives+2010,3
+45646,18,sales/marketing,M,finding+neverland+2004,3
+45646,18,sales/marketing,M,about+schmidt+2002,2
+45646,18,sales/marketing,M,the+neverending+story+1984,2
+45646,18,sales/marketing,M,the+terminator+1984,2
+45646,18,sales/marketing,M,american+pie+1999,2
+45646,18,sales/marketing,M,fightville+2011,2
+45646,18,sales/marketing,M,mindhunters+2004,3
+45646,18,sales/marketing,M,shrek+2001,3
+45646,18,sales/marketing,M,ace+ventura+pet+detective+1994,2
+45646,18,sales/marketing,M,training+day+2001,4
+45646,18,sales/marketing,M,alien+1979,1
+45646,18,sales/marketing,M,21+grams+2003,4
+45646,18,sales/marketing,M,predator+2+1990,1
+45646,18,sales/marketing,M,dracula+1992,2
+12880,31,executive/managerial,M,how+to+train+your+dragon+2010,4
+45778,30,executive/managerial,M,moog+2004,2
+45822,34,college/grad student,M,the+matrix+revolutions+2003,4
+45828,29,self-employed,M,back+to+the+future+1985,5
+45828,29,self-employed,M,return+of+the+jedi+1983,5
+45828,29,self-employed,M,down+periscope+1996,4
+45828,29,self-employed,M,apollo+13+1995,5
+45828,29,self-employed,M,that+thing+you+do+1996,5
+45828,29,self-employed,M,a+close+shave+1995,4
+45828,29,self-employed,M,hot+shots+part+deux+1993,5
+45828,29,self-employed,M,black+sheep+1996,5
+45828,29,self-employed,M,ace+ventura+pet+detective+1994,5
+45853,27,homemaker,M,a+burning+hot+summer+2011,3
+45853,27,homemaker,M,reel+injun+2009,4
+13105,31,college/grad student,M,kronks+new+groove+2005,3
+13153,30,executive/managerial,M,batman+gotham+knight+2008,4
+45938,25,other or not specified,M,syrinx+1966,4
+46005,34,sales/marketing,M,victim+1961,3
+13325,21,sales/marketing,M,the+phone+box+1972,5
+13381,29,college/grad student,M,terminator+3+rise+of+the+machines+2003,4
+13415,24,K-12 student,M,the+man+who+loved+cat+dancing+1973,3
+46235,32,artist,M,back+to+the+future+part+iii+1990,4
+46235,32,artist,M,star+wars+episode+i+-+the+phantom+menace+1999,3
+46235,32,artist,M,milk+money+1994,2
+46235,32,artist,M,bad+boys+1995,1
+46235,32,artist,M,spider-man+2002,5
+46235,32,artist,M,the+chumscrubber+2005,2
+13553,32,college/grad student,M,master+of+the+flying+guillotine+1976,3
+13553,32,college/grad student,M,pulp+fiction+1994,2
+13553,32,college/grad student,M,friday+night+lights+2004,3
+13553,32,college/grad student,M,born+on+the+fourth+of+july+1989,5
+13553,32,college/grad student,M,terms+of+endearment+1983,4
+13553,32,college/grad student,M,i+heart+huckabees+2004,3
+13553,32,college/grad student,M,the+princess+bride+1987,4
+13553,32,college/grad student,M,alien+1992,1
+46329,25,executive/managerial,F,the+boys+1962,3
+46329,25,executive/managerial,F,some+like+it+hot+1959,3
+46329,25,executive/managerial,F,breakfast+at+tiffanys+1961,4
+46329,25,executive/managerial,F,run+lola+run+1998,2
+46329,25,executive/managerial,F,french+kiss+1995,1
+46329,25,executive/managerial,F,the+birds+1963,5
+46329,25,executive/managerial,F,this+is+spinal+tap+1984,2
+46329,25,executive/managerial,F,pirates+of+the+caribbean+the+curse+of+the+black+pearl+2003,1
+46329,25,executive/managerial,F,the+bourne+identity+2002,2
+46329,25,executive/managerial,F,persona+1966,4
+46329,25,executive/managerial,F,spring_+summer_+fall_+winter...+and+spring+2003,4
+46329,25,executive/managerial,F,ninotchka+1939,4
+13569,18,self-employed,M,the+wolf+of+wall+street+2013,3
+46363,26,college/grad student,M,contact+1997,3
+13636,30,college/grad student,M,sorrow+and+joy+2013,4
+13668,27,college/grad student,M,a+millionaire+for+christy+1951,3
+13715,22,artist,M,the+space+movie+1980,3
+13730,38,artist,M,the+five+obstructions+2003,4
+13740,28,executive/managerial,M,kiss+of+the+dragon+2001,3
+13740,28,executive/managerial,M,schindlers+list+1993,5
+13740,28,executive/managerial,M,american+gangster+2007,3
+13740,28,executive/managerial,M,war+2007,3
+13740,28,executive/managerial,M,fantasia+1940,4
+13740,28,executive/managerial,M,the+lord+of+the+rings+the+return+of+the+king+2003,4
+13749,28,executive/managerial,F,the+black+cat+1934,2
+46543,32,executive/managerial,M,half+a+loaf+of+kung+fu+1978,5
+46600,28,college/grad student,M,my+neighbor+totoro+1988,3
+46600,28,college/grad student,M,the+lady+and+the+reaper+2009,3
+13835,85,retired,M,reservoir+dogs+1992,5
+13835,85,retired,M,light+is+calling+2004,3
+46606,13,K-12 student,M,priest+2011,3
+13869,32,scientist,M,thelma++louise+1991,4
+13869,32,scientist,M,hero+2002,5
+13869,32,scientist,M,pulp+fiction+1994,5
+13869,32,scientist,M,seven+years+in+tibet+1997,4
+13869,32,scientist,M,the+count+of+monte+cristo+2002,4
+13869,32,scientist,M,the+shawshank+redemption+1994,5
+13869,32,scientist,M,full+metal+jacket+1987,4
+13869,32,scientist,M,die+hard+with+a+vengeance+1995,4
+13869,32,scientist,M,life+of+brian+1979,5
+46671,31,other or not specified,M,lady+and+the+tramp+1955,3
+46690,30,programmer,M,performance+1970,4
+13936,40,executive/managerial,M,harry+potter+and+the+deathly+hallows+part+1+2010,5
+46751,32,sales/marketing,M,secondhand+lions+2003,4
+13993,25,executive/managerial,M,inception+2010,5
+14165,31,executive/managerial,M,high+risk+1981,4
+46946,18,homemaker,M,the+girl+next+door+2004,4
+46946,18,homemaker,M,space+jam+1996,2
+46946,18,homemaker,M,grease+1978,1
+46946,18,homemaker,M,the+patriot+2000,4
+14319,32,scientist,F,dolans+cadillac+2009,4
+14368,33,college/grad student,M,toy+story+1995,3
+47137,31,self-employed,F,big+hero+6+2014,4
+47169,34,college/grad student,M,pretty+woman+1990,3
+47169,34,college/grad student,M,primal+fear+1996,3
+47169,34,college/grad student,M,the+godfather+1972,5
+47169,34,college/grad student,M,gun+crazy+1950,3
+47211,23,sales/marketing,M,walk+hard+the+dewey+cox+story+2007,4
+14483,30,college/grad student,M,outbreak+1995,4
+14483,30,college/grad student,M,star+trek+generations+1994,3
+14483,30,college/grad student,M,the+net+1995,4
+14483,30,college/grad student,M,the+silence+of+the+lambs+1991,5
+14483,30,college/grad student,M,cliffhanger+1993,3
+14483,30,college/grad student,M,the+case+of+the+curious+bride+1935,3
+14483,30,college/grad student,M,jurassic+park+1993,4
+14483,30,college/grad student,M,dumb+and+dumber+1994,3
+14522,29,other or not specified,M,survive+style+5+2004,4
+47297,20,scientist,M,cinderella+1950,4
+47315,33,academic/educator,M,the+secret+in+their+eyes+2009,5
+14577,21,homemaker,M,aliens+1986,5
+14621,21,homemaker,F,im+not+there.+2007,4
+14621,21,homemaker,F,the+hobbit+the+desolation+of+smaug+2013,4
+14652,31,college/grad student,M,drinking+buddies+2013,4
+47433,27,college/grad student,M,wild+animals+1997,3
+47435,34,college/grad student,F,battle+royale+2000,4
+47438,26,college/grad student,M,little+secrets+2001,2
+47481,30,other or not specified,M,happy+birthday+to+a+beautiful+woman+2012,4
+14729,30,sales/marketing,M,antz+1998,3
+14729,30,sales/marketing,M,the+breakfast+club+1985,4
+14729,30,sales/marketing,M,the+diving+bell+and+the+butterfly+2007,5
+14729,30,sales/marketing,M,crimes+and+misdemeanors+1989,4
+14729,30,sales/marketing,M,rushmore+1998,4
+14729,30,sales/marketing,M,american+beauty+1999,4
+14729,30,sales/marketing,M,eternal+sunshine+of+the+spotless+mind+2004,5
+14729,30,sales/marketing,M,his+girl+friday+1940,4
+14736,26,academic/educator,M,die+hard+1988,2
+47527,25,homemaker,M,pulp+fiction+1994,5
+47538,28,executive/managerial,M,princess+mononoke+1997,4
+47538,28,executive/managerial,M,tarzan+1999,4
+47562,22,sales/marketing,M,oss+117+cairo_+nest+of+spies+2006,3
+47588,30,college/grad student,M,scarface+1983,4
+47713,33,executive/managerial,M,starman+1984,4
+47734,24,programmer,M,total+recall+1990,5
+47734,24,programmer,M,blade+1998,4
+47734,24,programmer,M,the+terminator+1984,4
+47734,24,programmer,M,unbreakable+2000,2
+47734,24,programmer,M,mad+max+1979,5
+47734,24,programmer,M,mad+max+2+the+road+warrior+1981,5
+47734,24,programmer,M,the+abyss+1989,3
+47742,32,executive/managerial,M,ace+ventura+pet+detective+1994,5
+47742,32,executive/managerial,M,the+shawshank+redemption+1994,5
+47742,32,executive/managerial,M,clear+and+present+danger+1994,5
+14988,30,college/grad student,M,death+on+the+nile+1978,3
+15034,28,executive/managerial,M,the+hunt+for+red+october+1990,4
+15034,28,executive/managerial,M,escape+from+new+york+1981,3
+15034,28,executive/managerial,M,charlies+angels+2000,1
+15034,28,executive/managerial,M,fatal+attraction+1987,4
+15034,28,executive/managerial,M,the+governess+1998,4
+15034,28,executive/managerial,M,cape+fear+1991,3
+15034,28,executive/managerial,M,rear+window+1954,5
+15034,28,executive/managerial,M,a+bugs+life+1998,5
+15034,28,executive/managerial,M,vertigo+1958,5
+15175,33,K-12 student,M,eternal+sunshine+of+the+spotless+mind+2004,5
+15175,33,K-12 student,M,the+punisher+2004,4
+15175,33,K-12 student,M,the+fountain+2006,3
+47958,30,college/grad student,M,the+hunchback+of+notre+dame+1996,1
+15194,31,sales/marketing,M,hukkle+2002,4
+48067,33,college/grad student,F,exposed+1983,3
+48085,18,K-12 student,M,melvin+goes+to+dinner+2003,3
+48157,34,sales/marketing,F,bad+boys+1995,3
+48157,34,sales/marketing,F,american+beauty+1999,4
+48157,34,sales/marketing,F,mrs.+doubtfire+1993,2
+48157,34,sales/marketing,F,a+time+to+kill+1996,4
+48157,34,sales/marketing,F,the+terminator+1984,3
+48157,34,sales/marketing,F,hero+2002,4
+48157,34,sales/marketing,F,runaway+jury+2003,3
+48157,34,sales/marketing,F,the+thin+red+line+1998,4
+48157,34,sales/marketing,F,mulholland+drive+2001,4
+48157,34,sales/marketing,F,the+devils+advocate+1997,5
+15413,39,other or not specified,M,it+happened+one+night+1934,5
+15413,39,other or not specified,M,dinner+at+eight+1933,4
+15413,39,other or not specified,M,bullitt+1968,2
+15413,39,other or not specified,M,the+cabinet+of+dr.+caligari+1920,4
+48302,27,executive/managerial,M,carlitos+way+1993,4
+48302,27,executive/managerial,M,addams+family+values+1993,3
+48302,27,executive/managerial,M,only+you+1994,3
+48302,27,executive/managerial,M,the+remains+of+the+day+1993,5
+48302,27,executive/managerial,M,se7en+1995,4
+48302,27,executive/managerial,M,species+1995,3
+15593,18,scientist,M,the+pit+and+the+pendulum+1961,4
+15628,25,college/grad student,M,ronin+1998,4
+15628,25,college/grad student,M,the+manchurian+candidate+1962,4
+15628,25,college/grad student,M,schindlers+list+1993,5
+15628,25,college/grad student,M,the+long+kiss+goodnight+1996,2
+15628,25,college/grad student,M,a+simple+plan+1998,4
+15628,25,college/grad student,M,reality+bites+1994,4
+15628,25,college/grad student,M,independence+day+1996,3
+15628,25,college/grad student,M,the+fugitive+1993,4
+15628,25,college/grad student,M,the+sixth+sense+1999,4
+15628,25,college/grad student,M,theres+something+about+mary+1998,4
+48397,28,scientist,M,dumbo+1941,4
+15710,33,K-12 student,M,interstellar+2014,4
+15720,44,executive/managerial,M,christine+1983,3
+48494,26,self-employed,M,its+kind+of+a+funny+story+2010,3
+15736,26,executive/managerial,F,2012+time+for+change+2010,4
+15739,30,college/grad student,M,the+circus+tent+1978,3
+15744,25,other or not specified,F,may+in+the+summer+2013,4
+48530,22,college/grad student,M,the+universe+of+keith+haring+2009,4
+15812,31,artist,M,the+omega+man+1971,4
+15812,31,artist,M,crocodile+dundee+1986,3
+15812,31,artist,M,lock_+stock+and+two+smoking+barrels+1998,4
+15812,31,artist,M,taxi+driver+1976,4
+15812,31,artist,M,bruce+almighty+2003,2
+15812,31,artist,M,constantine+2005,4
+15812,31,artist,M,some+like+it+hot+1959,5
+15812,31,artist,M,bill++teds+bogus+journey+1991,3
+15812,31,artist,M,zardoz+1974,3
+15812,31,artist,M,pretty+woman+1990,3
+15812,31,artist,M,shes+the+one+1996,4
+15812,31,artist,M,schindlers+list+1993,4
+15812,31,artist,M,johnny+mnemonic+1995,4
+15812,31,artist,M,the+lord+of+the+rings+the+return+of+the+king+2003,4
+15812,31,artist,M,the+net+1995,4
+15812,31,artist,M,apocalypse+now+1979,5
+15812,31,artist,M,amadeus+1984,4
+15812,31,artist,M,resident+evil+2002,2
+15819,29,college/grad student,M,the+craft+1996,2
+48602,32,scientist,M,the+cat+returns+2002,4
+48602,32,scientist,M,fun+on+a+weekend+1947,3
+48608,29,executive/managerial,M,1941+1979,3
+48670,24,sales/marketing,M,a+time+to+kill+1996,3
+48670,24,sales/marketing,M,rumble+in+the+bronx+1995,4
+48670,24,sales/marketing,M,i+love+you_+man+2009,4
+48670,24,sales/marketing,M,sleepless+in+seattle+1993,3
+48670,24,sales/marketing,M,the+godfather+1972,4
+48670,24,sales/marketing,M,million+dollar+baby+2004,4
+15929,31,self-employed,M,harry+potter+and+the+order+of+the+phoenix+2007,4
+15973,27,college/grad student,M,temple+grandin+2010,3
+16029,18,college/grad student,M,my+fake+fiance+2009,3
+16045,32,executive/managerial,M,where+the+road+meets+the+sun+2011,3
+48816,21,homemaker,M,black+orpheus+1959,4
+48816,21,homemaker,M,the+imitation+game+2014,5
+48842,24,scientist,M,bamboozled+2000,3
+48849,33,sales/marketing,M,summer+interlude+1951,4
+16127,30,sales/marketing,M,miracle+on+34th+street+1994,2
+48902,27,K-12 student,M,scarface+1983,3
+16150,34,executive/managerial,M,the+fugitive+1993,4
+16150,34,executive/managerial,M,true+lies+1994,3
+16150,34,executive/managerial,M,pulp+fiction+1994,4
+16150,34,executive/managerial,M,three+colors+red+1994,3
+48939,22,scientist,M,jade+1995,5
+48939,22,scientist,M,showgirls+1995,4
+48939,22,scientist,M,shameless+2010,4
+48953,26,academic/educator,F,two+little+boys+2012,4
+16203,26,artist,M,killer+condom+1996,4
+16231,26,artist,M,la+sierra+2005,4
+16240,28,college/grad student,M,the+matrix+1999,5
+16240,28,college/grad student,M,last+action+hero+1993,4
+16240,28,college/grad student,M,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,5
+16240,28,college/grad student,M,pirates+of+the+caribbean+the+curse+of+the+black+pearl+2003,4
+16240,28,college/grad student,M,blade+runner+1982,4
+16240,28,college/grad student,M,the+lord+of+the+rings+the+two+towers+2002,5
+16240,28,college/grad student,M,sneakers+1992,4
+16240,28,college/grad student,M,braveheart+1995,5
+49040,30,homemaker,M,even+the+rain+2010,4
+49042,28,self-employed,M,vidal+sassoon+the+movie+2010,3
+49049,28,college/grad student,M,field+of+dreams+1989,3
+49049,28,college/grad student,M,good+will+hunting+1997,5
+49049,28,college/grad student,M,beverly+hills+cop+1984,5
+49049,28,college/grad student,M,batman+returns+1992,3
+49049,28,college/grad student,M,edtv+1999,3
+49049,28,college/grad student,M,howard+the+duck+1986,4
+49108,27,college/grad student,M,harry+potter+and+the+prisoner+of+azkaban+2004,4
+16357,29,scientist,M,national+security+2003,3
+16504,27,scientist,M,the+phantom+carriage+1921,4
+49286,29,college/grad student,M,28+weeks+later+2007,1
+49286,29,college/grad student,M,amlie+2001,3
+49286,29,college/grad student,M,the+lives+of+others+2006,4
+49286,29,college/grad student,M,the+odd+couple+1968,3
+49286,29,college/grad student,M,lone+wolf+and+cub+sword+of+vengeance+1972,4
+49286,29,college/grad student,M,the+empire+strikes+back+1980,4
+49286,29,college/grad student,M,aliens+1986,2
+16562,29,homemaker,M,toy+story+1995,5
+16572,30,executive/managerial,M,faceoff+1997,4
+16572,30,executive/managerial,M,patriot+games+1992,5
+16572,30,executive/managerial,M,ronin+1998,4
+16572,30,executive/managerial,M,the+godfather+part+iii+1990,5
+16572,30,executive/managerial,M,u.s.+marshals+1998,4
+16617,22,scientist,M,a+night+to+remember+1958,4
+49402,27,homemaker,F,four+weddings+and+a+funeral+1994,5
+49402,27,homemaker,F,goldeneye+1995,4
+49402,27,homemaker,F,the+rocketeer+1991,5
+49402,27,homemaker,F,titanic+1997,5
+49402,27,homemaker,F,days+of+thunder+1990,4
+49402,27,homemaker,F,up+close++personal+1996,3
+16753,25,sales/marketing,M,endless+love+2014,3
+49527,29,college/grad student,M,dragon+ball+z+broly+-+second+coming+1994,4
+16789,31,college/grad student,M,little+women+1994,2
+16789,31,college/grad student,M,planet+of+the+apes+2001,3
+16789,31,college/grad student,M,102+dalmatians+2000,2
+16789,31,college/grad student,M,500+days+of+summer+2009,4
+16789,31,college/grad student,M,the+hunchback+of+notre+dame+1996,2
+16789,31,college/grad student,M,the+jungle+book+1994,3
+16789,31,college/grad student,M,romeo++juliet+1996,5
+16789,31,college/grad student,M,101+dalmatians+1996,3
+16789,31,college/grad student,M,the+karate+kid+1984,3
+16797,21,K-12 student,M,e.t.+the+extra-terrestrial+1982,3
+16797,21,K-12 student,M,shrek+2001,5
+16797,21,K-12 student,M,ghostbusters+1984,5
+16985,37,executive/managerial,M,the+remains+of+the+day+1993,4
+16985,37,executive/managerial,M,terminator+2+judgment+day+1991,3
+16985,37,executive/managerial,M,the+silence+of+the+lambs+1991,4
+16985,37,executive/managerial,M,stargate+1994,3
+16985,37,executive/managerial,M,star+trek+generations+1994,3
+16985,37,executive/managerial,M,schindlers+list+1993,5
+16985,37,executive/managerial,M,the+piano+1993,4
+49763,31,executive/managerial,M,the+lord+of+the+rings+the+two+towers+2002,3
+17002,30,college/grad student,M,the+amazing+spider-man+2012,3
+49799,27,college/grad student,M,dazed+and+confused+1993,4
+49799,27,college/grad student,M,the+great+debaters+2007,5
+49799,27,college/grad student,M,juno+2007,5
+49799,27,college/grad student,M,green+street+hooligans+2005,4
+49799,27,college/grad student,M,the+fugitive+1993,3
+49799,27,college/grad student,M,the+basketball+diaries+1995,4
+49799,27,college/grad student,M,about+a+boy+2002,3
+49799,27,college/grad student,M,lucky+number+slevin+2006,4
+49799,27,college/grad student,M,gone+baby+gone+2007,4
+49799,27,college/grad student,M,american+gangster+2007,4
+17037,25,executive/managerial,F,close+encounters+of+the+third+kind+1977,4
+17081,29,scientist,F,when+harry+met+sally...+1989,4
+17081,29,scientist,F,back+to+the+future+1985,4
+17081,29,scientist,F,ghost+1990,4
+49898,26,homemaker,F,whos+afraid+of+virginia+woolf+1966,4
+49898,26,homemaker,F,airport+1970,5
+49898,26,homemaker,F,song+of+the+south+1946,3
+49898,26,homemaker,F,young+frankenstein+1974,4
+49898,26,homemaker,F,the+firm+1993,3
+49898,26,homemaker,F,blue+velvet+1986,1
+49898,26,homemaker,F,das+boot+1981,5
+49898,26,homemaker,F,roger++me+1989,2
+17190,18,sales/marketing,M,my+neighbor+totoro+1988,5
+17266,26,college/grad student,F,thursday+1998,3
+17306,30,executive/managerial,M,laugh_+clown_+laugh+1928,5
+50075,25,college/grad student,M,hippocrates+2014,3
+50083,33,scientist,M,agenzia+riccardo+finzi...+praticamente+detective+1979,3
+17330,30,college/grad student,M,james+and+the+giant+peach+1996,3
+17330,30,college/grad student,M,moonstruck+1987,5
+17330,30,college/grad student,M,a+time+to+kill+1996,5
+17330,30,college/grad student,M,g.i.+jane+1997,4
+17367,21,K-12 student,M,daydream+nation+2010,3
+50163,29,college/grad student,F,etoiles+dancers+of+the+paris+opera+ballet+2001,3
+50176,26,college/grad student,M,star+wars+1977,3
+50176,26,college/grad student,M,chicken+run+2000,3
+50178,30,scientist,M,cry_+the+beloved+country+1952,4
+17415,25,executive/managerial,M,cottage+country+2013,2
+17415,25,executive/managerial,M,black+fury+1935,4
+17415,25,executive/managerial,M,vampires+1998,4
+17415,25,executive/managerial,M,antz+1998,2
+17415,25,executive/managerial,M,taxi+driver+1976,4
+17415,25,executive/managerial,M,cujo+1983,2
+17415,25,executive/managerial,M,the+shawshank+redemption+1994,5
+17415,25,executive/managerial,M,national+theatre+live+frankenstein+2011,3
+50191,33,college/grad student,M,scenes+from+a+mall+1991,3
+17425,27,academic/educator,M,indiana+jones+and+the+temple+of+doom+1984,4
+17506,32,executive/managerial,M,the+magdalene+sisters+2002,5
+17534,29,executive/managerial,M,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,5
+17534,29,executive/managerial,M,28+days+later+2002,5
+17534,29,executive/managerial,M,the+green+mile+1999,5
+17534,29,executive/managerial,M,the+blair+witch+project+1999,4
+17534,29,executive/managerial,M,stigmata+1999,5
+17534,29,executive/managerial,M,the+sixth+sense+1999,5
+17534,29,executive/managerial,M,the+fugitive+1993,3
+17534,29,executive/managerial,M,pitch+black+2000,4
+17543,33,self-employed,M,down+and+out+in+beverly+hills+1986,3
+50337,31,scientist,M,la+haine+1995,5
+17655,33,executive/managerial,M,the+strawberry+blonde+1941,4
+50437,29,executive/managerial,M,a+patch+of+blue+1965,4
+50437,29,executive/managerial,M,return+of+the+jedi+1983,3
+50437,29,executive/managerial,M,shes+the+one+1996,4
+50437,29,executive/managerial,M,celebrity+1998,5
+50437,29,executive/managerial,M,east+is+east+1999,4
+50454,21,K-12 student,F,stay+alive+2006,4
+50545,32,sales/marketing,M,the+green+mile+1999,4
+50554,30,executive/managerial,M,two+bits+1995,3
+50554,30,executive/managerial,M,vertigo+1958,5
+50554,30,executive/managerial,M,doctor+zhivago+1965,5
+50554,30,executive/managerial,M,my+man+godfrey+1936,5
+50554,30,executive/managerial,M,pleasantville+1998,3
+50554,30,executive/managerial,M,the+gay+divorcee+1934,5
+17894,30,other or not specified,M,enough+said+2013,5
+50669,25,sales/marketing,M,dark+city+1998,4
+50669,25,sales/marketing,M,clerks+1994,4
+50669,25,sales/marketing,M,van+helsing+2004,1
+50669,25,sales/marketing,M,the+devils+advocate+1997,1
+50669,25,sales/marketing,M,the+godfather+part+ii+1974,5
+50669,25,sales/marketing,M,pulp+fiction+1994,5
+50669,25,sales/marketing,M,a+fish+called+wanda+1988,4
+50687,29,homemaker,M,wake+up_+ron+burgundy+the+lost+movie+2004,3
+50706,34,self-employed,M,monty+python+and+the+holy+grail+1975,4
+50706,34,self-employed,M,interstellar+2014,5
+50709,26,executive/managerial,M,jay+and+silent+bobs+super+groovy+cartoon+movie+2013,3
+50709,26,executive/managerial,M,dead+poets+society+1989,4
+50709,26,executive/managerial,M,the+sword+in+the+stone+1963,3
+17943,28,executive/managerial,F,harry+potter+and+the+chamber+of+secrets+2002,3
+17943,28,executive/managerial,F,finding+nemo+2003,4
+50748,29,executive/managerial,M,romantics+anonymous+2010,4
+18012,32,executive/managerial,M,pirates+of+the+caribbean+the+curse+of+the+black+pearl+2003,4
+18050,25,scientist,M,life+of+brian+1979,5
+18050,25,scientist,M,the+apartment+1960,5
+18050,25,scientist,M,king+kong+1933,4
+18050,25,scientist,M,the+full+monty+1997,4
+18050,25,scientist,M,all+quiet+on+the+western+front+1930,2
+18050,25,scientist,M,titanic+1997,4
+18050,25,scientist,M,ferris+buellers+day+off+1986,5
+18050,25,scientist,M,moonraker+1979,3
+50823,22,sales/marketing,M,the+firemens+ball+1967,4
+18097,28,academic/educator,M,beautiful+thing+1996,4
+50909,25,self-employed,M,the+return+of+the+pink+panther+1975,4
+50909,25,self-employed,M,e.t.+the+extra-terrestrial+1982,2
+50909,25,self-employed,M,indiana+jones+and+the+last+crusade+1989,3
+50909,25,self-employed,M,kolya+1996,4
+50909,25,self-employed,M,a+fish+called+wanda+1988,4
+50909,25,self-employed,M,the+three+musketeers+1993,2
+50909,25,self-employed,M,the+sword+in+the+stone+1963,4
+50944,27,self-employed,M,i_+robot+2004,3
+18351,78,academic/educator,M,i_+robot+2004,4
+18360,30,programmer,M,alien+1992,4
+18360,30,programmer,M,the+perfect+storm+2000,4
+18360,30,programmer,M,star+wars+episode+ii+-+attack+of+the+clones+2002,4
+18360,30,programmer,M,equilibrium+2002,4
+18360,30,programmer,M,requiem+for+a+dream+2000,4
+18360,30,programmer,M,return+of+the+jedi+1983,4
+18360,30,programmer,M,forrest+gump+1994,4
+18360,30,programmer,M,american+history+x+1998,5
+18360,30,programmer,M,the+butterfly+effect+2004,5
+18360,30,programmer,M,the+game+1997,4
+18381,26,homemaker,M,resident+evil+degeneration+2008,3
+51234,33,academic/educator,M,tortilla+soup+2001,4
+51234,33,academic/educator,M,shakespeare+in+love+1998,5
+51234,33,academic/educator,M,jungle+2+jungle+1997,2
+51234,33,academic/educator,M,superman+iii+1983,2
+51234,33,academic/educator,M,return+of+the+jedi+1983,5
+51234,33,academic/educator,M,the+man+who+knew+too+much+1934,4
+51234,33,academic/educator,M,friendly+persuasion+1956,4
+51234,33,academic/educator,M,from+here+to+eternity+1953,3
+51234,33,academic/educator,M,green+card+1990,3
+51234,33,academic/educator,M,moonstruck+1987,5
+51234,33,academic/educator,M,star+trek+v+the+final+frontier+1989,4
+51234,33,academic/educator,M,the+empire+strikes+back+1980,4
+51234,33,academic/educator,M,harry+potter+and+the+philosophers+stone+2001,4
+51234,33,academic/educator,M,the+hunt+for+red+october+1990,5
+51234,33,academic/educator,M,interstellar+2014,4
+51234,33,academic/educator,M,the+day+the+earth+stood+still+1951,4
+51234,33,academic/educator,M,bridget+joness+diary+2001,5
+51234,33,academic/educator,M,star+trek+iv+the+voyage+home+1986,4
+51234,33,academic/educator,M,coneheads+1993,5
+51246,26,executive/managerial,M,sherlock+holmes+and+the+voice+of+terror+1942,4
+51249,29,sales/marketing,M,the+gods+must+be+crazy+1980,4
+51261,30,scientist,M,starship+troopers+1997,4
+51261,30,scientist,M,the+fly+1986,4
+51261,30,scientist,M,jurassic+park+iii+2001,3
+51261,30,scientist,M,unbreakable+2000,5
+51261,30,scientist,M,alien+resurrection+1997,4
+18503,31,self-employed,M,reality+2014,3
+18652,31,executive/managerial,M,man+on+fire+2004,5
+18652,31,executive/managerial,M,kill+bill+vol.+1+2003,5
+18652,31,executive/managerial,M,lock_+stock+and+two+smoking+barrels+1998,5
+18652,31,executive/managerial,M,the+perfect+storm+2000,1
+18653,26,executive/managerial,M,harry+potter+and+the+prisoner+of+azkaban+2004,3
+18674,19,executive/managerial,M,guardians+of+the+galaxy+2014,4
+18674,19,executive/managerial,M,man+on+fire+2004,4
+18674,19,executive/managerial,M,shrek+2001,4
+18674,19,executive/managerial,M,the+empire+strikes+back+1980,4
+18674,19,executive/managerial,M,up+2009,4
+18674,19,executive/managerial,M,the+girl+with+the+dragon+tattoo+2011,4
+51453,28,sales/marketing,M,the+borderlands+2013,3
+51486,28,scientist,M,recollections+of+the+yellow+house+1989,3
+51499,26,sales/marketing,M,the+broadway+melody+1929,3
+51510,29,self-employed,M,gattaca+1997,4
+51526,32,sales/marketing,M,sons+of+perdition+2010,4
+51577,34,college/grad student,M,best+boy+1979,3
+18845,41,retired,M,poliwood+2009,4
+18845,41,retired,M,saw+vi+2009,2
+18851,22,sales/marketing,M,the+lonely+passion+of+judith+hearne+1987,5
+51698,87,artist,M,hairspray+2007,5
+18936,18,scientist,M,ghostbusters+1984,5
+18994,43,executive/managerial,M,syndromes+and+a+century+2006,4
+51811,27,scientist,M,tora-sans+love+call+1971,3
+51811,27,scientist,M,big+hero+6+2014,4
+19104,20,sales/marketing,M,the+good_+the+bad+and+the+ugly+1966,4
+51875,14,K-12 student,M,neverwhere+1996,4
+51877,25,technician/engineer,M,from+dusk+till+dawn+1996,4
+51909,31,artist,M,coraline+2009,3
+19160,18,homemaker,F,hellboy+ii+the+golden+army+2008,3
+19218,46,executive/managerial,M,variety+lights+1950,4
+19229,27,other or not specified,F,the+wonderful_+horrible+life+of+leni+riefenstahl+1993,3
+52003,28,academic/educator,F,the+great+waltz+1938,5
+19236,26,college/grad student,F,punishment+park+1971,4
+19236,26,college/grad student,F,all+is+lost+2013,4
+52012,31,executive/managerial,M,pulp+fiction+1994,3
+19259,27,other or not specified,F,beavis+and+butt-head+do+america+1996,3
+19259,27,other or not specified,F,friday+the+13th+part+2+1981,5
+19259,27,other or not specified,F,friday+the+13th+part+viii+jason+takes+manhattan+1989,5
+19259,27,other or not specified,F,heartbreakers+2001,5
+19259,27,other or not specified,F,vanilla+sky+2001,3
+19259,27,other or not specified,F,tommy+boy+1995,4
+19323,29,scientist,M,young+guns+1988,3
+19323,29,scientist,M,braveheart+1995,5
+19323,29,scientist,M,the+sixth+sense+1999,5
+19323,29,scientist,M,good+will+hunting+1997,4
+19323,29,scientist,M,dances+with+wolves+1990,4
+19323,29,scientist,M,kill+bill+vol.+1+2003,5
+19323,29,scientist,M,jurassic+park+1993,3
+19323,29,scientist,M,people+in+places+2013,3
+52184,26,college/grad student,M,the+hobbit+the+battle+of+the+five+armies+2014,5
+52184,26,college/grad student,M,the+shawshank+redemption+1994,5
+52184,26,college/grad student,M,the+lion+king+1994,5
+52184,26,college/grad student,M,scent+of+a+woman+1992,4
+52184,26,college/grad student,M,days+of+thunder+1990,3
+52184,26,college/grad student,M,good+will+hunting+1997,5
+52184,26,college/grad student,M,last+action+hero+1993,3
+52184,26,college/grad student,M,shrek+2001,5
+52184,26,college/grad student,M,guardians+of+the+galaxy+2014,5
+52184,26,college/grad student,M,savage+messiah+1972,3
+52184,26,college/grad student,M,titanic+1997,4
+52184,26,college/grad student,M,highlander+the+final+dimension+1994,5
+52184,26,college/grad student,M,blood+diamond+2006,5
+52184,26,college/grad student,M,the+bourne+ultimatum+2007,5
+52184,26,college/grad student,M,speed+1994,5
+52209,28,executive/managerial,M,broadway+melody+of+1940+1940,4
+19446,29,college/grad student,M,help+im+a+fish+2000,3
+19446,29,college/grad student,M,the+polar+bear+king+1991,3
+19467,26,homemaker,F,the+hunger+games+mockingjay+-+part+1+2014,4
+19502,33,college/grad student,M,goodfellas+1990,5
+19594,34,other or not specified,M,the+devils+advocate+1997,4
+19594,34,other or not specified,M,flubber+1997,3
+19594,34,other or not specified,M,jungle+2+jungle+1997,3
+19594,34,other or not specified,M,the+big+lebowski+1998,4
+19594,34,other or not specified,M,fallen+1998,4
+19594,34,other or not specified,M,spice+world+1997,2
+19594,34,other or not specified,M,home+alone+3+1997,3
+19594,34,other or not specified,M,mr.+magoo+1997,2
+19594,34,other or not specified,M,fly+away+home+1996,3
+19594,34,other or not specified,M,murder+at+1600+1997,3
+19594,34,other or not specified,M,air+bud+1997,3
+19594,34,other or not specified,M,starship+troopers+1997,2
+19594,34,other or not specified,M,george+of+the+jungle+1997,4
+19594,34,other or not specified,M,that+darn+cat+1997,2
+19594,34,other or not specified,M,conspiracy+theory+1997,4
+19594,34,other or not specified,M,mortal+kombat+annihilation+1997,4
+52389,24,homemaker,M,ice+age+dawn+of+the+dinosaurs+2009,3
+52436,34,scientist,M,die+hard+1988,5
+52486,26,college/grad student,F,training+day+2001,4
+52566,32,scientist,M,in+the+bedroom+2001,4
+52569,26,college/grad student,M,the+leading+man+1996,3
+52569,26,college/grad student,M,shrek+2001,5
+52569,26,college/grad student,M,between+strangers+2002,2
+52569,26,college/grad student,M,x-men+2000,4
+52569,26,college/grad student,M,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,2
+52569,26,college/grad student,M,samurai+fiction+1998,1
+52569,26,college/grad student,M,philadelphia+1993,1
+52569,26,college/grad student,M,eraser+1996,3
+52569,26,college/grad student,M,demolition+man+1993,1
+52584,30,executive/managerial,M,the+saint+in+london+1939,3
+19845,29,college/grad student,M,despicable+me+2+2013,3
+19870,25,scientist,M,harry+potter+and+the+chamber+of+secrets+2002,2
+19948,30,executive/managerial,F,american+pie+1999,4
+52795,31,artist,F,temple+grandin+2010,4
+20107,28,executive/managerial,M,men+in+black+1997,4
+20108,30,executive/managerial,F,little+miss+sunshine+2006,4
+52893,15,K-12 student,M,the+lion+king+1994,4
+52925,29,tradesman/craftsman,M,back+to+the+future+1985,4
+52925,29,tradesman/craftsman,M,legends+of+the+fall+1994,4
+52925,29,tradesman/craftsman,M,raising+arizona+1987,4
+52925,29,tradesman/craftsman,M,edward+scissorhands+1990,4
+52925,29,tradesman/craftsman,M,do+the+right+thing+1989,5
+52925,29,tradesman/craftsman,M,the+naked+gun+from+the+files+of+police+squad+1988,4
+52925,29,tradesman/craftsman,M,life+is+beautiful+1997,5
+52925,29,tradesman/craftsman,M,prizzis+honor+1985,3
+52925,29,tradesman/craftsman,M,braveheart+1995,3
+52925,29,tradesman/craftsman,M,boogie+nights+1997,3
+52925,29,tradesman/craftsman,M,titanic+1997,5
+52925,29,tradesman/craftsman,M,keeping+the+faith+2000,5
+52925,29,tradesman/craftsman,M,babe+1995,5
+52925,29,tradesman/craftsman,M,stand+by+me+1986,5
+52925,29,tradesman/craftsman,M,the+breakfast+club+1985,4
+52925,29,tradesman/craftsman,M,american+beauty+1999,3
+52954,32,artist,F,lagaan+once+upon+a+time+in+india+2001,4
+20211,26,other or not specified,M,salton+sea+2002,4
+52984,25,scientist,F,sleeping+beauty+1959,3
+52994,63,homemaker,M,the+boy+in+the+striped+pyjamas+2008,3
+20228,30,college/grad student,M,pirates+of+the+caribbean+the+curse+of+the+black+pearl+2003,4
+20232,25,sales/marketing,M,kikis+delivery+service+1989,3
+20280,33,college/grad student,M,the+shawshank+redemption+1994,5
+20280,33,college/grad student,M,three+kings+1999,3
+20280,33,college/grad student,M,bowling+for+columbine+2002,4
+53052,31,executive/managerial,M,enlighten+up+2008,3
+53124,30,sales/marketing,F,the+spitfire+grill+1996,4
+53124,30,sales/marketing,F,homeward+bound+the+incredible+journey+1993,3
+53246,19,sales/marketing,M,murderous+maids+2000,5
+53318,34,executive/managerial,M,pulp+fiction+1994,4
+53421,71,retired,F,august+rush+2007,4
+53421,71,retired,F,remember+the+titans+2000,5
+53421,71,retired,F,the+incredibles+2004,3
+53421,71,retired,F,la+luna+2011,5
+53421,71,retired,F,shakespeare+in+love+1998,3
+53421,71,retired,F,the+chronicles+of+narnia+the+lion_+the+witch+and+the+wardrobe+2005,5
+53421,71,retired,F,the+duchess+2008,4
+53421,71,retired,F,harry+potter+and+the+prisoner+of+azkaban+2004,3
+20697,29,self-employed,M,seal+team+eight+behind+enemy+lines+2014,3
+53468,26,clerical/admin,M,prom+queen+the+marc+hall+story+2004,3
+20724,32,college/grad student,M,constantine+2005,4
+53495,27,executive/managerial,M,baron+blood+1972,4
+53540,29,academic/educator,F,animal+crackers+1930,4
+53625,25,other or not specified,M,spirited+away+2001,4
+20897,53,other or not specified,F,alice+in+wonderland+2010,2
+20897,53,other or not specified,F,coraline+2009,4
+53688,14,K-12 student,M,the+oath+2010,4
+20924,33,executive/managerial,M,operation+ganymed+1977,3
+53739,25,college/grad student,F,pushing+hands+1992,5
+53739,25,college/grad student,F,three+colors+red+1994,5
+53739,25,college/grad student,F,total+eclipse+1995,3
+53739,25,college/grad student,F,red+firecracker_+green+firecracker+1994,3
+53741,88,homemaker,M,entrapment+1999,5
+21040,31,college/grad student,F,the+englishman+who+went+up+a+hill+but+came+down+a+mountain+1995,4
+21040,31,college/grad student,F,the+american+president+1995,4
+21040,31,college/grad student,F,rob+roy+1995,3
+21040,31,college/grad student,F,french+kiss+1995,3
+21040,31,college/grad student,F,king+kelly+2012,3
+21047,33,college/grad student,F,go+1999,3
+21047,33,college/grad student,F,titanic+1997,3
+21047,33,college/grad student,F,donnie+darko+2001,4
+21047,33,college/grad student,F,american+pie+1999,3
+21047,33,college/grad student,F,shakespeare+in+love+1998,3
+53826,25,scientist,M,how+stella+got+her+groove+back+1998,3
+53843,29,college/grad student,M,gangs+of+new+york+2002,4
+21107,22,college/grad student,M,chicken+run+2000,4
+21185,27,artist,M,rabid+dogs+1974,4
+54046,32,other or not specified,M,jesse+stone+no+remorse+2010,3
+21376,37,other or not specified,F,the+hobbit+the+battle+of+the+five+armies+2014,4
+21400,25,executive/managerial,F,harry+potter+and+the+deathly+hallows+part+2+2011,3
+21400,25,executive/managerial,F,local+color+1977,3
+21411,26,college/grad student,F,his+girl+friday+1940,5
+21433,28,scientist,M,the+boy+in+the+striped+pyjamas+2008,4
+21433,28,scientist,M,if+footmen+tire+you_+what+will+horses+do+1971,3
+21433,28,scientist,M,losing+chase+1996,3
+54214,49,clerical/admin,M,final+approach+1991,2
+54260,30,executive/managerial,F,despicable+me+2010,2
+54260,30,executive/managerial,F,the+last+king+of+scotland+2006,3
+54288,21,college/grad student,M,the+ghost+galleon+1974,3
+54451,27,executive/managerial,F,le+bal+1983,3
+54461,27,scientist,M,the+virginian+1946,3
+54473,32,college/grad student,M,welcome+to+the+rileys+2010,4
+54486,24,sales/marketing,M,lego+batman+the+movie+-+dc+super+heroes+unite+2013,4
+54486,24,sales/marketing,M,batman+unmasked+the+psychology+of+the+dark+knight+2008,4
+54486,24,sales/marketing,M,the+truman+show+1998,4
+54486,24,sales/marketing,M,evil+dead+2013,2
+54486,24,sales/marketing,M,the+kings+speech+2010,3
+21748,32,executive/managerial,M,x-men+2000,3
+21748,32,executive/managerial,M,austin+powers+international+man+of+mystery+1997,3
+21748,32,executive/managerial,M,the+blues+brothers+1980,3
+21748,32,executive/managerial,M,maverick+1994,3
+21748,32,executive/managerial,M,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,4
+21748,32,executive/managerial,M,apocalypse+now+1979,5
+21762,32,college/grad student,M,stargate+1994,4
+21762,32,college/grad student,M,honey_+i+shrunk+the+kids+1989,4
+21762,32,college/grad student,M,stuart+little+1999,5
+21762,32,college/grad student,M,the+flintstones+1994,3
+21762,32,college/grad student,M,aladdin+1992,5
+21762,32,college/grad student,M,saving+private+ryan+1998,5
+21762,32,college/grad student,M,amlie+2001,1
+21762,32,college/grad student,M,die+hard+with+a+vengeance+1995,5
+54674,27,sales/marketing,M,princess+mononoke+1997,4
+54674,27,sales/marketing,M,four+weddings+and+a+funeral+1994,2
+54674,27,sales/marketing,M,the+postman+1994,2
+54674,27,sales/marketing,M,clueless+1995,3
+54674,27,sales/marketing,M,dogma+1999,4
+54674,27,sales/marketing,M,bullets+over+broadway+1994,4
+54674,27,sales/marketing,M,pecker+1998,4
+54674,27,sales/marketing,M,death+becomes+her+1992,2
+54674,27,sales/marketing,M,mr.+hollands+opus+1995,3
+54674,27,sales/marketing,M,my+cousin+vinny+1992,2
+54674,27,sales/marketing,M,donnie+brasco+1997,3
+21914,26,scientist,M,conan+the+barbarian+1982,3
+54696,21,K-12 student,M,bob+le+flambeur+1956,3
+54818,25,executive/managerial,F,nausica+of+the+valley+of+the+wind+1984,4
+54948,33,executive/managerial,M,the+lion+king+1994,5
+54948,33,executive/managerial,M,broken+arrow+1996,5
+54948,33,executive/managerial,M,french+kiss+1995,3
+54948,33,executive/managerial,M,rob+roy+1995,5
+55011,65,self-employed,F,the+secret+world+of+arrietty+2010,5
+55066,27,sales/marketing,M,that+sinking+feeling+1980,4
+55105,25,college/grad student,M,the+fugitive+1993,5
+55105,25,college/grad student,M,apollo+13+1995,3
+55105,25,college/grad student,M,showgirls+1995,2
+55105,25,college/grad student,M,goldeneye+1995,5
+55105,25,college/grad student,M,pulp+fiction+1994,5
+55105,25,college/grad student,M,cliffhanger+1993,3
+55105,25,college/grad student,M,ace+ventura+pet+detective+1994,3
+55105,25,college/grad student,M,outbreak+1995,2
+55105,25,college/grad student,M,true+lies+1994,5
+55105,25,college/grad student,M,batman+1989,4
+55105,25,college/grad student,M,batman+forever+1995,4
+22352,43,artist,F,harry+potter+and+the+chamber+of+secrets+2002,4
+22352,43,artist,F,adventureland+2009,4
+22352,43,artist,F,the+sandlot+1993,4
+22352,43,artist,F,taken+2008,4
+22352,43,artist,F,ghostbusters+ii+1989,1
+22352,43,artist,F,cool+hand+luke+1967,5
+22352,43,artist,F,men+of+honor+2000,4
+22387,29,college/grad student,M,a+walk+in+the+woods+2015,3
+22448,28,college/grad student,M,40+days+and+40+nights+2002,2
+22448,28,college/grad student,M,starship+troopers+1997,2
+22448,28,college/grad student,M,the+good_+the+bad+and+the+ugly+1966,4
+22448,28,college/grad student,M,underworld+2003,3
+22448,28,college/grad student,M,m*a*s*h+1970,2
+22448,28,college/grad student,M,hackers+1995,3
+22448,28,college/grad student,M,the+abyss+1989,3
+22448,28,college/grad student,M,oceans+twelve+2004,3
+22448,28,college/grad student,M,red+scorpion+1988,3
+22448,28,college/grad student,M,the+mummy+returns+2001,2
+22448,28,college/grad student,M,men+in+black+1997,4
+22448,28,college/grad student,M,the+matrix+reloaded+2003,2
+55287,28,executive/managerial,M,immortal+beloved+1994,4
+55287,28,executive/managerial,M,babe+1995,5
+55287,28,executive/managerial,M,love+affair+1994,3
+55287,28,executive/managerial,M,powder+1995,4
+55287,28,executive/managerial,M,reality+bites+1994,4
+55287,28,executive/managerial,M,mallrats+1995,1
+55287,28,executive/managerial,M,nixon+1995,4
+55287,28,executive/managerial,M,robin+hood+men+in+tights+1993,1
+22537,29,college/grad student,M,sgt.+bilko+1996,3
+22537,29,college/grad student,M,sabrina+1995,5
+22537,29,college/grad student,M,the+birdcage+1996,5
+22537,29,college/grad student,M,twister+1996,3
+55320,31,executive/managerial,F,the+bridge+2006,4
+55320,31,executive/managerial,F,seed+of+chucky+2004,2
+55320,31,executive/managerial,F,lovers+of+the+arctic+circle+1998,5
+55403,29,scientist,M,the+godfather+1972,4
+55403,29,scientist,M,tombstone+1993,5
+55403,29,scientist,M,unforgiven+1992,5
+55403,29,scientist,M,suburbia+1996,4
+55403,29,scientist,M,risky+business+1983,1
+55403,29,scientist,M,rosencrantz++guildenstern+are+dead+1991,5
+55403,29,scientist,M,last+man+standing+1996,1
+55403,29,scientist,M,dave+1993,3
+22649,26,executive/managerial,M,big+hero+6+2014,5
+55431,26,sales/marketing,M,nightcrawler+2014,4
+55462,33,college/grad student,M,walker+1987,4
+55496,34,college/grad student,M,the+madness+of+king+george+1994,4
+22902,33,sales/marketing,M,patton+1970,3
+55682,34,college/grad student,F,the+mask+of+dimitrios+1944,3
+55844,26,sales/marketing,M,videodrome+1983,2
+55844,26,sales/marketing,M,the+bourne+identity+2002,2
+55847,33,college/grad student,M,grease+1978,5
+55847,33,college/grad student,M,the+chronicles+of+narnia+the+lion_+the+witch+and+the+wardrobe+2005,4
+55847,33,college/grad student,M,close+encounters+of+the+third+kind+1977,5
+23092,28,college/grad student,M,the+corsican+file+2004,4
+23092,28,college/grad student,M,its+a+mad_+mad_+mad_+mad+world+1963,3
+23095,28,artist,F,random+hearts+1999,4
+23095,28,artist,F,made+of+honor+2008,3
+23095,28,artist,F,the+rainmaker+1997,5
+23095,28,artist,F,3+godfathers+1948,5
+23095,28,artist,F,legends+of+the+fall+1994,5
+23095,28,artist,F,runaway+bride+1999,4
+23095,28,artist,F,bird+on+a+wire+1990,4
+23095,28,artist,F,closer+2004,5
+23095,28,artist,F,love+actually+2003,4
+55880,34,sales/marketing,M,casanova+2005,3
+55898,31,homemaker,M,the+goonies+1985,4
+55911,30,college/grad student,F,black+sabbath+1963,4
+23154,34,college/grad student,F,ponyo+2008,4
+23162,26,other or not specified,M,men+in+black+3+2012,5
+23162,26,other or not specified,M,don+juan+demarco+1994,5
+23162,26,other or not specified,M,braveheart+1995,4
+23162,26,other or not specified,M,the+englishman+who+went+up+a+hill+but+came+down+a+mountain+1995,5
+23162,26,other or not specified,M,get+shorty+1995,5
+23162,26,other or not specified,M,eraser+1996,4
+23162,26,other or not specified,M,sense+and+sensibility+1995,5
+23162,26,other or not specified,M,while+you+were+sleeping+1995,4
+23163,26,scientist,M,who+are+you_+polly+maggoo+1966,4
+23174,28,college/grad student,M,the+bitter+tea+of+general+yen+1933,3
+23195,32,sales/marketing,M,beyond+the+lights+2014,3
+23211,18,scientist,M,dragonheart+1996,4
+23211,18,scientist,M,ferris+buellers+day+off+1986,4
+23211,18,scientist,M,the+blues+brothers+1980,4
+23211,18,scientist,M,the+silence+of+the+lambs+1991,4
+23211,18,scientist,M,gone+in+sixty+seconds+2000,3
+23211,18,scientist,M,good+will+hunting+1997,5
+23217,34,college/grad student,M,don+juan+demarco+1994,3
+23236,34,sales/marketing,M,splash+1984,4
+23236,34,sales/marketing,M,honey_+i+shrunk+the+kids+1989,1
+23236,34,sales/marketing,M,butch+cassidy+and+the+sundance+kid+1969,5
+23236,34,sales/marketing,M,the+full+monty+1997,5
+23236,34,sales/marketing,M,the+big+lebowski+1998,5
+23236,34,sales/marketing,M,jerry+maguire+1996,3
+23236,34,sales/marketing,M,wag+the+dog+1997,2
+23236,34,sales/marketing,M,chinatown+1974,5
+23292,31,technician/engineer,M,northanger+abbey+2007,4
+56170,27,executive/managerial,M,the+hound+of+the+baskervilles+1939,5
+56170,27,executive/managerial,M,the+bourne+identity+2002,4
+23424,32,technician/engineer,M,starship+troopers+1997,2
+56194,31,executive/managerial,M,inception+2010,2
+56194,31,executive/managerial,M,the+graduate+1967,3
+56194,31,executive/managerial,M,courage+under+fire+1996,1
+56194,31,executive/managerial,M,reservoir+dogs+1992,3
+56194,31,executive/managerial,M,ikiru+1952,3
+56194,31,executive/managerial,M,amlie+2001,3
+56230,75,executive/managerial,M,the+tigger+movie+2000,1
+56230,75,executive/managerial,M,george+of+the+jungle+1997,4
+56230,75,executive/managerial,M,the+maltese+falcon+1941,5
+56230,75,executive/managerial,M,the+paper+chase+1973,4
+56230,75,executive/managerial,M,casablanca+1942,5
+56230,75,executive/managerial,M,the+borrowers+1997,1
+56230,75,executive/managerial,M,stop+making+sense+1984,4
+56230,75,executive/managerial,M,toy+story+1995,5
+56230,75,executive/managerial,M,rugrats+in+paris+the+movie+2000,1
+56230,75,executive/managerial,M,the+brave+little+toaster+1987,1
+56230,75,executive/managerial,M,tarzan+1999,1
+56230,75,executive/managerial,M,babe+1995,3
+23465,25,other or not specified,M,inception+2010,4
+56235,34,scientist,M,the+wages+of+fear+1953,3
+56235,34,scientist,M,the+mad+adventures+of+rabbi+jacob+1973,2
+56235,34,scientist,M,sergeant+york+1941,3
+56258,21,sales/marketing,M,come+and+go+2003,3
+23543,21,homemaker,F,the+mask+of+zorro+1998,4
+23543,21,homemaker,F,dark+water+2005,3
+23543,21,homemaker,F,wedding+crashers+2005,4
+23543,21,homemaker,F,pride++prejudice+2005,4
+23543,21,homemaker,F,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,4
+56358,25,sales/marketing,M,temple+grandin+2010,2
+56365,18,self-employed,M,toy+story+3+2010,4
+56365,18,self-employed,M,the+dark+knight+2008,5
+56365,18,self-employed,M,tangled+2010,3
+23607,27,other or not specified,M,crook+2004,4
+56421,27,self-employed,M,last+dance+1996,2
+56440,30,sales/marketing,M,star+wars+1977,5
+56452,32,college/grad student,M,die+hard+1988,5
+23749,25,sales/marketing,M,children+of+men+2006,4
+56537,33,other or not specified,M,it+happened+one+night+1934,5
+56537,33,other or not specified,M,grease+2+1982,1
+56537,33,other or not specified,M,babe+1995,4
+56588,29,artist,M,of+horses+and+men+2013,4
+56606,33,executive/managerial,M,the+dirties+2013,4
+56609,31,academic/educator,M,the+girl+cant+help+it+1956,4
+56680,27,college/grad student,F,fanny++alexander+1982,3
+56680,27,college/grad student,F,high+fidelity+2000,3
+56680,27,college/grad student,F,la+femme+nikita+1990,3
+56680,27,college/grad student,F,edward+scissorhands+1990,4
+56680,27,college/grad student,F,the+nightmare+before+christmas+1993,2
+56680,27,college/grad student,F,the+contender+2000,4
+56680,27,college/grad student,F,magnolia+1999,1
+23935,26,college/grad student,F,alien+hunter+2003,3
+23943,31,executive/managerial,M,elvira_+mistress+of+the+dark+1988,2
+23954,25,college/grad student,M,the+twelve+tasks+of+asterix+1976,3
+23964,28,sales/marketing,M,easy+money+ii+2012,3
+24029,28,scientist,M,leon+the+professional+1994,4
+56809,23,other or not specified,M,on+the+outs+2004,4
+24064,25,college/grad student,M,harry+potter+and+the+deathly+hallows+part+2+2011,4
+24071,34,sales/marketing,M,another+woman+1988,5
+56848,31,executive/managerial,M,bowfinger+1999,5
+56848,31,executive/managerial,M,miracle+on+34th+street+1994,4
+56848,31,executive/managerial,M,the+remains+of+the+day+1993,5
+56848,31,executive/managerial,M,hoop+dreams+1994,4
+56848,31,executive/managerial,M,junior+1994,2
+56848,31,executive/managerial,M,little+women+1994,4
+56848,31,executive/managerial,M,i.q.+1994,4
+24084,29,scientist,M,the+perfect+world+of+kai+2007,4
+56891,33,executive/managerial,M,the+lord+of+the+rings+the+return+of+the+king+2003,4
+56906,27,college/grad student,M,the+little+death+2014,4
+56906,27,college/grad student,M,the+christine+jorgensen+story+1970,4
+24141,31,college/grad student,M,executive+decision+1996,5
+24141,31,college/grad student,M,mr.+hollands+opus+1995,4
+24141,31,college/grad student,M,willy+wonka++the+chocolate+factory+1971,3
+24141,31,college/grad student,M,independence+day+1996,5
+24141,31,college/grad student,M,twister+1996,5
+24141,31,college/grad student,M,dracula+dead+and+loving+it+1995,2
+56951,30,scientist,F,the+boy+2015,4
+56951,30,scientist,F,dumb+and+dumber+1994,3
+56970,34,executive/managerial,M,the+gods+must+be+crazy+1980,4
+24210,26,K-12 student,M,the+shining+1980,5
+56986,33,academic/educator,M,disneyland+dream+1956,4
+24235,18,homemaker,M,20+feet+from+stardom+2013,2
+24235,18,homemaker,M,the+black+cauldron+1985,4
+24246,27,scientist,M,insurgent+2015,3
+57027,30,scientist,M,monsters_+inc.+2001,4
+24341,34,technician/engineer,M,the+hypnotist+2012,4
+24344,34,academic/educator,M,kein+bund+frs+leben+2007,4
+24377,27,sales/marketing,M,ninja+scroll+1993,4
+24377,27,sales/marketing,M,inception+2010,5
+24377,27,sales/marketing,M,thieves+by+law+2010,3
+57171,30,clerical/admin,M,for+love+or+country+the+arturo+sandoval+story+2000,4
+24422,27,sales/marketing,M,the+hunger+games+mockingjay+-+part+1+2014,4
+57330,33,college/grad student,M,arch+of+triumph+1948,2
+57374,25,sales/marketing,M,the+four+troublesome+heads+1898,4
+57374,25,sales/marketing,M,ghostbusters+1984,4
+57408,25,executive/managerial,M,an+empress+and+the+warriors+2008,3
+24668,26,scientist,M,predator+1987,4
+57511,27,college/grad student,M,the+green+mile+1999,3
+57547,28,sales/marketing,M,blade+runner+1982,3
+24847,26,executive/managerial,M,my+neighbor+totoro+1988,4
+57663,26,other or not specified,F,fight+club+1999,4
+57663,26,other or not specified,F,watchmen+2009,4
+57663,26,other or not specified,F,death+to+smoochy+2002,3
+57663,26,other or not specified,F,inception+2010,4
+57663,26,other or not specified,F,american+beauty+1999,5
+57663,26,other or not specified,F,being+john+malkovich+1999,4
+57663,26,other or not specified,F,stir+of+echoes+1999,3
+57663,26,other or not specified,F,billys+hollywood+screen+kiss+1998,4
+57663,26,other or not specified,F,hedwig+and+the+angry+inch+2001,4
+57674,34,executive/managerial,M,china+obrien+1990,3
+24922,32,K-12 student,M,beauty+and+the+beast+1991,3
+24922,32,K-12 student,M,the+pink+panther+strikes+again+1976,4
+24922,32,K-12 student,M,planet+of+the+apes+1968,5
+24922,32,K-12 student,M,planet+of+the+apes+2001,2
+24922,32,K-12 student,M,live+and+let+die+1973,5
+24922,32,K-12 student,M,all+dogs+go+to+heaven+2+1996,1
+24922,32,K-12 student,M,robin+hood+1973,4
+24971,30,artist,M,monty+python+and+the+holy+grail+1975,3
+24971,30,artist,M,dirty+dancing+1987,3
+24971,30,artist,M,van+helsing+2004,2
+24971,30,artist,M,terminator+2+judgment+day+1991,3
+25022,34,sales/marketing,M,ratatouille+2007,3
+25098,26,scientist,M,almost+famous+2000,4
+57883,72,scientist,M,the+godfather+1972,5
+57883,72,scientist,M,the+limey+1999,4
+25126,27,self-employed,M,2+days+in+new+york+2012,3
+25175,31,self-employed,F,harry+potter+and+the+chamber+of+secrets+2002,3
+57998,30,college/grad student,M,bass+ackwards+2010,4
+25245,25,college/grad student,M,the+harvest+la+cosecha+2011,3
+25263,29,other or not specified,M,the+sleeping+beauty+2010,4
+25334,33,executive/managerial,M,i_+robot+2004,3
+25548,55,academic/educator,M,bang+1995,3
+58331,28,retired,F,the+matrix+revolutions+2003,3
+25616,33,college/grad student,M,ed+wood+1994,4
+58415,45,sales/marketing,F,when+we+were+kings+1996,3
+58428,28,college/grad student,M,a+bronx+tale+1993,5
+58539,32,self-employed,F,the+moderns+1988,3
+58561,25,executive/managerial,M,u-571+2000,1
+58561,25,executive/managerial,M,one+hundred+and+one+dalmatians+1961,4
+58561,25,executive/managerial,M,tank+girl+1995,5
+58561,25,executive/managerial,M,the+last+emperor+1987,2
+58561,25,executive/managerial,M,the+first+wives+club+1996,4
+58561,25,executive/managerial,M,the+quick+and+the+dead+1995,1
+58561,25,executive/managerial,M,wonder+boys+2000,1
+58561,25,executive/managerial,M,sliding+doors+1998,1
+58561,25,executive/managerial,M,sex_+lies_+and+videotape+1989,2
+58561,25,executive/managerial,M,american+graffiti+1973,1
+58561,25,executive/managerial,M,deep+blue+sea+1999,4
+58561,25,executive/managerial,M,smoke+1995,2
+58561,25,executive/managerial,M,a+room+with+a+view+1985,4
+58561,25,executive/managerial,M,a+nightmare+on+elm+street+1984,1
+25872,37,executive/managerial,M,north+by+northwest+1959,4
+25872,37,executive/managerial,M,the+third+man+1949,4
+25872,37,executive/managerial,M,the+cruel+sea+1953,3
+25872,37,executive/managerial,M,chicken+run+2000,4
+25872,37,executive/managerial,M,star+wars+1977,4
+25872,37,executive/managerial,M,rififi+1955,4
+25872,37,executive/managerial,M,russian+doll+2001,3
+25872,37,executive/managerial,M,wimbledon+2004,1
+25872,37,executive/managerial,M,the+aviator+2004,3
+25872,37,executive/managerial,M,this+is+spinal+tap+1984,5
+25872,37,executive/managerial,M,hoop+dreams+1994,4
+25872,37,executive/managerial,M,jubilee+1978,1
+25872,37,executive/managerial,M,election+1999,4
+25872,37,executive/managerial,M,time+out+2001,4
+25872,37,executive/managerial,M,the+last+flight+of+noahs+ark+1980,3
+25872,37,executive/managerial,M,my+darling+clementine+1946,4
+58681,33,scientist,M,mrs.+doubtfire+1993,5
+58681,33,scientist,M,so+i+married+an+axe+murderer+1993,3
+58681,33,scientist,M,mary+poppins+1964,5
+58681,33,scientist,M,houseguest+1995,4
+58681,33,scientist,M,it+could+happen+to+you+1994,4
+58681,33,scientist,M,the+great+race+1965,2
+58681,33,scientist,M,lady+and+the+tramp+1955,4
+58705,32,college/grad student,M,a+hijacking+2012,3
+25939,28,college/grad student,M,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,4
+25940,27,college/grad student,M,liceberg+2005,3
+25997,30,executive/managerial,M,mr.+3000+2004,3
+25997,30,executive/managerial,M,father+of+the+bride+part+ii+1995,4
+25997,30,executive/managerial,M,clear+and+present+danger+1994,4
+25997,30,executive/managerial,M,dead+man+walking+1995,3
+25997,30,executive/managerial,M,the+nutty+professor+1996,3
+25997,30,executive/managerial,M,grumpier+old+men+1995,3
+25997,30,executive/managerial,M,milk+money+1994,5
+58831,25,clerical/admin,M,toy+story+3+2010,4
+58872,29,college/grad student,M,the+satan+bug+1965,4
+26104,25,college/grad student,M,twist+of+faith+2005,4
+26135,10,K-12 student,M,the+usual+suspects+1995,3
+26135,10,K-12 student,M,battle+royale+2000,4
+26135,10,K-12 student,M,the+empire+strikes+back+1980,4
+26135,10,K-12 student,M,underworld+1996,4
+26135,10,K-12 student,M,12+angry+men+1957,4
+26135,10,K-12 student,M,pulp+fiction+1994,3
+26135,10,K-12 student,M,braveheart+1995,2
+26135,10,K-12 student,M,aladdin+1992,4
+26135,10,K-12 student,M,moulin+rouge+1952,3
+58977,33,executive/managerial,M,monsters_+inc.+2001,4
+26298,33,college/grad student,F,the+sorrow+and+the+pity+1969,4
+59066,28,K-12 student,M,citizen+kane+1941,4
+26325,29,executive/managerial,M,guardians+of+the+galaxy+2014,4
+59099,34,executive/managerial,M,the+santa+clause+1994,3
+59099,34,executive/managerial,M,ace+ventura+pet+detective+1994,1
+59099,34,executive/managerial,M,legends+of+the+fall+1994,5
+59099,34,executive/managerial,M,quiz+show+1994,4
+59099,34,executive/managerial,M,the+fugitive+1993,5
+59099,34,executive/managerial,M,cliffhanger+1993,3
+59099,34,executive/managerial,M,the+net+1995,3
+59099,34,executive/managerial,M,forrest+gump+1994,5
+59099,34,executive/managerial,M,the+shawshank+redemption+1994,5
+59099,34,executive/managerial,M,batman+forever+1995,2
+59101,33,college/grad student,M,the+mask+1994,5
+26411,44,artist,M,papillon+1973,3
+59184,31,self-employed,M,camera+obscura+2000,3
+26530,28,self-employed,M,money+train+1995,4
+26530,28,self-employed,M,the+crow+city+of+angels+1996,3
+26530,28,self-employed,M,free+willy+1993,4
+26530,28,self-employed,M,wyatt+earp+1994,5
+26530,28,self-employed,M,bad+boys+1995,3
+26530,28,self-employed,M,last+action+hero+1993,5
+26538,30,academic/educator,F,schindlers+list+1993,5
+26538,30,academic/educator,F,shall+we+dance+1996,5
+26538,30,academic/educator,F,casino+1995,4
+26538,30,academic/educator,F,the+fugitive+1993,4
+26538,30,academic/educator,F,the+green+mile+1999,4
+26538,30,academic/educator,F,pinocchio+1940,2
+26538,30,academic/educator,F,donnie+brasco+1997,4
+26538,30,academic/educator,F,cant+hardly+wait+1998,2
+59395,19,K-12 student,M,x-men+the+last+stand+2006,3
+59395,19,K-12 student,M,shaft+2000,4
+59395,19,K-12 student,M,dungeons++dragons+2000,3
+59395,19,K-12 student,M,waynes+world+2+1993,5
+59395,19,K-12 student,M,cinderella+1950,4
+59395,19,K-12 student,M,kajaki+2014,3
+26722,27,executive/managerial,M,my+beautiful+laundrette+1985,3
+59566,29,programmer,M,the+wolf+of+wall+street+2013,4
+59580,27,other or not specified,M,poetic+justice+1993,3
+59580,27,other or not specified,M,battle+for+the+planet+of+the+apes+1973,1
+59580,27,other or not specified,M,the+dukes+of+hazzard+2005,4
+59580,27,other or not specified,M,sorority+boys+2002,1
+59580,27,other or not specified,M,muppet+treasure+island+1996,2
+59580,27,other or not specified,M,the+lizzie+mcguire+movie+2003,1
+59580,27,other or not specified,M,house+on+haunted+hill+1999,1
+59580,27,other or not specified,M,scary+movie+5+2013,3
+59580,27,other or not specified,M,spawn+1997,4
+59580,27,other or not specified,M,american+pie+presents+band+camp+2005,2
+26813,29,college/grad student,M,frankenstein+90+1984,2
+59608,32,other or not specified,M,the+enigma+of+kaspar+hauser+1974,4
+59612,26,college/grad student,M,the+haunting+1999,3
+59612,26,college/grad student,M,american+movie+1999,4
+59612,26,college/grad student,M,bowfinger+1999,3
+59612,26,college/grad student,M,payback+1999,4
+59612,26,college/grad student,M,austin+powers+the+spy+who+shagged+me+1999,4
+59612,26,college/grad student,M,kingpin+1996,4
+59612,26,college/grad student,M,brokedown+palace+1999,3
+59658,26,sales/marketing,M,margarets+museum+1995,4
+59658,26,sales/marketing,M,sal_+or+the+120+days+of+sodom+1975,2
+26913,30,scientist,M,cheerful+weather+for+the+wedding+2012,3
+59728,25,academic/educator,F,the+bridge+on+the+river+kwai+1957,4
+59755,27,clerical/admin,M,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,5
+59774,29,homemaker,M,an+unreal+dream+the+michael+morton+story+2013,3
+59813,34,other or not specified,M,batman+begins+2005,2
+59813,34,other or not specified,M,casino+royale+2006,4
+59813,34,other or not specified,M,secretary+2002,4
+59813,34,other or not specified,M,forrest+gump+1994,3
+59819,29,college/grad student,M,ice+age+2002,4
+59819,29,college/grad student,M,whiplash+2014,5
+59852,34,artist,M,the+expendables+2010,3
+27088,25,college/grad student,M,goodfellas+1990,4
+59934,27,other or not specified,M,inception+2010,4
+27227,22,college/grad student,M,spiderman+the+ultimate+villain+showdown+2002,4
+27227,22,college/grad student,M,the+bad+and+the+beautiful+1952,5
+59998,18,homemaker,F,hell+2011,3
+27278,43,sales/marketing,M,lie+with+me+2005,4
+27292,29,self-employed,M,tie+me+up+tie+me+down+1989,3
+27292,29,self-employed,M,black+book+2006,3
+60074,76,executive/managerial,M,what+women+want+2000,4
+60074,76,executive/managerial,M,the+firm+1993,3
+60074,76,executive/managerial,M,dances+with+wolves+1990,3
+60074,76,executive/managerial,M,ghost+1990,4
+60074,76,executive/managerial,M,cast+away+2000,5
+60074,76,executive/managerial,M,big+1988,3
+60074,76,executive/managerial,M,all+the+pretty+horses+2000,5
+60079,33,scientist,M,remember+the+titans+2000,3
+27327,31,college/grad student,M,crimi+clowns+de+movie+2013,4
+27327,31,college/grad student,M,the+majestic+2001,5
+27327,31,college/grad student,M,die+hard+1988,2
+27327,31,college/grad student,M,star+wars+episode+i+-+the+phantom+menace+1999,5
+27327,31,college/grad student,M,star+wars+1977,5
+27327,31,college/grad student,M,indecent+proposal+1993,5
+27327,31,college/grad student,M,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,5
+60098,28,college/grad student,M,.45+2006,3
+60106,30,scientist,M,look+whos+talking+too+1990,1
+60140,30,sales/marketing,F,dirty+dancing+1987,5
+60212,30,college/grad student,M,up+close++personal+1996,3
+60212,30,college/grad student,M,a+thin+line+between+love+and+hate+1996,3
+60212,30,college/grad student,M,bio-dome+1996,3
+60212,30,college/grad student,M,the+rock+1996,4
+60212,30,college/grad student,M,twister+1996,4
+60230,32,scientist,M,going+postal+2010,3
+60280,30,sales/marketing,M,terminator+2+judgment+day+1991,4
+60376,28,executive/managerial,M,star+wars+1977,3
+60403,25,scientist,M,the+legend+of+1900+1998,3
+60403,25,scientist,M,star+trek+ii+the+wrath+of+khan+1982,4
+60403,25,scientist,M,deep+impact+1998,3
+27656,32,artist,M,whiteboyz+1999,3
+27698,24,sales/marketing,M,nosferatu+1922,4
+27701,33,self-employed,M,window+to+paris+1993,5
+60478,30,college/grad student,M,terminator+3+rise+of+the+machines+2003,3
+27725,32,academic/educator,M,troll+1986,3
+27725,32,academic/educator,M,return+of+the+jedi+1983,4
+27725,32,academic/educator,M,vertigo+1958,5
+27725,32,academic/educator,M,amadeus+1984,5
+27725,32,academic/educator,M,breaking+away+1979,5
+27725,32,academic/educator,M,the+time+machine+1960,4
+27725,32,academic/educator,M,stalag+17+1953,5
+27725,32,academic/educator,M,the+sting+1973,3
+27791,33,sales/marketing,M,batman+begins+2005,4
+60572,34,sales/marketing,M,the+simpsons+movie+2007,3
+60572,34,sales/marketing,M,pulp+fiction+1994,5
+60599,25,academic/educator,F,mulan+1998,3
+27839,31,executive/managerial,F,vera+cruz+1954,3
+27839,31,executive/managerial,F,robots+2005,3
+27857,30,customer service,M,thin+ice+2011,4
+27859,31,retired,M,h.m.s.+defiant+1962,4
+27860,27,scientist,M,nightcrawler+2014,5
+60632,29,sales/marketing,M,synecdoche_+new+york+2008,3
+60645,30,self-employed,M,i+am+a+fugitive+from+a+chain+gang+1932,4
+60646,28,college/grad student,M,aladdin+1992,4
+27920,29,executive/managerial,M,the+shawshank+redemption+1994,4
+27920,29,executive/managerial,M,star+wars+1977,3
+27920,29,executive/managerial,M,traffic+2000,5
+27920,29,executive/managerial,M,taxi+driver+1976,5
+27920,29,executive/managerial,M,psycho+1960,5
+27920,29,executive/managerial,M,2001+a+space+odyssey+1968,3
+27920,29,executive/managerial,M,the+blue+lagoon+1980,2
+27920,29,executive/managerial,M,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,5
+27931,27,academic/educator,M,sabotage+1936,4
+60730,29,other or not specified,M,robin+williams+weapons+of+self+destruction+2009,4
+28015,32,executive/managerial,F,butterfly+on+a+wheel+2007,4
+28038,31,college/grad student,M,lady+snowblood+1973,4
+28073,27,tradesman/craftsman,M,inglourious+basterds+2009,4
+60862,29,other or not specified,M,scarface+1983,5
+60866,28,sales/marketing,M,1612+chronicles+of+the+dark+time+2007,3
+28100,31,scientist,F,the+contractor+2007,3
+28158,34,college/grad student,M,the+exterminating+angel+1962,5
+60958,23,sales/marketing,M,waterworld+1995,1
+60958,23,sales/marketing,M,ever+after+a+cinderella+story+1998,3
+60958,23,sales/marketing,M,die+another+day+2002,4
+60958,23,sales/marketing,M,saving+grace+2000,4
+60958,23,sales/marketing,M,phone+booth+2002,4
+28191,33,artist,M,smiling+fish++goat+on+fire+1999,3
+60965,34,scientist,M,greystone+park+2012,4
+60966,11,sales/marketing,M,iron+man+3+2013,4
+28231,25,scientist,M,around+the+world+under+the+sea+1966,4
+28231,25,scientist,M,babe+1995,5
+28231,25,scientist,M,the+santa+clause+1994,5
+28231,25,scientist,M,jurassic+park+1993,4
+28231,25,scientist,M,multiplicity+1996,4
+28231,25,scientist,M,listen+up+philip+2014,4
+61083,30,executive/managerial,F,eternal+sunshine+of+the+spotless+mind+2004,3
+61083,30,executive/managerial,F,the+blue+lagoon+1980,4
+61083,30,executive/managerial,F,the+shawshank+redemption+1994,5
+61083,30,executive/managerial,F,the+lord+of+the+rings+the+two+towers+2002,4
+61083,30,executive/managerial,F,spartacus+1960,3
+61083,30,executive/managerial,F,the+lord+of+the+rings+the+return+of+the+king+2003,5
+61083,30,executive/managerial,F,the+lord+of+the+rings+1978,5
+61083,30,executive/managerial,F,serenity+2005,4
+61109,31,college/grad student,M,i_+robot+2004,4
+28344,32,college/grad student,F,kiss+me+deadly+1955,4
+61144,30,college/grad student,M,gone+with+the+wind+1939,5
+61144,30,college/grad student,M,independence+day+1996,5
+61144,30,college/grad student,M,star+wars+1977,5
+61224,34,other or not specified,M,how+to+train+your+dragon+2010,4
+61224,34,other or not specified,M,no+and+me+2010,4
+28461,32,other or not specified,M,blondes+at+work+1938,4
+61301,26,other or not specified,M,house+of+dark+shadows+1970,4
+28550,26,other or not specified,M,the+wild+thornberrys+movie+2002,3
+61343,30,college/grad student,M,4+2005,3
+61362,26,college/grad student,M,a+dolls+house+1973,3
+28599,28,sales/marketing,F,despicable+me+2+2013,3
+28604,29,college/grad student,M,the+savages+2007,3
+28641,33,scientist,F,clandestine+childhood+2011,4
+61417,25,other or not specified,M,frequency+2000,2
+61417,25,other or not specified,M,three+amigos+1986,4
+61417,25,other or not specified,M,the+dark+knight+2008,4
+61417,25,other or not specified,M,monty+python+and+the+holy+grail+1975,4
+61417,25,other or not specified,M,rocky+iii+1982,4
+61417,25,other or not specified,M,the+prince+of+egypt+1998,2
+61417,25,other or not specified,M,the+godfather+1972,4
+61417,25,other or not specified,M,father+of+the+bride+1950,3
+61417,25,other or not specified,M,major+payne+1995,3
+61417,25,other or not specified,M,the+matrix+1999,4
+61417,25,other or not specified,M,dirty+rotten+scoundrels+1988,4
+61417,25,other or not specified,M,weekend+at+bernies+1989,3
+61452,28,college/grad student,M,the+santa+clause+1994,5
+61452,28,college/grad student,M,sleepless+in+seattle+1993,5
+61452,28,college/grad student,M,the+firm+1993,4
+61452,28,college/grad student,M,home+alone+1990,3
+61452,28,college/grad student,M,mrs.+doubtfire+1993,5
+61452,28,college/grad student,M,the+mask+1994,3
+61452,28,college/grad student,M,aladdin+1992,3
+61452,28,college/grad student,M,first+knight+1995,4
+61452,28,college/grad student,M,dances+with+wolves+1990,3
+61452,28,college/grad student,M,speed+1994,5
+28798,30,college/grad student,M,stealing+beauty+1996,4
+28798,30,college/grad student,M,the+young+poisoners+handbook+1995,3
+28798,30,college/grad student,M,a+time+to+kill+1996,3
+28798,30,college/grad student,M,city+hall+1996,3
+28798,30,college/grad student,M,independence+day+1996,3
+28798,30,college/grad student,M,a+close+shave+1995,3
+28798,30,college/grad student,M,heat+1995,3
+28798,30,college/grad student,M,the+dark+knight+2008,4
+61597,26,college/grad student,M,fight+club+1999,4
+61600,30,tradesman/craftsman,M,watchmen+2009,4
+28853,28,college/grad student,M,a+cure+for+love+1966,3
+28853,28,college/grad student,M,dear+frankie+2004,4
+28853,28,college/grad student,M,nobodys+fool+1994,4
+28853,28,college/grad student,M,twelve+monkeys+1995,3
+28853,28,college/grad student,M,the+usual+suspects+1995,5
+28853,28,college/grad student,M,ace+ventura+pet+detective+1994,5
+28853,28,college/grad student,M,batman+forever+1995,4
+28853,28,college/grad student,M,the+fugitive+1993,4
+61625,27,self-employed,M,forrest+gump+1994,4
+28862,33,other or not specified,M,dumb+and+dumber+1994,2
+28862,33,other or not specified,M,taxi+driver+1976,5
+28862,33,other or not specified,M,dances+with+wolves+1990,3
+28862,33,other or not specified,M,the+bridges+of+madison+county+1995,4
+28862,33,other or not specified,M,apollo+13+1995,4
+28862,33,other or not specified,M,outbreak+1995,4
+28862,33,other or not specified,M,i.q.+1994,2
+28862,33,other or not specified,M,get+shorty+1995,3
+28862,33,other or not specified,M,true+lies+1994,3
+28918,31,college/grad student,F,flodder+3+1995,4
+61730,32,scientist,M,leaves+from+satans+book+1920,4
+61748,43,executive/managerial,M,zeitgeist+moving+forward+2011,3
+61753,34,doctor/health care,M,fearless+hyena+part+ii+1983,4
+28994,32,retired,F,the+amazing+spider-man+2012,3
+61783,26,customer service,M,the+prince+of+egypt+1998,1
+61783,26,customer service,M,hollow+man+2000,3
+61783,26,customer service,M,millers+crossing+1990,2
+61783,26,customer service,M,pee-wees+big+adventure+1985,3
+61783,26,customer service,M,super+mario+bros.+1993,3
+61783,26,customer service,M,mission+to+mars+2000,3
+61783,26,customer service,M,fletch+1985,4
+61783,26,customer service,M,weird+science+1985,2
+29055,34,college/grad student,M,up+close++personal+1996,1
+29055,34,college/grad student,M,independence+day+1996,4
+29055,34,college/grad student,M,willy+wonka++the+chocolate+factory+1971,5
+29055,34,college/grad student,M,girl+6+1996,3
+29055,34,college/grad student,M,mission+impossible+1996,3
+29055,34,college/grad student,M,star+trek+first+contact+1996,5
+29055,34,college/grad student,M,leaving+las+vegas+1995,4
+29055,34,college/grad student,M,i+shot+andy+warhol+1996,4
+61836,42,executive/managerial,M,my+neighbor+totoro+1988,5
+29071,31,sales/marketing,M,lock_+stock+and+two+smoking+barrels+1998,4
+29071,31,sales/marketing,M,collateral+2004,4
+29071,31,sales/marketing,M,stargate+1994,4
+29085,34,scientist,M,castle+in+the+sky+1986,4
+29085,34,scientist,M,inception+2010,5
+61861,31,college/grad student,M,i+remember+mama+1948,4
+29111,27,self-employed,F,thats+entertainment+iii+1994,3
+61881,27,executive/managerial,M,indiana+jones+and+the+last+crusade+1989,4
+61905,29,executive/managerial,M,the+lion+king+2+simbas+pride+1998,3
+29155,34,sales/marketing,M,shrek+2+2004,2
+29155,34,sales/marketing,M,source+code+2011,3
+29155,34,sales/marketing,M,batman+1989,4
+29155,34,sales/marketing,M,the+bourne+identity+2002,3
+29155,34,sales/marketing,M,batman+begins+2005,4
+29155,34,sales/marketing,M,natural+born+killers+1994,3
+29155,34,sales/marketing,M,mrs.+doubtfire+1993,4
+29192,18,K-12 student,M,tarzan+1999,3
+29305,31,sales/marketing,M,foolish+1999,2
+29305,31,sales/marketing,M,hamlet+2009,4
+29329,27,scientist,M,seven+samurai+1954,4
+29329,27,scientist,M,a+dennis+the+menace+christmas+2007,2
+29329,27,scientist,M,vesna+goes+fast+1996,3
+29329,27,scientist,M,10+mph+2007,3
+29366,32,executive/managerial,M,intimate+strangers+2004,5
+62140,29,other or not specified,M,ong-bak+the+thai+warrior+2003,3
+29409,31,scientist,M,the+dark+knight+rises+2012,3
+29427,32,K-12 student,M,animal+love+1996,4
+62203,31,K-12 student,M,a+kiss+before+dying+1991,2
+62306,28,programmer,M,beneath+hill+60+2010,4
+29556,37,other or not specified,M,lady+for+a+day+1933,4
+62335,27,other or not specified,M,lady+and+the+tramp+1955,4
+29570,30,executive/managerial,M,the+lord+of+the+rings+the+return+of+the+king+2003,5
+29704,29,executive/managerial,M,my+cousin+vinny+1992,3
+29704,29,executive/managerial,M,desperado+1995,3
+62491,34,executive/managerial,M,the+piano+tuner+of+earthquakes+2005,4
+62563,32,scientist,M,the+lord+of+the+rings+the+return+of+the+king+2003,4
+62563,32,scientist,M,ice+age+continental+drift+2012,4
+62566,28,self-employed,F,reservoir+dogs+1992,5
+62566,28,self-employed,F,aladdin+1992,4
+62566,28,self-employed,F,body+of+lies+2008,4
+62566,28,self-employed,F,the+crying+game+1992,4
+62566,28,self-employed,F,city+of+god+2002,4
+62566,28,self-employed,F,naked+lunch+1991,5
+62566,28,self-employed,F,ali+g+indahouse+2002,5
+62566,28,self-employed,F,pulp+fiction+1994,4
+62566,28,self-employed,F,spring_+summer_+fall_+winter...+and+spring+2003,5
+62566,28,self-employed,F,field+of+dreams+1989,3
+62601,21,K-12 student,M,minority+report+2002,3
+62601,21,K-12 student,M,the+night+of+the+generals+1967,3
+62619,29,academic/educator,M,the+incredibles+2004,4
+62623,33,artist,M,gacy+2003,4
+62645,32,scientist,M,the+blues+brothers+1980,5
+62645,32,scientist,M,my+fair+lady+1964,3
+62645,32,scientist,M,pinocchio+1940,3
+62645,32,scientist,M,dr.+strangelove+or+how+i+learned+to+stop+worrying+and+love+the+bomb+1964,5
+62645,32,scientist,M,star+trek+vi+the+undiscovered+country+1991,4
+62645,32,scientist,M,faust+1994,5
+62645,32,scientist,M,the+return+of+the+pink+panther+1975,5
+62645,32,scientist,M,star+wars+1977,4
+62645,32,scientist,M,rosencrantz++guildenstern+are+dead+1991,3
+29878,33,technician/engineer,M,the+band+wagon+1953,5
+29933,31,executive/managerial,M,beverly+hills+cop+iii+1994,3
+29933,31,executive/managerial,M,dances+with+wolves+1990,4
+62815,33,sales/marketing,M,iron+man+2008,4
+62815,33,sales/marketing,M,the+great+bank+hoax+1978,4
+62815,33,sales/marketing,M,jiang+hu+2004,4
+62815,33,sales/marketing,M,our+town+2003,3
+62815,33,sales/marketing,M,the+rickshaw+man+1958,3
+62824,34,executive/managerial,M,sixteen+candles+1984,3
+62831,45,retired,M,batman+begins+2005,4
+30123,34,sales/marketing,M,doomsday+2008,4
+30128,66,retired,F,cast+a+deadly+spell+1991,4
+62900,34,college/grad student,M,the+imitation+game+2014,4
+30140,26,artist,F,driven+2001,1
+30140,26,artist,F,the+great+mouse+detective+1986,2
+30140,26,artist,F,austin+powers+international+man+of+mystery+1997,1
+30140,26,artist,F,jurassic+park+iii+2001,1
+30210,27,sales/marketing,M,harry+potter+and+the+deathly+hallows+part+2+2011,4
+62998,33,self-employed,M,two+night+stand+2014,3
+63000,30,college/grad student,M,the+testimony+1946,4
+30242,25,homemaker,M,le+grand+amour+1969,3
+30242,25,homemaker,M,lake+mungo+2008,3
+63022,34,self-employed,M,coraline+2009,3
+63037,29,technician/engineer,M,airplane+1980,4
+30295,27,executive/managerial,M,viva+maria+1965,3
+63127,55,clerical/admin,F,quigley+down+under+1990,3
+63229,26,sales/marketing,M,show+me+love+1998,3
+30492,30,college/grad student,F,reagan+2011,4
+63265,25,executive/managerial,M,duck+season+2004,4
+63265,25,executive/managerial,M,kingpin+1996,3
+63265,25,executive/managerial,M,deep+impact+1998,3
+63265,25,executive/managerial,M,star+trek+iii+the+search+for+spock+1984,2
+63265,25,executive/managerial,M,conspiracy+theory+1997,2
+63265,25,executive/managerial,M,heathers+1988,3
+63265,25,executive/managerial,M,lawrence+of+arabia+1962,4
+63319,28,sales/marketing,M,indiana+jones+and+the+last+crusade+1989,4
+30718,26,college/grad student,F,adrift+2009,5
+63560,30,self-employed,M,supernova+2000,3
+63560,30,self-employed,M,babe+1995,3
+63560,30,self-employed,M,ghostbusters+1984,2
+63560,30,self-employed,M,stir+of+echoes+1999,4
+63560,30,self-employed,M,the+mighty+quinn+1989,4
+63560,30,self-employed,M,as+good+as+it+gets+1997,5
+30809,32,college/grad student,M,the+flowers+of+st.+francis+1950,4
+30817,19,scientist,M,castle+in+the+sky+1986,4
+30817,19,scientist,M,the+lord+of+the+rings+the+two+towers+2002,4
+30817,19,scientist,M,ratatouille+2007,4
+30817,19,scientist,M,my+neighbor+totoro+1988,5
+30817,19,scientist,M,terminator+2+judgment+day+1991,3
+30817,19,scientist,M,green+zone+2010,4
+30877,26,executive/managerial,M,spirited+away+2001,4
+63725,21,K-12 student,M,the+trip+to+italy+2014,4
+63725,21,K-12 student,M,harry+potter+and+the+chamber+of+secrets+2002,4
+63725,21,K-12 student,M,a+close+shave+1995,4
+63725,21,K-12 student,M,the+spy+who+loved+me+1977,3
+63725,21,K-12 student,M,snow+white+and+the+seven+dwarfs+1937,3
+63725,21,K-12 student,M,star+wars+episode+i+-+the+phantom+menace+1999,3
+63800,26,college/grad student,M,apt+pupil+1998,4
+31043,75,retired,F,shrek+2001,4
+31043,75,retired,F,the+bridge+on+the+river+kwai+1957,5
+31043,75,retired,F,dead+poets+society+1989,5
+31043,75,retired,F,dr.+strangelove+or+how+i+learned+to+stop+worrying+and+love+the+bomb+1964,5
+31043,75,retired,F,the+african+queen+1951,5
+31043,75,retired,F,the+terminal+2004,4
+31096,30,scientist,M,fargo+1996,4
+31096,30,scientist,M,crocodile+dundee+in+los+angeles+2001,4
+31096,30,scientist,M,cop+land+1997,3
+31096,30,scientist,M,the+full+monty+1997,5
+31096,30,scientist,M,alien+1992,3
+31096,30,scientist,M,naked+lunch+1991,4
+63915,30,doctor/health care,M,la+crmonie+1995,3
+63923,31,college/grad student,M,the+pursuit+of+happyness+2006,4
+31157,32,sales/marketing,M,gangs+of+new+york+2002,3
+31157,32,sales/marketing,M,lassoci+1979,2
+31162,33,self-employed,F,jesse+stone+stone+cold+2005,3
+63931,31,sales/marketing,M,diabolique+1996,3
+63931,31,sales/marketing,M,star+wars+1977,4
+63931,31,sales/marketing,M,the+quest+1996,3
+63931,31,sales/marketing,M,the+rock+1996,4
+63931,31,sales/marketing,M,mary+reilly+1996,3
+63931,31,sales/marketing,M,executive+decision+1996,3
+63984,33,college/grad student,M,le+combat+dans+lle+1962,5
+64063,32,self-employed,M,la+bande+du+drugstore+2002,4
+31295,30,sales/marketing,M,crimes+and+misdemeanors+1989,4
+31295,30,sales/marketing,M,adaptation.+2002,4
+31295,30,sales/marketing,M,the+breakfast+club+1985,4
+31295,30,sales/marketing,M,back+to+the+future+1985,4
+31295,30,sales/marketing,M,edward+scissorhands+1990,4
+31295,30,sales/marketing,M,the+lord+of+the+rings+the+two+towers+2002,4
+31295,30,sales/marketing,M,as+good+as+it+gets+1997,5
+31295,30,sales/marketing,M,35+up+1991,5
+31298,31,self-employed,M,southern+district+2009,5
+31308,9,sales/marketing,M,galaxy+quest+1999,4
+31321,29,sales/marketing,M,the+cup+1999,3
+31379,26,college/grad student,M,forrest+gump+1994,5
+31379,26,college/grad student,M,the+ghost+and+the+darkness+1996,5
+31379,26,college/grad student,M,while+you+were+sleeping+1995,5
+31379,26,college/grad student,M,dumb+and+dumber+1994,5
+31379,26,college/grad student,M,the+shawshank+redemption+1994,5
+31379,26,college/grad student,M,antonias+line+1995,5
+31379,26,college/grad student,M,secrets++lies+1996,5
+31379,26,college/grad student,M,the+great+white+hype+1996,5
+31379,26,college/grad student,M,eds+next+move+1996,5
+31379,26,college/grad student,M,star+trek+generations+1994,5
+31385,32,academic/educator,M,inception+2010,4
+31441,31,executive/managerial,M,agnosia+2010,3
+64243,26,other or not specified,M,shutter+island+2010,2
+64243,26,other or not specified,M,dawn+of+the+dead+1978,3
+64354,30,scientist,M,cold+weather+2010,4
+64354,30,scientist,M,joe+the+king+1999,4
+64540,26,executive/managerial,M,the+wild+parrots+of+telegraph+hill+2003,5
+31805,33,executive/managerial,M,spartan+2004,3
+31805,33,executive/managerial,M,treasure+planet+2002,3
+64573,29,college/grad student,M,ice+age+dawn+of+the+dinosaurs+2009,3
+31838,28,clerical/admin,F,martin+lawrence+live+runteldat+2002,1
+31838,28,clerical/admin,F,in+the+bedroom+2001,5
+31838,28,clerical/admin,F,raising+arizona+1987,4
+31838,28,clerical/admin,F,mildred+pierce+1945,4
+31870,31,college/grad student,M,lovers+like+us+1975,3
+31870,31,college/grad student,M,the+silence+of+the+lambs+1991,4
+31870,31,college/grad student,M,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,4
+31870,31,college/grad student,M,godzilla+1998,1
+31870,31,college/grad student,M,apollo+13+1995,2
+31870,31,college/grad student,M,dr.+no+1962,3
+31870,31,college/grad student,M,a+nightmare+on+elm+street+1984,3
+31870,31,college/grad student,M,men+in+black+1997,3
+31870,31,college/grad student,M,the+jungle+book+1994,3
+31870,31,college/grad student,M,an+american+werewolf+in+london+1981,4
+31870,31,college/grad student,M,grumpy+old+men+1993,3
+31890,25,sales/marketing,M,cinderella+1950,4
+64733,28,scientist,M,lupin+the+3rd+2014,3
+64828,33,college/grad student,M,outbreak+1995,3
+64828,33,college/grad student,M,cliffhanger+1993,4
+64828,33,college/grad student,M,maverick+1994,3
+64828,33,college/grad student,M,toy+story+1995,4
+64828,33,college/grad student,M,the+silence+of+the+lambs+1991,5
+32061,25,sales/marketing,M,the+wicker+man+1973,2
+64961,42,clerical/admin,F,the+lord+of+the+rings+the+fellowship+of+the+ring+2001,4
+64963,26,other or not specified,F,the+student+2011,4
+32309,33,scientist,M,the+watermelon+woman+1996,3
+32309,33,scientist,M,the+hobbit+the+battle+of+the+five+armies+2014,4
+65102,30,college/grad student,F,forget+me+not+2013,4
+32354,20,sales/marketing,M,the+jungle+book+1967,3
+32354,20,sales/marketing,M,kirikou+and+the+sorceress+1998,4
+32354,20,sales/marketing,M,repo+man+1984,4
+65142,30,sales/marketing,M,you_+the+living+2007,2
+32414,21,K-12 student,F,ong-bak+the+thai+warrior+2003,3
+32414,21,K-12 student,F,the+judge+2014,3
+32415,27,college/grad student,M,braveheart+1995,4
+32418,30,scientist,M,penguins+of+madagascar+2014,4
+65250,30,K-12 student,M,carlitos+way+1993,4
+65250,30,K-12 student,M,gone+in+60+seconds+1974,4
+65250,30,K-12 student,M,foxy+brown+1974,4
+65250,30,K-12 student,M,four+rooms+1995,4
+65250,30,K-12 student,M,apollo+13+1995,5
+65250,30,K-12 student,M,shutter+island+2010,5
+65250,30,K-12 student,M,the+usual+suspects+1995,4
+65250,30,K-12 student,M,clockstoppers+2002,3
+65250,30,K-12 student,M,dikkenek+2006,4
+65250,30,K-12 student,M,back+to+the+future+part+iii+1990,4
+65250,30,K-12 student,M,go+1999,5
+65250,30,K-12 student,M,a+fistful+of+dollars+1964,4
+65250,30,K-12 student,M,straw+dogs+1971,4
+65250,30,K-12 student,M,shaun+of+the+dead+2004,5
+65264,26,self-employed,F,the+mask+1994,2
+65276,51,clerical/admin,M,captain+midnight+1942,3
+32548,32,college/grad student,M,the+kings+speech+2010,4
+32548,32,college/grad student,M,memento+2000,4
+32548,32,college/grad student,M,ghostbusters+1984,3
+32548,32,college/grad student,M,jackie+brown+1997,5
+32548,32,college/grad student,M,28+days+later+2002,5
+32548,32,college/grad student,M,the+usual+suspects+1995,4
+32548,32,college/grad student,M,the+muppet+movie+1979,4
+32548,32,college/grad student,M,the+birds+1963,5
+32548,32,college/grad student,M,spider-man+2002,5
+32548,32,college/grad student,M,wonder+boys+2000,5
+32548,32,college/grad student,M,the+lord+of+the+rings+the+return+of+the+king+2003,5
+32572,33,scientist,M,ultimate+avengers+2006,4
+65376,28,college/grad student,F,the+ugly+duckling+and+me+2006,3
+32618,34,K-12 student,M,maleficent+2014,3
+32631,28,scientist,M,memento+2000,4
+32631,28,scientist,M,henry+poole+is+here+2008,3
+32647,26,other or not specified,M,a+womans+face+1938,3
+65479,31,college/grad student,M,sharkys+machine+1981,3
+65521,27,writer,M,the+boy+in+the+striped+pyjamas+2008,4
