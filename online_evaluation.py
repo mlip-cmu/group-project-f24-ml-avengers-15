@@ -3,7 +3,7 @@ import pandas as pd
 from app import recommend_movies
 
 # Calculate Precision@K
-def calculate_precision_at_k(user_recommendations, user_relevant_movies, k):
+def calculate_precision_at_k(user_recommendations, user_relevant_movies, k=10):
     total_precision = 0
     total_users = 0
 
@@ -28,7 +28,7 @@ def evaluate_snapshot(csv_path: str):
         user_recommendations = {user_id: recommend_movies(user_id) for user_id in user_relevant_movies.keys()}
         
         # Calculate Precision@K
-        precision = calculate_precision_at_k(user_recommendations, user_relevant_movies, 4)
+        precision = calculate_precision_at_k(user_recommendations, user_relevant_movies, 10)
         with open("online_evaluation_output.txt", 'w') as f:
             f.write(f"Precision@4: {precision:.4f}\n")
     
