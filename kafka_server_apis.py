@@ -48,11 +48,14 @@ class KafkaServerApi:
             print(f"Error fetching user info for user ID {user_id}: {e}")
             return None
 
-    def __del__(self):
-        """Ensure the SSH tunnel process is terminated when the object is destroyed."""
+    def close(self):
+        """Explicitly close the SSH tunnel."""
         if hasattr(self, 'ssh_tunnel'):
             self.ssh_tunnel.terminate()
             print("SSH tunnel terminated.")
+
+    def __del__(self):
+        self.close()
 
 # Example usage:
 if __name__ == "__main__":
