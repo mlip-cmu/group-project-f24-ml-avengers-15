@@ -24,23 +24,22 @@ pipeline {
             }
         }
 
-        stage('Run Unit Tests') {
+        stage('Run Unit Tests and generate test report') {
             steps {
                 sh '''
                 . venv/bin/activate
-                pytest test/ 
+                pytest test/ --junitxml=report.xml --cov=. --cov-report=xml
                 deactivate
                 '''
             }
         }
 
-        stage('Deploy Flask App') {
+        stage('Run Offline Evaluation') {
             steps {
-                echo 'Deploying the Flask application'
+                echo 'Running Offline Evaluation'
                 sh '''
                 . venv/bin/activate
-                python app.py &
-                echo $! > flask_pid.txt
+                python evaluation/offline.py 
                 deactivate
                 '''
             }
@@ -48,18 +47,11 @@ pipeline {
     }
 
     post {
-        always {
-            echo 'Cleaning up specific background processes'
-            sh '''
-            if [ -f flask_pid.txt ]; then
-                kill $(cat flask_pid.txt)
-                rm flask_pid.txt
-            fi
-            if [ -f ssh_tunnel_pid.txt ]; then
-                kill $(cat ssh_tunnel_pid.txt)
-                rm ssh_tunnel_pid.txt
-            fi
-            '''
+
+        success {
+            junit 'report.xml' // Publish test results
+            publishCoverage adapters: [coberturaAdapter('coverage.xml')] // Publish report
+            archiveArtifacts artifacts: 'evaluation/*', allowEmptyArchive: true 
         }
     }
 }
