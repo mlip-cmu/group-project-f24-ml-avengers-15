@@ -10,7 +10,7 @@ app = Flask(__name__)
 SERVER_IP = os.getenv("TEAM_15_SERVER_IP")
 MOVIES_CSV = os.path.join("data", "movies.csv")
 
-#kafka_server = kafka.KafkaServerApi(server_ip=SERVER_IP)
+kafka_server = kafka.KafkaServerApi()
 
 with open(os.path.join("models", "SVD_movie_recommender.pkl"), 'rb') as f:
     model = pickle.load(f)
@@ -46,7 +46,6 @@ def recommend(user_id):
         traceback.print_exc()
         
         return []
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8082)
