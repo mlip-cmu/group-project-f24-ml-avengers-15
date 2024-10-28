@@ -1,30 +1,6 @@
+import traceback
 import pandas as pd
-from kafka import KafkaConsumer
-import json
-import pandas as pd
-
-TOPIC_NAME = "movielog15"
-
-def consume_kafka_data(duration: int) -> pd.DataFrame:
-    consumer = KafkaConsumer(
-    TOPIC_NAME,
-    bootstrap_servers=['localhost:9092'],
-    auto_offset_reset='earliest',
-    enable_auto_commit=True,
-    group_id='rating-group',
-    value_deserializer=lambda x: x.decode('utf-8')
-)
-
-    end_time = time.time() + duration
-    data = []
-
-    for message in consumer:
-        if time.time() > end_time:
-            break
-        data.append(message.value)
-
-    consumer.close()
-    return pd.DataFrame(data)
+from app import recommend_movies
 
 # Calculate Precision@K
 def calculate_precision_at_k(user_recommendations, user_relevant_movies, k):
@@ -34,7 +10,7 @@ def calculate_precision_at_k(user_recommendations, user_relevant_movies, k):
     for user_id, rec_movies in user_recommendations.items():
         relevant_movies = user_relevant_movies.get(user_id, set())
         if relevant_movies:
-            top_k_recommendations = set(rec_movies[:k])  # top K recommendations
+            top_k_recommendations = set(rec_movies[:k])  # Get top K recommendations
             relevant_count = len(top_k_recommendations.intersection(relevant_movies))
             precision = relevant_count / k  
             total_precision += precision
@@ -44,3 +20,24 @@ def calculate_precision_at_k(user_recommendations, user_relevant_movies, k):
 
 def get_user_relevant_movies(df, rating_threshold=4):
     return df[df['rating'] >= rating_threshold].groupby('user_id')['movie_id'].apply(set).to_dict()
+
+def evaluate_snapshot(k: int, csv_path: str):
+    try:
+        snapshot_df = pd.read_csv(csv_path)
+        user_relevant_movies = get_user_relevant_movies(snapshot_df)
+        user_recommendations = {user_id: recommend_movies(user_id) for user_id in user_relevant_movies.keys()}
+        
+        # Calculate Precision@K
+        precision = calculate_precision_at_k(user_recommendations, user_relevant_movies, k)
+        return {"Precision@K": precision}
+    
+    except Exception as e:
+        print(f"An error occurred while calculating Precision@K: {e}")
+        traceback.print_exc()
+        return {"Precision@K": None}
+
+if __name__ == "__main__":
+    k_value = 4  
+    csv_file_path = "/Users/chuningshi/Desktop/group-project-f24-ml-avengers-15/notebooks/extracted_ratings.csv" 
+    result = evaluate_snapshot(k_value, csv_file_path)
+    print(result)
