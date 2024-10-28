@@ -52,7 +52,7 @@ def recommend(user_id):
 def evaluate_snapshot(k: int):
     try:
         # Consume data from Kafka for the past 24 hours
-        snapshot_df = consume_kafka_data("your_topic_name", duration=86400) 
+        snapshot_df = consume_kafka_data(duration=86400) 
         user_relevant_movies = get_user_relevant_movies(snapshot_df)
         user_recommendations = {user_id: recommend_movies(user_id) for user_id in user_relevant_movies.keys()}
         precision = calculate_precision_at_k(user_recommendations, user_relevant_movies, k)

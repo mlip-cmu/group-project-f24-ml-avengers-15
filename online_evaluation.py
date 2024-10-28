@@ -5,7 +5,7 @@ import pandas as pd
 
 TOPIC_NAME = "movielog15"
 
-def consume_kafka_data(topic: str, duration: int) -> pd.DataFrame:
+def consume_kafka_data(duration: int) -> pd.DataFrame:
     consumer = KafkaConsumer(
     TOPIC_NAME,
     bootstrap_servers=['localhost:9092'],
