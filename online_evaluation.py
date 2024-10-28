@@ -21,23 +21,18 @@ def calculate_precision_at_k(user_recommendations, user_relevant_movies, k):
 def get_user_relevant_movies(df, rating_threshold=4):
     return df[df['rating'] >= rating_threshold].groupby('user_id')['movie_id'].apply(set).to_dict()
 
-def evaluate_snapshot(k: int, csv_path: str):
+def evaluate_snapshot(csv_path: str):
     try:
         snapshot_df = pd.read_csv(csv_path)
         user_relevant_movies = get_user_relevant_movies(snapshot_df)
         user_recommendations = {user_id: recommend_movies(user_id) for user_id in user_relevant_movies.keys()}
         
         # Calculate Precision@K
-        precision = calculate_precision_at_k(user_recommendations, user_relevant_movies, k)
-        return {"Precision@K": precision}
+        precision = calculate_precision_at_k(user_recommendations, user_relevant_movies, 4)
+        with open("online_evaluation_output.txt", 'w') as f:
+            f.write(f"Precision@4: {precision:.4f}\n")
     
     except Exception as e:
-        print(f"An error occurred while calculating Precision@K: {e}")
-        traceback.print_exc()
-        return {"Precision@K": None}
+        with open("online_evaluation_output.txt", 'w') as f:
+            f.write(f"An error occurred while calculating Precision@K: {e}")
 
-if __name__ == "__main__":
-    k_value = 4  
-    csv_file_path = "/Users/chuningshi/Desktop/group-project-f24-ml-avengers-15/notebooks/extracted_ratings.csv" 
-    result = evaluate_snapshot(k_value, csv_file_path)
-    print(result)
