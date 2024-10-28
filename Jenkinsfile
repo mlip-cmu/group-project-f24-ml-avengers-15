@@ -7,6 +7,7 @@ pipeline {
         SSH_PASSWORD = credentials('SSH_PASSWORD')   
         KAFKA_PORT = credentials('KAFKA_PORT')
         LOCAL_PORT = credentials('LOCAL_PORT')
+        PYTHONPATH = "${WORKSPACE}" 
     }
 
     stages {
@@ -27,7 +28,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
-                pytest
+                pytest test/ 
                 deactivate
                 '''
             }
