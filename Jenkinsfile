@@ -44,6 +44,17 @@ pipeline {
                 '''
             }
         }
+
+        stage('Run Online Evaluation') {
+            steps {
+                echo 'Running Online Evaluation'
+                sh '''
+                . venv/bin/activate
+                python evaluation/online_evaluation.py
+                deactivate
+                '''
+            }
+        }
     }
 
     post {
