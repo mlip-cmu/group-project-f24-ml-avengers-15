@@ -45,32 +45,6 @@ pipeline {
                 '''
             }
         }
-
-        stage('Setup Kafka SSH Tunnel') {
-            steps {
-                sh '''
-                echo "Setting up SSH Tunnel to Kafka"
-                ssh -L ${LOCAL_PORT}:localhost:${KAFKA_PORT} ${SSH_USER}@${SERVER_IP} -NT &
-                echo $! > ssh_tunnel_pid.txt
-                '''
-            }
-        }
-
-        stage('Check Model and API') {
-            steps {
-                script {
-                    def response = sh(
-                        script: '''
-                        . venv/bin/activate
-                        curl -X GET http://localhost:8082/recommend/1
-                        deactivate
-                        ''',
-                        returnStdout: true
-                    ).trim()
-                    echo "Response from Flask App: ${response}"
-                }
-            }
-        }
     }
 
     post {
