@@ -30,8 +30,8 @@ def evaluate_snapshot():
         
         # Calculate Precision@K
         precision = calculate_precision_at_k(user_recommendations, user_relevant_movies, 10)
-        with open("online_evaluation_output.txt", 'w') as f:
-            f.write(f"Precision@10: {precision:.4f}\n")
+        # with open("online_evaluation_output.txt", 'w') as f:
+        #     f.write(f"Precision@10: {precision:.4f}\n")
     
     except Exception as e:
         with open("online_evaluation_output.txt", 'w') as f:
