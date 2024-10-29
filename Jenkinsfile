@@ -51,8 +51,7 @@ pipeline {
                 echo 'Running Online Evaluation'
                 sh '''
                 . venv/bin/activate
-                cd evaluation
-                python online_evaluation.py
+                python evaluation/online_evaluation.py
                 deactivate
                 '''
             }
