@@ -39,7 +39,8 @@ pipeline {
                 echo 'Running Offline Evaluation'
                 sh '''
                 . venv/bin/activate
-                python evaluation/offline.py 
+                cd evaluation
+                python offline.py 
                 deactivate
                 '''
             }
@@ -50,7 +51,8 @@ pipeline {
                 echo 'Running Online Evaluation'
                 sh '''
                 . venv/bin/activate
-                python evaluation/online_evaluation.py
+                cd evaluation
+                python online_evaluation.py
                 deactivate
                 '''
             }
@@ -62,7 +64,7 @@ pipeline {
         success {
             junit 'report.xml' // Publish test results
             publishCoverage adapters: [coberturaAdapter('coverage.xml')] // Publish report
-            archiveArtifacts artifacts: 'evaluation/*', allowEmptyArchive: true 
+            archiveArtifacts artifacts: 'evaluation/*', allowEmptyArchive: true
         }
     }
 }
