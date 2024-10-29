@@ -7,15 +7,8 @@ import pytest
 # Adjust the import path as necessary based on your project structure
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from data_qualitycheck import (
-    check_timestamp_format,
-    validate_user_id_format,
-    check_watch_action,
-    validate_rating_value,
-    validate_recommend_result_structure,
-    verify_action_schema,
-    assess_log_entry,
-)
+from data_qualitycheck import check_timestamp_format, validate_user_id_format, check_watch_action, validate_rating_value, validate_recommend_result_structure,verify_action_schema,assess_log_entry
+
 
 # Timestamp validation tests
 @pytest.mark.parametrize("timestamp,expected", [
