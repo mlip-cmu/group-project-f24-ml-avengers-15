@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from online_evaluation import calculate_precision_at_k, get_user_relevant_movies
+from evaluaiton.online_evaluation import calculate_precision_at_k, get_user_relevant_movies
 
 # Sample data for testing
 sample_data = {
