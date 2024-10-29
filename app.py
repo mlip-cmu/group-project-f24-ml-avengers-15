@@ -4,6 +4,7 @@ import utils as utils
 import pickle
 import os
 import traceback
+from config import MODEL_PATH
 
 app = Flask(__name__)
 
@@ -12,7 +13,7 @@ MOVIES_CSV = os.path.join("data", "movies.csv")
 
 kafka_server = kafka.KafkaServerApi()
 
-with open(os.path.join("models", "SVD_movie_recommender.pkl"), 'rb') as f:
+with open(MODEL_PATH, 'rb') as f:
     model = pickle.load(f)
 
 ratings_file = 'data/extracted_ratings.csv'
