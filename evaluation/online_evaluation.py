@@ -22,9 +22,9 @@ def calculate_precision_at_k(user_recommendations, user_relevant_movies, k=10):
 def get_user_relevant_movies(df, rating_threshold=4):
     return df[df['rating'] >= rating_threshold].groupby('user_id')['movie_id'].apply(set).to_dict()
 
-def evaluate_snapshot(DATA_DIR: str):
+def evaluate_snapshot():
     try:
-        snapshot_df = pd.read_csv(DATA_DIR)
+        snapshot_df = pd.read_csv(DATA_DIR + "/extracted_ratings.csv")
         user_relevant_movies = get_user_relevant_movies(snapshot_df)
         user_recommendations = {user_id: recommend_movies(user_id) for user_id in user_relevant_movies.keys()}
         
