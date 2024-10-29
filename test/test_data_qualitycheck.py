@@ -5,11 +5,6 @@ import pytest
 
 from evaluation.data_qualitycheck import check_timestamp_format, validate_user_id_format, check_watch_action, validate_rating_value, validate_recommend_result_structure,verify_action_schema,assess_log_entry
 
-<<<<<<< HEAD
-=======
-from data_qualitycheck import check_timestamp_format, validate_user_id_format, check_watch_action, validate_rating_value, validate_recommend_result_structure,verify_action_schema,assess_log_entry
-
->>>>>>> origin/main
 
 # Timestamp validation tests
 @pytest.mark.parametrize("timestamp,expected", [
