@@ -28,7 +28,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
-                pytest test/ --junitxml=report.xml --cov=. --cov-report=xml
+                pytest test/ --junitxml=report.xml
                 deactivate
                 '''
             }
@@ -62,8 +62,7 @@ pipeline {
 
         success {
             junit 'report.xml' // Publish test results
-            publishCoverage adapters: [coberturaAdapter('coverage.xml')] // Publish report
-            archiveArtifacts artifacts: 'evaluation/*', allowEmptyArchive: true
+            
         }
     }
 }
