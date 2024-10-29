@@ -56,6 +56,28 @@ pipeline {
                 '''
             }
         }
+
+        stage('Run Data Qauality') {
+            steps {
+                echo 'Running Data Qauality'
+                sh '''
+                . venv/bin/activate
+                python evaluation/data_qualitycheck.py
+                deactivate
+                '''
+            }
+        }
+
+        stage('Run Data Drift') {
+            steps {
+                echo 'Running Data Drift'
+                sh '''
+                . venv/bin/activate
+                python evaluation/data_drift.py
+                deactivate
+                '''
+            }
+        }
     }
 
     post {
