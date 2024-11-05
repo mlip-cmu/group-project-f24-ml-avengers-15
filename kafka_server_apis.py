@@ -14,7 +14,7 @@ class KafkaServerApi:
         self.ssh_password = os.getenv('SSH_PASSWORD')
         self.kafka_port = int(os.getenv('KAFKA_PORT', 9092))  
         self.local_port = int(os.getenv('LOCAL_PORT', 9092)) 
-        self._start_ssh_tunnel()
+        # self._start_ssh_tunnel()
 
     def _start_ssh_tunnel(self):
         """Sets up SSH tunnel for Kafka communication."""

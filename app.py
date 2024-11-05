@@ -5,6 +5,9 @@ import pickle
 import os
 import traceback
 from config import MODEL_PATH
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
