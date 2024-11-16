@@ -7,14 +7,14 @@ pipeline {
         SSH_PASSWORD = credentials('SSH_PASSWORD')   
         KAFKA_PORT = credentials('KAFKA_PORT')
         LOCAL_PORT = credentials('LOCAL_PORT')
-        PYTHONPATH = "${WORKSPACE}" 
+        PYTHONPATH = "${WORKSPACE}"
+        DOCKER_IMAGE = "recommender-service:latest"
     }
 
     stages {
         stage('Build') {
             steps {
                 sh '''
-
                 # Create a virtual environment and activate it
                 python3 -m venv venv
                 . venv/bin/activate
@@ -78,13 +78,32 @@ pipeline {
                 '''
             }
         }
+
+        // New Docker-related stages
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker Image'
+                sh '''
+                docker build -t ${DOCKER_IMAGE} .
+                '''
+            }
+        }
+
+        stage('Run Docker Container Locally') {
+            steps {
+                echo 'Running Docker Container Locally'
+                sh '''
+                docker stop recommender-service || true
+                docker rm recommender-service || true
+                docker run -d --name recommender-service -p 8082:8082 ${DOCKER_IMAGE}
+                '''
+            }
+        }
     }
 
     post {
-
         success {
             junit 'report.xml' // Publish test results
-            
         }
     }
 }
