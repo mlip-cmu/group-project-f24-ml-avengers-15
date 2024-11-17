@@ -1,3 +1,4 @@
+import sys
 import shutil
 import os
 import pandas as pd
@@ -34,30 +35,28 @@ def main():
 
         if recent_data_df.empty:
             logging.warning("No data available for retraining. Exiting.")
-            return
+            return 1  # Exit code 1 indicates no data available
 
-        # Prepare training and validation data
         logging.info("Preparing data for training and validation...")
         train_df, val_df = prepare_data_csv(recent_data_df)
         train_data, valid_data = prepare_data_model(train_df, val_df)
 
-        # Backup the existing model if it exists
         if os.path.exists(MODEL_PATH):
             logging.info(f"Backing up the existing model from {MODEL_PATH} to {BACKUP_MODEL_PATH}...")
             shutil.copyfile(MODEL_PATH, BACKUP_MODEL_PATH)
 
-        # Train the model
         logging.info("Training the model...")
         model, training_time_ms = train_model(train_data, MODEL_PATH)
 
-        # Evaluate the model
         logging.info("Evaluating the model...")
         rmse = evaluate(model, valid_data)
         logging.info(f"Validation RMSE: {rmse:.4f}")
         logging.info("Retraining completed successfully.")
+        return 0  
 
     except Exception as e:
         logging.error(f"An error occurred during the retraining process: {str(e)}")
+        return 42  
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

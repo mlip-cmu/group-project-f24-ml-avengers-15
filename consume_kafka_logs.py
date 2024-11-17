@@ -104,3 +104,7 @@ def load_recent_data(days=3):
     else:
         print("No data available for retraining.")
         return pd.DataFrame()
+    
+
+if __name__ == "__main__":
+    consume_kafka_logs()
