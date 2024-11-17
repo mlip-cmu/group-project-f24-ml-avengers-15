@@ -24,6 +24,17 @@ pipeline {
             }
         }
 
+        stage('Consume Data from Kafka') {
+            steps {
+                echo 'Starting Kafka data consumer...'
+                sh '''
+                . venv/bin/activate
+                python consume_kafka_logs.py &
+                deactivate
+                '''
+            }
+        }
+
         stage('Run Unit Tests and generate test report') {
             steps {
                 sh '''
@@ -84,7 +95,7 @@ pipeline {
                 echo 'Retraining Model'
                 sh '''
                 . venv/bin/activate
-                python retrain.py --input_data data/input.csv
+                python retrain.py
                 deactivate
                 '''
             }
