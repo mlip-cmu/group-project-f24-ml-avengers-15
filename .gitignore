@@ -38,4 +38,4 @@ instance/
 
 .env
 
-experiments/data/
+experiments/data/*
