@@ -14,7 +14,7 @@ def consume_kafka_logs():
     consumer = KafkaConsumer(
         TOPIC_NAME,
         bootstrap_servers=['localhost:9092'],
-        auto_offset_reset='earliest',
+        auto_offset_reset='latest',
         enable_auto_commit=True,
         group_id='rating-group',
         value_deserializer=lambda x: x.decode('utf-8')
