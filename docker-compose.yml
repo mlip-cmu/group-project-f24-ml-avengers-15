@@ -6,10 +6,6 @@ services:
       context: .
       dockerfile: Dockerfile.recommendation_service
     container_name: recommender-service
-    environment:
-      - SERVER_IP=${SERVER_IP}
-      - KAFKA_PORT=${KAFKA_PORT}
-      - LOCAL_PORT=${LOCAL_PORT}
     ports:
       - "8082:8082"
     restart: always
