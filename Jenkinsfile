@@ -79,6 +79,17 @@ pipeline {
             }
         }
 
+        stage('Retrain Model') {
+            steps {
+                echo 'Retraining Model'
+                sh '''
+                . venv/bin/activate
+                python retrain.py --input_data data/input.csv
+                deactivate
+                '''
+            }
+        }
+
         // New Docker-related stages
         stage('Build Docker Image') {
             steps {
