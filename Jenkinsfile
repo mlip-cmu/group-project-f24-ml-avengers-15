@@ -83,7 +83,7 @@ pipeline {
                 script {
                     echo 'Deploying Using Docker Compose'
                     sh '''
-                    docker-compose down --volumes || true
+                    docker-compose down || true
                     docker-compose up -d --build
                     '''
                 }
