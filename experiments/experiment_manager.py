@@ -76,11 +76,11 @@ class ExperimentManager:
 
     def _save_experiments(self):
         """Save experiments to storage"""
-        print(f"Saving experiments: {list(self.active_experiments.keys())}")  # Debug print
-        print(f"Storage path: {self.storage_path}")  # Debug print
+        #print(f"Saving experiments: {list(self.active_experiments.keys())}")  # Debug print
+        #print(f"Storage path: {self.storage_path}")  # Debug print
         with open(f"{self.storage_path}/experiments.json", "w") as f:
             data = [exp.to_dict() for exp in self.active_experiments.values()]
-            print(f"Saving data: {data}")  # Debug print
+            #print(f"Saving data: {data}")  # Debug print
             json.dump(data, f)
             
     def create_experiment(self, name: str, model_a_id: str, model_b_id: str, traffic_split: float = 0.5):
@@ -115,24 +115,24 @@ class ExperimentManager:
 
     def record_performance(self, experiment_name: str, model_id: str, accuracy: float, latency: float):
         """Record a performance measurement for a model in an experiment"""
-        print(f"Recording performance for experiment {experiment_name}, model {model_id}")  
-        print(f"Current active experiments: {list(self.active_experiments.keys())}")  
+        #print(f"Recording performance for experiment {experiment_name}, model {model_id}")  
+        #print(f"Current active experiments: {list(self.active_experiments.keys())}")  
         
         if experiment_name not in self.active_experiments:
-            print(f"Experiment {experiment_name} not found in active experiments")  
+            #print(f"Experiment {experiment_name} not found in active experiments")  
             return
         
         experiment = self.active_experiments[experiment_name]
         performance = ModelPerformance(accuracy=accuracy, latency=latency, timestamp=time.time())
         
         if model_id == experiment.model_a_id:
-            print(f"Adding performance data to model A")  
+            #print(f"Adding performance data to model A")  
             experiment.model_a_performance.append(performance)
         elif model_id == experiment.model_b_id:
-            print(f"Adding performance data to model B")  
+            #print(f"Adding performance data to model B")  
             experiment.model_b_performance.append(performance)
-        else:
-            print(f"Model {model_id} not found in experiment {experiment_name}")  
+        # else:
+            #print(f"Model {model_id} not found in experiment {experiment_name}")  
         
         self._save_experiments()
 
@@ -145,7 +145,7 @@ class ExperimentManager:
         model_a_perf = experiment.model_a_performance
         model_b_perf = experiment.model_b_performance
         
-        print(f"Model A samples: {len(model_a_perf)}, Model B samples: {len(model_b_perf)}")
+        #print(f"Model A samples: {len(model_a_perf)}, Model B samples: {len(model_b_perf)}")
         
         # Calculate statistics for both metrics
         results = {}
@@ -219,7 +219,7 @@ class ExperimentManager:
                     'model_b_performance': model_b_values
                 }
             except (ValueError, RuntimeWarning, TypeError) as e:
-                print(f"Error calculating statistics for {metric}: {str(e)}")
+                #print(f"Error calculating statistics for {metric}: {str(e)}")
                 results[metric] = default_result
         
         return results
@@ -230,7 +230,7 @@ class ExperimentManager:
             raise ValueError(f"Experiment {name} does not exist")
         
         experiment = self.active_experiments[name]
-        print(f"Getting summary for experiment {name}")
+        #print(f"Getting summary for experiment {name}")
         
         # Get statistical results if we have data
         results = self.get_experiment_results(name) if (experiment.model_a_performance or experiment.model_b_performance) else {
@@ -278,7 +278,7 @@ class ExperimentManager:
             "results": results
         }
         
-        print(f"Sending summary for {name}: {summary}")
+        #print(f"Sending summary for {name}: {summary}")
         return summary
 
     def get_active_experiments(self):

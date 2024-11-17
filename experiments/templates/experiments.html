@@ -102,7 +102,7 @@
             try {
                 const response = await fetch('/experiments');
                 const experiments = await response.json();
-                console.log('Fetched experiments:', experiments);
+                //console.log('Fetched experiments:', experiments);
                 
                 const container = document.getElementById('activeExperiments');
                 container.innerHTML = '';
@@ -118,14 +118,14 @@
                 
                 for (const [name, experiment] of Object.entries(experiments)) {
                     try {
-                        console.log(`Fetching summary for experiment ${name}`);
+                        //console.log(`Fetching summary for experiment ${name}`);
                         const summaryResponse = await fetch(`/experiments/${name}/summary`);
                         if (!summaryResponse.ok) {
                             console.error(`Error fetching summary for ${name}:`, await summaryResponse.text());
                             continue;
                         }
                         const summary = await summaryResponse.json();
-                        console.log(`Got summary for ${name}:`, summary);
+                        //console.log(`Got summary for ${name}:`, summary);
                         const cardHtml = createExperimentCard(summary);
                         container.innerHTML += cardHtml;
                         
@@ -181,7 +181,7 @@
 
         // Create experiment card with metrics and plots
         function createExperimentCard(summary) {
-            console.log('Creating card for summary:', summary);
+            //console.log('Creating card for summary:', summary);
             if (!summary) {
                 console.error('Summary is null or undefined');
                 return '';
@@ -201,7 +201,7 @@
                             <strong>Experiment Configuration:</strong><br>
                             Model A: ${summary.model_a_id || 'Not specified'}<br>
                             Model B: ${summary.model_b_id || 'Not specified'}<br>
-                            Traffic Split: ${((summary.traffic_split || 0.5) * 100).toFixed(0)}% to Model B<br>
+                            Traffic Split: ${((summary.traffic_split || 0.5) * 100).toFixed(0)}% to Model A<br>
                             Duration: ${summary.start_time ? 
                                 ((summary.end_time || Date.now()/1000) - summary.start_time) / 3600 : 0
                             .toFixed(2)} hours
@@ -309,7 +309,7 @@
                     </div>
                 </div>
             `;
-            console.log('Generated card HTML:', cardHtml);
+            //console.log('Generated card HTML:', cardHtml);
             return cardHtml;
         }
 
@@ -323,7 +323,7 @@
                 traffic_split: parseFloat(document.getElementById('trafficSplit').value)
             };
             
-            console.log('Submitting experiment:', data);  // Debug log
+            //console.log('Submitting experiment:', data);  // Debug log
             
             fetch('/experiments/', {
                 method: 'POST',
@@ -341,14 +341,14 @@
                 return response.json();
             })
             .then(result => {
-                console.log('Experiment created:', result);
-                alert('Experiment created successfully!');
+                //console.log('Experiment created:', result);
+                //alert('Experiment created successfully!');
                 fetchExperiments();
                 e.target.reset();
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Error creating experiment: ' + error.message);
+                //alert('Error creating experiment: ' + error.message);
             });
         };
 
@@ -375,7 +375,7 @@
                 
                 if (!response.ok) {
                     const data = await response.json();
-                    alert(`Error deleting experiment: ${data.error}`);
+                    //alert(`Error deleting experiment: ${data.error}`);
                     return;
                 }
                 
@@ -383,7 +383,7 @@
                 fetchExperiments();
             } catch (error) {
                 console.error('Error:', error);
-                alert('Failed to delete experiment');
+                //alert('Failed to delete experiment');
             }
         }
 

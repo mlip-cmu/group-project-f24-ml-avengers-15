@@ -7,7 +7,7 @@ experiment_manager = ExperimentManager()
 @experiment_api.route('/', methods=['POST'])
 def create_experiment():
     data = request.json
-    print("Received experiment creation request:", data)  # Debug print
+    #print("Received experiment creation request:", data)  # Debug print
     try:
         experiment = experiment_manager.create_experiment(
             name=data['name'],
@@ -17,7 +17,7 @@ def create_experiment():
         )
         return jsonify(experiment.to_dict())
     except Exception as e:
-        print("Error creating experiment:", str(e))  # Debug print
+        #print("Error creating experiment:", str(e))  # Debug print
         return jsonify({"error": str(e)}), 400
 
 @experiment_api.route('/<experiment_name>', methods=['DELETE'])
@@ -40,10 +40,10 @@ def get_experiment_results(experiment_name):
 def get_experiment_summary(experiment_name):
     try:
         summary = experiment_manager.get_experiment_summary(experiment_name)
-        print(f"Sending summary for {experiment_name}: {summary}")  # Debug print
+        #print(f"Sending summary for {experiment_name}: {summary}")  # Debug print
         return jsonify(summary)
     except Exception as e:
-        print(f"Error getting summary for {experiment_name}: {str(e)}")  # Debug print
+        #print(f"Error getting summary for {experiment_name}: {str(e)}")  # Debug print
         return jsonify({"error": str(e)}), 404
 
 @experiment_api.route('/', methods=['GET'])
