@@ -83,6 +83,8 @@ pipeline {
                 script {
                     echo 'Deploying Using Docker Compose'
                     sh '''
+                    docker stop recommender-service || true
+                    docker rm recommender-service || true
                     docker-compose down || true
                     docker-compose up -d --build
                     '''
