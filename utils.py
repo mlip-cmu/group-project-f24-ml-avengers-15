@@ -86,7 +86,6 @@ def get_model_size(model_filename):
     return os.path.getsize(model_filename)
 
 def predict(model, user_id, movie_list, user_movie_list, K=20):
-
     recommendations = []
     scores = []
 
@@ -97,7 +96,16 @@ def predict(model, user_id, movie_list, user_movie_list, K=20):
         scores.append((prediction.est, movie))
 
     scores.sort(reverse=True)
-    recommendations = [movie for _, movie in scores[:K]]
+    recommended_ids = [movie for _, movie in scores[:K]]
+
+    # Convert movie IDs to titles
+    try:
+        movie_map_df = pd.read_csv('data/movie_id_mapping.csv')
+        id_to_title = dict(zip(movie_map_df['movie_id'], movie_map_df['movie_title']))
+        recommendations = [id_to_title[movie_id].replace(' ', '+') for movie_id in recommended_ids]
+    except Exception as e:
+        print(f"Error converting movie IDs to titles: {str(e)}")
+        recommendations = recommended_ids
 
     return recommendations
 

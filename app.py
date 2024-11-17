@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, url_for
 import kafka_server_apis as kafka
 import utils as utils
 import pickle
@@ -71,30 +71,30 @@ def select_model_for_experiment(user_id, experiment):
     
     # Assign to Model A if bucket is below split point
     if user_bucket < split_point:
-        print(f"Assigning user {user_id} to model A: {experiment.model_a_id} (bucket: {user_bucket})")
+        #print(f"Assigning user {user_id} to model A: {experiment.model_a_id} (bucket: {user_bucket})")
         return experiment.model_a_id, models[experiment.model_a_id]
     
-    print(f"Assigning user {user_id} to model B: {experiment.model_b_id} (bucket: {user_bucket})")
+    #print(f"Assigning user {user_id} to model B: {experiment.model_b_id} (bucket: {user_bucket})")
     return experiment.model_b_id, models[experiment.model_b_id]
 
 def select_model(user_id):
     """Select model based on active experiments or default to first model"""
-    print(f"\nSelecting model for user {user_id}")
-    print(f"Active experiments: {list(experiment_manager.active_experiments.keys())}")
+    #print(f"\nSelecting model for user {user_id}")
+    #print(f"Active experiments: {list(experiment_manager.active_experiments.keys())}")
     
     for experiment in experiment_manager.active_experiments.values():
-        print(f"\nChecking experiment: {experiment.name}")
-        print(f"Models: A={experiment.model_a_id}, B={experiment.model_b_id}")
-        print(f"Traffic split: {experiment.traffic_split}")
+        #print(f"\nChecking experiment: {experiment.name}")
+        #print(f"Models: A={experiment.model_a_id}, B={experiment.model_b_id}")
+        #print(f"Traffic split: {experiment.traffic_split}")
         
         model_id, selected_model = select_model_for_experiment(user_id, experiment)
         if model_id:
-            print(f"User {user_id} assigned to model {model_id} in experiment {experiment.name}")
+            #print(f"User {user_id} assigned to model {model_id} in experiment {experiment.name}")
             return model_id, selected_model
     
     # Default to first model if no experiment matches
     default_model_id = MODEL_PATH.split('/')[-1]
-    print(f"No active experiments, using default model {default_model_id}")
+    #print(f"No active experiments, using default model {default_model_id}")
     return default_model_id, models[default_model_id]
 
 def recommend_movies(user_id):
@@ -102,7 +102,7 @@ def recommend_movies(user_id):
     try:
         start_time = time.time()
         model_id, selected_model = select_model(user_id)
-        print(f"Selected model {model_id} for user {user_id}")
+        #print(f"Selected model {model_id} for user {user_id}")
         
         # Get recommendations
         recommendations = utils.predict(selected_model, user_id, all_movies_list, user_movie_list)
@@ -119,18 +119,18 @@ def recommend_movies(user_id):
             predicted_values = utils.get_predicted_ratings(selected_model, user_id, movie_ids)
             predicted_ratings = list(zip(movie_ids, predicted_values))
             
-            print(f"Predicted ratings: {predicted_ratings}")
-            print(f"Actual ratings: {actual_ratings}")
+            #print(f"Predicted ratings: {predicted_ratings}")
+            #print(f"Actual ratings: {actual_ratings}")
 
             # Calculate RMSE
             rmse = utils.calculate_rmse(predicted_ratings, actual_ratings)
-            print(f"Calculated RMSE: {rmse}")
+            #print(f"Calculated RMSE: {rmse}")
 
             # Record metrics only if we have actual ratings to compare against
             for experiment in experiment_manager.active_experiments.values():
-                print(f"Checking experiment {experiment.name}")
+                #print(f"Checking experiment {experiment.name}")
                 if model_id in [experiment.model_a_id, experiment.model_b_id]:
-                    print(f"Recording metrics for experiment {experiment.name}, model {model_id}")
+                    #print(f"Recording metrics for experiment {experiment.name}, model {model_id}")
                     experiment_manager.record_performance(
                         experiment.name,
                         model_id,
@@ -138,16 +138,14 @@ def recommend_movies(user_id):
                         latency
                     )
         else:
-            print(f"No ratings found for user {user_id}")
+            #print(f"No ratings found for user {user_id}")
+            pass
 
-        return jsonify({
-            'recommendations': recommendations,
-            'latency': latency
-        })
+        return jsonify(recommendations)
 
     except Exception as e:
         print(f"Error in recommend_movies: {e}")
-        traceback.print_exc()  # Add full traceback for better debugging
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 @app.route('/recommend/<int:user_id>', methods=['GET'])
@@ -168,4 +166,4 @@ if __name__ == '__main__':
     try:
         app.run(host='0.0.0.0', port=8082)
     finally:
-        cleanup_experiments()  # Extra safety in case other handlers fail
+        cleanup_experiments()
