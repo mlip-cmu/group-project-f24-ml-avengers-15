@@ -8,7 +8,8 @@ pipeline {
         KAFKA_PORT = credentials('KAFKA_PORT')
         LOCAL_PORT = credentials('LOCAL_PORT')
         PYTHONPATH = "${WORKSPACE}"
-        DOCKER_IMAGE = "recommender-service:latest"
+        PROJECT_NAME = "group-project-f24-ml-avengers-15"
+
     }
 
     stages {
@@ -120,25 +121,15 @@ pipeline {
             }
         }
 
-
-        // New Docker-related stages
-        stage('Build Docker Image') {
+        stage('Deploy Using Docker Compose') {
             steps {
-                echo 'Building Docker Image'
-                sh '''
-                docker build -t ${DOCKER_IMAGE} .
-                '''
-            }
-        }
-
-        stage('Run Docker Container Locally') {
-            steps {
-                echo 'Running Docker Container Locally'
-                sh '''
-                docker stop recommender-service || true
-                docker rm recommender-service || true
-                docker run -d --name recommender-service -p 8082:8082 ${DOCKER_IMAGE}
-                '''
+                script {
+                    echo 'Deploying Using Docker Compose'
+                    sh '''
+                    docker-compose -p ${PROJECT_NAME} down || true
+                    docker-compose -p ${PROJECT_NAME} up -d --build
+                    '''
+                }
             }
         }
     }

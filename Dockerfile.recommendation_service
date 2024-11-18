@@ -18,7 +18,21 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY . .
+COPY app.py .
+
+COPY utils.py .
+
+COPY config.py .
+
+COPY models/ ./models
+
+COPY data/extracted_ratings.csv ./data/
+
+COPY kafka_server_apis.py .
+
+COPY experiments ./experiments
+
+COPY visualize.py .
 
 # Expose the application port
 EXPOSE 8082
