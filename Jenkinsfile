@@ -25,6 +25,17 @@ pipeline {
             }
         }
 
+        stage('Consume Data from Kafka') {
+            steps {
+                echo 'Starting Kafka data consumer...'
+                sh '''
+                . venv/bin/activate
+                python consume_kafka_logs.py &
+                deactivate
+                '''
+            }
+        }
+
         stage('Run Unit Tests and generate test report') {
             steps {
                 sh '''
@@ -79,7 +90,37 @@ pipeline {
                 '''
             }
         }
-        
+
+        stage('Retrain Model') {
+            steps {
+                echo 'Retraining Model...'
+                script {
+                    def status = sh(script: '''
+                        . venv/bin/activate
+                        python retrain.py
+                        deactivate
+                    ''', returnStatus: true)
+
+                    if (status == 0) {
+                        echo 'Retraining completed successfully.'
+                    } else if (status == 1) {
+                        echo 'No data available for retraining. Skipping model deployment.'
+                    } else if (status == 42) {
+                        echo 'An error occurred during retraining. Initiating rollback...'
+                        sh '''
+                        . venv/bin/activate
+                        python rollback_model.py
+                        deactivate
+                        '''
+                        error 'Retraining failed due to an error.'
+                    } else {
+                        echo "Unknown exit code: ${status}. Check logs for details."
+                        error 'Retraining failed with an unknown error.'
+                    }
+                }
+            }
+        }
+
         stage('Deploy Using Docker Compose') {
             steps {
                 script {
@@ -96,6 +137,10 @@ pipeline {
     post {
         success {
             junit 'report.xml' // Publish test results
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+        echo 'Pipeline failed.'
         }
     }
 }
