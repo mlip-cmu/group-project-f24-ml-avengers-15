@@ -8,7 +8,7 @@ import os
 
 
 
-def consume_kafka_logs(limit=5000):
+def consume_kafka_logs(limit=500):
     TOPIC_NAME = "movielog15"
     rate_pattern = re.compile(r'^.*?,\d+,GET /rate/.*?=\d+$')
 
@@ -24,7 +24,6 @@ def consume_kafka_logs(limit=5000):
     message_count = 0
     for message in consumer:
         line = message.value
-        print(message_count)
 
         if rate_pattern.match(line):
             message_timestamp = message.timestamp
@@ -90,7 +89,7 @@ def convert_ratings_txt_to_csv(input_path, output_path):
                 continue
 
 
-def load_recent_data(days=3):
+def load_recent_data(days=3, output_path="data/extracted_ratings.csv"):
     end_date = datetime.now()
     start_date = end_date - timedelta(days=days)
     data_frames = []
@@ -102,13 +101,16 @@ def load_recent_data(days=3):
         
         if not os.path.exists(csv_file) and os.path.exists(txt_file):
             convert_ratings_txt_to_csv(txt_file, csv_file)
-        
+
         if os.path.exists(csv_file):
             df = pd.read_csv(csv_file)
             data_frames.append(df)
 
     if data_frames:
-        return pd.concat(data_frames, ignore_index=True)
+        combined_data = pd.concat(data_frames, ignore_index=True)
+        
+        combined_data.to_csv(output_path, index=False)
+        return combined_data
     else:
         print("No data available for retraining.")
         return pd.DataFrame()
