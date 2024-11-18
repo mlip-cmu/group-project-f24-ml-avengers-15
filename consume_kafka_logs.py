@@ -8,7 +8,7 @@ import os
 
 
 
-def consume_kafka_logs(limit=500):
+def consume_kafka_logs(limit=5000):
     TOPIC_NAME = "movielog15"
     rate_pattern = re.compile(r'^.*?,\d+,GET /rate/.*?=\d+$')
 
