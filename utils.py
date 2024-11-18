@@ -5,11 +5,16 @@ from surprise import accuracy
 import pickle
 import time
 import os
+import numpy as np
 
 
 def prepare_data_csv(file_path, split_ratio=0.8):
-
     df = pd.read_csv(file_path)
+    
+    # Create numeric IDs for movies
+    unique_movies = df['movie_id'].unique()
+    movie_id_map = {movie: idx + 1 for idx, movie in enumerate(unique_movies)}
+    df['movie_id'] = df['movie_id'].map(movie_id_map)
 
     df = df.sort_values(by=['user_id', 'user_time'])
 
@@ -23,6 +28,10 @@ def prepare_data_csv(file_path, split_ratio=0.8):
 
     train_df = pd.concat(train_data_list).reset_index(drop=True)
     val_df = pd.concat(val_data_list).reset_index(drop=True)
+
+    # Save movie ID mapping for later use
+    movie_map_df = pd.DataFrame(list(movie_id_map.items()), columns=['movie_title', 'movie_id'])
+    movie_map_df.to_csv('data/movie_id_mapping.csv', index=False)
 
     return train_df, val_df
 
@@ -77,7 +86,6 @@ def get_model_size(model_filename):
     return os.path.getsize(model_filename)
 
 def predict(model, user_id, movie_list, user_movie_list, K=20):
-
     recommendations = []
     scores = []
 
@@ -88,6 +96,98 @@ def predict(model, user_id, movie_list, user_movie_list, K=20):
         scores.append((prediction.est, movie))
 
     scores.sort(reverse=True)
-    recommendations = [movie for _, movie in scores[:K]]
+    recommended_ids = [movie for _, movie in scores[:K]]
+
+    # Convert movie IDs to titles
+    try:
+        movie_map_df = pd.read_csv('data/movie_id_mapping.csv')
+        id_to_title = dict(zip(movie_map_df['movie_id'], movie_map_df['movie_title']))
+        recommendations = [id_to_title[movie_id].replace(' ', '+') for movie_id in recommended_ids]
+    except Exception as e:
+        print(f"Error converting movie IDs to titles: {str(e)}")
+        recommendations = recommended_ids
 
     return recommendations
+
+def generate_test_ratings(user_id, num_ratings=10):
+    """Generate test ratings for a user to simulate real usage"""
+    try:
+        # Read the movie mapping
+        movie_map_df = pd.read_csv('data/movie_id_mapping.csv')
+        
+        # Randomly select movies and generate ratings
+        selected_movies = movie_map_df.sample(n=min(num_ratings, len(movie_map_df)))
+        ratings = np.random.uniform(1, 5, size=len(selected_movies))
+        
+        # Create (movie_id, rating) tuples
+        return list(zip(selected_movies['movie_id'], ratings))
+    except Exception as e:
+        print(f"Error generating test ratings: {str(e)}")
+        return []
+
+def get_user_ratings(user_id):
+    """Get all ratings for a given user"""
+    try:
+        # First try to get real ratings
+        ratings_df = pd.read_csv('data/extracted_ratings.csv')
+        movie_map_df = pd.read_csv('data/movie_id_mapping.csv')
+        movie_id_map = dict(zip(movie_map_df['movie_title'], movie_map_df['movie_id']))
+        
+        # Filter ratings for the given user
+        user_ratings = ratings_df[ratings_df['user_id'] == int(user_id)]
+        
+        # If no real ratings exist, generate test ratings
+        if len(user_ratings) == 0:
+            print(f"No real ratings found for user {user_id}, generating test ratings")
+            return generate_test_ratings(user_id)
+            
+        # Return list of (movie_id, rating) tuples using the mapping
+        return [(movie_id_map[movie_id], rating) for movie_id, rating in zip(user_ratings['movie_id'], user_ratings['rating'])]
+    except Exception as e:
+        print(f"Error getting user ratings: {str(e)}")
+        return []
+
+def get_predicted_ratings(model, user_id, movie_ids):
+    """Get predicted ratings for specific movies"""
+    try:
+        return [model.predict(int(user_id), int(movie_id)).est for movie_id in movie_ids]
+    except Exception as e:
+        print(f"Error getting predicted ratings: {e}")
+        return []
+
+def calculate_rmse(predicted, actual):
+    """
+    Calculate RMSE between actual and predicted ratings
+    
+    Args:
+        predicted: List of (movie_id, rating) tuples for predicted ratings
+        actual: List of (movie_id, rating) tuples for actual ratings
+        
+    Returns:
+        float: RMSE value
+    """
+    try:
+        # Convert to dictionaries for easier lookup
+        actual_dict = dict(actual)
+        pred_dict = dict(predicted)
+        
+        # Get common movie IDs
+        common_movies = set(actual_dict.keys()) & set(pred_dict.keys())
+        
+        if not common_movies:
+            return 1.0  # Return worst case when no common movies
+            
+        # Calculate squared differences
+        squared_diff = [(actual_dict[movie_id] - pred_dict[movie_id])**2 
+                       for movie_id in common_movies]
+        
+        # Calculate RMSE
+        rmse = np.sqrt(np.mean(squared_diff))
+        
+        # Normalize to 0-1 scale (assuming ratings are 1-5)
+        normalized_rmse = min(rmse / 4.0, 1.0)  # 4.0 is max possible RMSE for 1-5 scale
+        
+        return normalized_rmse
+    except Exception as e:
+        print(f"Error calculating RMSE: {str(e)}")
+        return 1.0  # Return worst case on error
