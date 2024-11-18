@@ -1,4 +1,6 @@
 # test_data_qualitycheck.py
+import sys
+import os
 import pytest
 # # Adjust the import path as necessary based on your project structure
 # sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
