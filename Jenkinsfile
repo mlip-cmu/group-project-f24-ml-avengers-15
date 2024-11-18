@@ -82,12 +82,10 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying Using Docker Compose'
-                    dir("${WORKSPACE}") { // Ensures the command runs in the workspace root
-                        sh '''
-                        docker-compose down || true
-                        docker-compose up -d --build
-                        '''
-                    }
+                    sh '''
+                    docker-compose down || true
+                    docker-compose up -d --build
+                    '''
                 }
             }
         }
