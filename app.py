@@ -29,7 +29,9 @@ for path in [MODEL_PATH, MODEL_PATH_2]:
         model_id = os.path.basename(path)
         models[model_id] = pickle.load(f)
 
-ratings_file = 'data/extracted_ratings.csv'
+# Get absolute path for data files
+base_dir = os.path.dirname(os.path.abspath(__file__))
+ratings_file = os.path.join(base_dir, 'data', 'extracted_ratings.csv')
 train_df, val_df = utils.prepare_data_csv(ratings_file)
 train_data, valid_data = utils.prepare_data_model(train_df, val_df)
 all_movies_list = train_df['movie_id'].unique().tolist()
