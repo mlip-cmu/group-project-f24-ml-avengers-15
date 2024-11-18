@@ -8,6 +8,8 @@ pipeline {
         KAFKA_PORT = credentials('KAFKA_PORT')
         LOCAL_PORT = credentials('LOCAL_PORT')
         PYTHONPATH = "${WORKSPACE}"
+        PROJECT_NAME = "group-project-f24-ml-avengers-15"
+
     }
 
     stages {
@@ -124,8 +126,8 @@ pipeline {
                 script {
                     echo 'Deploying Using Docker Compose'
                     sh '''
-                    docker-compose down || true
-                    docker-compose up -d --build
+                    docker-compose -p ${PROJECT_NAME} down || true
+                    docker-compose -p ${PROJECT_NAME} up -d --build
                     '''
                 }
             }

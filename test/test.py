@@ -1,6 +1,13 @@
 import pytest
 import pandas as pd
-from evaluaiton.online_evaluation import calculate_precision_at_k, get_user_relevant_movies
+import os
+import sys
+
+# Add project root to Python path
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(project_root)
+
+from evaluation.online_evaluation import calculate_precision_at_k, get_user_relevant_movies
 
 # Sample data for testing
 sample_data = {
