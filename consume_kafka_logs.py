@@ -4,10 +4,11 @@ import csv
 import pandas as pd
 import glob
 from datetime import datetime, timedelta
+import os
 
 
 
-def consume_kafka_logs():
+def consume_kafka_logs(limit=500):
     TOPIC_NAME = "movielog15"
     rate_pattern = re.compile(r'^.*?,\d+,GET /rate/.*?=\d+$')
 
@@ -20,8 +21,10 @@ def consume_kafka_logs():
         value_deserializer=lambda x: x.decode('utf-8')
     )
 
+    message_count = 0
     for message in consumer:
         line = message.value
+        print(message_count)
 
         if rate_pattern.match(line):
             message_timestamp = message.timestamp
@@ -31,6 +34,13 @@ def consume_kafka_logs():
 
             with open(output_file_path, 'a') as output_file:
                 output_file.write(line + '\n')
+            
+            message_count += 1  
+            if message_count >= limit:  
+                break
+
+    consumer.close()  
+
 
 
 def convert_ratings_txt_to_csv(input_path, output_path):
@@ -90,11 +100,9 @@ def load_recent_data(days=3):
         csv_file = f"data/logs_{date_str}.csv"
         txt_file = f"data/logs_{date_str}.txt"
         
-        # Convert TXT to CSV if CSV doesn't exist
         if not os.path.exists(csv_file) and os.path.exists(txt_file):
             convert_ratings_txt_to_csv(txt_file, csv_file)
         
-        # Read the CSV file
         if os.path.exists(csv_file):
             df = pd.read_csv(csv_file)
             data_frames.append(df)
@@ -108,3 +116,4 @@ def load_recent_data(days=3):
 
 if __name__ == "__main__":
     consume_kafka_logs()
+    recent_data = load_recent_data(days=3)
