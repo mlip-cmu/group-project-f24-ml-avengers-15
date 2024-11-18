@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
-                pytest test/ --junitxml=report.xml
+                python3 -m pytest test/ --junitxml=report.xml
                 deactivate
                 '''
             }
