@@ -1,3 +1,10 @@
+import os
+import sys
+
+# Add project root to Python path
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(project_root)
+
 import pytest
 import pandas as pd
 from utils import prepare_data_csv, prepare_data_model
