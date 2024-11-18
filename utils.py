@@ -7,10 +7,12 @@ import time
 import os
 import numpy as np
 
+# Get the base directory once at module level
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def prepare_data_csv(file_path, split_ratio=0.8):
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(file_path)))
-    file_path = os.path.join(base_dir, file_path)
+    if not os.path.isabs(file_path):
+        file_path = os.path.join(BASE_DIR, file_path)
     df = pd.read_csv(file_path)
     
     # Create numeric IDs for movies
@@ -33,7 +35,7 @@ def prepare_data_csv(file_path, split_ratio=0.8):
 
     # Save movie ID mapping for later use
     movie_map_df = pd.DataFrame(list(movie_id_map.items()), columns=['movie_title', 'movie_id'])
-    mapping_file = os.path.join(base_dir, 'data', 'movie_id_mapping.csv')
+    mapping_file = os.path.join(BASE_DIR, 'data', 'movie_id_mapping.csv')
     os.makedirs(os.path.dirname(mapping_file), exist_ok=True)
     movie_map_df.to_csv(mapping_file, index=False)
 
@@ -59,10 +61,7 @@ def train_model(train_data, model_name='SVD'):
     training_time = time.time() - start_time
     training_time_ms = training_time * 1000
 
-
-
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    model_filename = os.path.join(base_dir, f'{model_name}_movie_recommender.pkl')
+    model_filename = os.path.join(BASE_DIR, f'{model_name}_movie_recommender.pkl')
     with open(model_filename, 'wb') as model_file:
         pickle.dump(model, model_file)
 
@@ -87,8 +86,7 @@ def inference_cost_per_input(model, user_id, movie_id):
     return inference_time_ms
 
 def get_model_size(model_filename):
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    model_filename = os.path.join(base_dir, model_filename)
+    model_filename = os.path.join(BASE_DIR, model_filename)
     # Get the size of the model in bytes
     return os.path.getsize(model_filename)
 
@@ -107,8 +105,7 @@ def predict(model, user_id, movie_list, user_movie_list, K=20):
 
     # Convert movie IDs to titles
     try:
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        movie_map_df = pd.read_csv(os.path.join(base_dir, 'data', 'movie_id_mapping.csv'))
+        movie_map_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'movie_id_mapping.csv'))
         id_to_title = dict(zip(movie_map_df['movie_id'], movie_map_df['movie_title']))
         recommendations = [id_to_title[movie_id].replace(' ', '+') for movie_id in recommended_ids]
     except Exception as e:
@@ -121,8 +118,7 @@ def generate_test_ratings(user_id, num_ratings=10):
     """Generate test ratings for a user to simulate real usage"""
     try:
         # Read the movie mapping
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        movie_map_df = pd.read_csv(os.path.join(base_dir, 'data', 'movie_id_mapping.csv'))
+        movie_map_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'movie_id_mapping.csv'))
         
         # Randomly select movies and generate ratings
         selected_movies = movie_map_df.sample(n=min(num_ratings, len(movie_map_df)))
@@ -138,9 +134,8 @@ def get_user_ratings(user_id):
     """Get all ratings for a given user"""
     try:
         # First try to get real ratings
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        ratings_df = pd.read_csv(os.path.join(base_dir, 'data', 'extracted_ratings.csv'))
-        movie_map_df = pd.read_csv(os.path.join(base_dir, 'data', 'movie_id_mapping.csv'))
+        ratings_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'extracted_ratings.csv'))
+        movie_map_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'movie_id_mapping.csv'))
         movie_id_map = dict(zip(movie_map_df['movie_title'], movie_map_df['movie_id']))
         
         # Filter ratings for the given user
