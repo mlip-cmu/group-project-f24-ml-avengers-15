@@ -25,30 +25,17 @@ pipeline {
             }
         }
 
-        // stage('Setup Kafka Tunnel') {
-        //     steps {
-        //         script {
-        //             withCredentials([usernamePassword(credentialsId: 'KAFKA_SSH_CREDENTIALS', usernameVariable: 'SSH_USER', passwordVariable: 'SSH_PASSWORD')]) {
-        //                 sh '''
-        //                 sshpass -p "mlip-kafka" ssh -o ServerAliveInterval=60 \
-        //                     -L 9092:localhost:9092 tunnel@128.2.204.215 -NTf
-        //                 '''
-        //             }
-        //         }
-        //     }
-        // }
 
-        // stage('Consume Data from Kafka') {
-        //     steps {
-        //         echo 'Starting Kafka data consumer...'
-        //         sh '''
-        //         . venv/bin/activate
-        //         ssh -o ServerAliveInterval=60 -L 9092:localhost:9092 tunnel@128.2.204.215 -NTf
-        //         python consume_kafka_logs.py 
-        //         deactivate
-        //         '''
-        //     }
-        // }
+        stage('Consume Data from Kafka') {
+            steps {
+                echo 'Starting Kafka data consumer...'
+                sh '''
+                . venv/bin/activate
+                python consume_kafka_logs.py 
+                deactivate
+                '''
+            }
+        }
 
         stage('Cleanup Kafka Tunnel') {
             steps {
