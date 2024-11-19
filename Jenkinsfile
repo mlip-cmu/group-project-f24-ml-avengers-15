@@ -30,7 +30,7 @@ pipeline {
                 echo 'Starting Kafka data consumer...'
                 sh '''
                 . venv/bin/activate
-                python consume_kafka_logs.py 
+                python consume_kafka_logs.py &
                 deactivate
                 '''
             }
