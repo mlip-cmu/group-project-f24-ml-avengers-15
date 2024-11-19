@@ -28,8 +28,10 @@ import uuid
 
 MLFLOW_URI = "http://mlflow:6001"
 EXPERIMENT_NAME = "Movie Recommendation Predictions"
-mlflow.set_tracking_uri(MLFLOW_URI)
-mlflow.set_experiment(EXPERIMENT_NAME)
+
+if os.getenv("TESTING") != "1":
+    mlflow.set_tracking_uri(MLFLOW_URI)
+    mlflow.set_experiment(EXPERIMENT_NAME)
 
 # Initialize Flask app
 app = Flask(__name__, template_folder='experiments/templates')

@@ -9,6 +9,7 @@ pipeline {
         LOCAL_PORT = credentials('LOCAL_PORT')
         PYTHONPATH = "${WORKSPACE}"
         PROJECT_NAME = "group-project-f24-ml-avengers-15"
+        TESTING = "1"
 
     }
 
