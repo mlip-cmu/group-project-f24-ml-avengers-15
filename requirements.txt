@@ -55,4 +55,5 @@ seaborn
 matplotlib
 scipy
 kafka-python-ng==2.2.3
+prometheus_clinet==0.21.0
 
