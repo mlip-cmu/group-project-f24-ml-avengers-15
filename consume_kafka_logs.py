@@ -6,7 +6,7 @@ from datetime import datetime
 import os
 
 
-def consume_kafka_logs(limit=1000):
+def consume_kafka_logs(limit=60000):
     TOPIC_NAME = "movielog15"
     rate_pattern = re.compile(r'^.*?,\d+,GET /rate/.*?=\d+$')
 
@@ -64,7 +64,6 @@ def consume_kafka_logs(limit=1000):
                 })
                 
                 message_count += 1
-                print(message_count)
 
                 if message_count >= limit:
                     break
