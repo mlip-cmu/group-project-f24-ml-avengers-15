@@ -219,13 +219,13 @@ def recommend_movies(user_id):
         latency = (time.time() - start_time_inner) * 1000 
             # mlflow.log_metric("latency_seconds", latency)
         
-        log_prediction_provenance(
-            model_id=model_id,
-            response_time=latency,
-            status_code=200,  
-            recommendations=recommendations,
-            user_id=user_id
-        )
+        # log_prediction_provenance(
+        #     model_id=model_id,
+        #     response_time=latency,
+        #     status_code=200,  
+        #     recommendations=recommendations,
+        #     user_id=user_id
+        # )
 
         user_ratings = utils.get_user_ratings(user_id)
         rmse=None
@@ -285,13 +285,13 @@ def recommend_movies(user_id):
 
         response_time = (time.time() - start_time_inner) * 1000 
 
-        log_prediction_provenance(
-            model_id="unknown",
-            response_time=response_time,
-            status_code=500,  # Error status
-            recommendations=[],
-            user_id=user_id
-        )
+        # log_prediction_provenance(
+        #     model_id="unknown",
+        #     response_time=response_time,
+        #     status_code=500,  # Error status
+        #     recommendations=[],
+        #     user_id=user_id
+        # )
 
 
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
