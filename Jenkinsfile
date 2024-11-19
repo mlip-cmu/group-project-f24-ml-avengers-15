@@ -30,6 +30,7 @@ pipeline {
                 echo 'Starting Kafka data consumer...'
                 sh '''
                 . venv/bin/activate
+                ssh -o ServerAliveInterval=60 -L 9092:localhost:9092 tunnel@128.2.204.215 -NTf
                 python consume_kafka_logs.py 
                 deactivate
                 '''
