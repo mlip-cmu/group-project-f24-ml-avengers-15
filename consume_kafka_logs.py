@@ -6,7 +6,7 @@ from datetime import datetime
 import os
 
 
-def consume_kafka_logs(limit=100000):
+def consume_kafka_logs(limit=1000):
     TOPIC_NAME = "movielog15"
     rate_pattern = re.compile(r'^.*?,\d+,GET /rate/.*?=\d+$')
 
@@ -64,6 +64,7 @@ def consume_kafka_logs(limit=100000):
                 })
                 
                 message_count += 1
+                print(message_count)
 
                 if message_count >= limit:
                     break
@@ -93,5 +94,5 @@ def save_data_to_csv(data, output_path="data/extracted_ratings.csv"):
 
 
 if __name__ == "__main__":
-    latest_data = consume_kafka_logs(limit=100000)
+    latest_data = consume_kafka_logs()
     save_data_to_csv(latest_data, output_path="data/extracted_ratings.csv")
