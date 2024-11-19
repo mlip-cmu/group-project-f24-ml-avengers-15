@@ -5,6 +5,7 @@ import pandas as pd
 import logging
 from config import MODEL_PATH, BACKUP_MODEL_PATH, MODEL_PATH_2, BACKUP_MODEL_PATH_2
 from utils import prepare_data_model, train_model, evaluate, train_model2
+from app import log_retraining_provenance 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -74,7 +75,10 @@ def main():
 
         logging.info("Training the model...")
         model, training_time_ms = train_model(train_data, MODEL_PATH)
-        model2, training_time_ms = train_model2(train_data, MODEL_PATH_2)
+        model2, training_time_ms2 = train_model2(train_data, MODEL_PATH_2)
+
+        log_retraining_provenance(model_id="SVD_movie_recommender.pkl", training_duration=training_time_ms / 1000, training_data_path="data/extracted_ratings.csv")
+        log_retraining_provenance(model_id="SVD_movie_recommender_2.pkl", training_duration=training_time_ms2 / 1000, training_data_path="data/extracted_ratings.csv")
 
         rmse = evaluate(model, valid_data)
         rmse2 = evaluate(model2, valid_data)

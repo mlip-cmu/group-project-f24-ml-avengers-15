@@ -6,6 +6,7 @@ import os
 import traceback
 from config import MODEL_PATH, MODEL_PATH_2
 import hashlib
+import pandas as pd
 import time
 import signal
 import json
@@ -18,24 +19,16 @@ import mlflow
 import uuid
 import logging
 
-# IS_TESTING = os.getenv("TESTING", "false").lower() == "true"
-# IS_ONLINE_EVALUATION = os.getenv("ONLINE_EVALUATION", "false").lower() == "true"
+IS_TESTING = os.getenv("TESTING", "false").lower() == "true"
+IS_ONLINE_EVALUATION = os.getenv("ONLINE_EVALUATION", "false").lower() == "true"
 
-# def initialize_mlflow():
-#     """Initialize mlflow tracking URI and experiment."""
-#     uri = "http://mlflow:6001"
-#     mlflow.set_tracking_uri(uri)
-#     experiment_name = "Movie Recommendation Predictions"
-#     mlflow.set_experiment(experiment_name)
-
-# if not IS_TESTING and not IS_ONLINE_EVALUATION:
-#     initialize_mlflow()
 
 # Initialize Flask app
 app = Flask(__name__, template_folder='experiments/templates')
 app.register_blueprint(experiment_api)
 
 SERVER_IP = os.getenv("TEAM_15_SERVER_IP")
+JENKINS_BUILD_NUMBER = os.getenv("BUILD_NUMBER", "unknown")  
 MOVIES_CSV = os.path.join("data", "movies.csv")
 
 kafka_server = kafka.KafkaServerApi()
@@ -54,6 +47,16 @@ MODEL_ACCURACY = Gauge('model_accuracy', 'Precision at K (e.g., Precision@10) of
 # Start time
 start_time = time.time()
 
+model_parameters = {
+    "SVD_movie_recommender.pkl": {
+        'model_version': 'SVDv1',
+        'parameters': {'n_factors': 100, 'n_epochs': 20, 'biased': True, 'lr_all': 0.005, 'reg_all': 0.02},
+    },
+    "SVD_movie_recommender_2.pkl": {
+        'model_version': 'SVDv2',
+        'parameters': {'n_factors': 50, 'n_epochs': 10, 'biased': True, 'lr_all': 0.001, 'reg_all': 0.5},
+    },
+}
 # Load all models and keep in a dictionary
 models = {}
 for path in [MODEL_PATH, MODEL_PATH_2]:
@@ -68,6 +71,62 @@ train_df, val_df = utils.prepare_data_csv(ratings_file)
 train_data, valid_data = utils.prepare_data_model(train_df, val_df)
 all_movies_list = train_df['movie_id'].unique().tolist()
 user_movie_list = train_df.groupby('user_id')['movie_id'].apply(set).to_dict()
+
+if not IS_TESTING and not IS_ONLINE_EVALUATION:
+    mlflow.set_tracking_uri("http://mlflow:6001")
+    mlflow.set_experiment("Movie Recommendation Predictions")
+
+def log_prediction_provenance(model_id, response_time, status_code, recommendations, user_id):
+
+    pipeline_version = JENKINS_BUILD_NUMBER  # Track Jenkins pipeline version
+    model_info = model_parameters.get(model_id, {})
+    run_id = uuid.uuid4()
+    with mlflow.start_run(run_name=f"Prediction-{run_id}"):
+
+        mlflow.set_tag("Model ID", model_id)
+        mlflow.set_tag("Model Version", model_info.get('model_version', 'Unknown'))
+        mlflow.set_tag("Pipeline Version", pipeline_version)
+
+        mlflow.log_params(model_info.get('parameters', {}))
+        mlflow.log_param("response_time_ms", response_time)
+        mlflow.log_param("status_code", status_code)
+
+        # mlflow.log_artifact(ratings_file, artifact_path="training_data")
+
+        mlflow.log_param("training_data_path", ratings_file) 
+        mlflow.log_dict(
+            {"user_id": user_id, "recommendations": recommendations},
+            artifact_file=f"recommendations_{user_id}_{run_id}.json"
+        )
+
+def log_retraining_provenance(model_id, training_duration, training_data_path):
+    
+    pipeline_version = JENKINS_BUILD_NUMBER  #
+    model_info = model_parameters.get(model_id, {})
+    parameters = model_info.get('parameters', {}) 
+    run_id = uuid.uuid4()
+
+    with mlflow.start_run(run_name=f"Retraining-{run_id}"):
+        # Log model metadata
+        mlflow.set_tag("Model ID", model_id)
+        mlflow.set_tag("Model Version", model_info.get('model_version', 'Unknown'))
+        mlflow.set_tag("Pipeline Version", pipeline_version)
+
+        # Log training details
+        mlflow.log_param("training_data_path", training_data_path)
+        mlflow.log_param("model_parameters", json.dumps(parameters))  
+        mlflow.log_metric("training_duration_seconds", training_duration)
+
+        # Save full training data as an artifact
+        mlflow.log_dict(
+            {
+                "model_id": model_id,
+                "model_version": model_info.get('model_version', 'Unknown'),
+                "parameters": parameters
+            },
+            artifact_file=f"model_parameters_{model_id}_{run_id}.json"
+        )
+
 
 # Function to calculate Precision@K
 def calculate_precision_at_k(user_recommendations, user_relevant_movies, k=10):
@@ -155,72 +214,17 @@ def recommend_movies(user_id):
                 selected_model, user_id, all_movies_list, user_movie_list, K=20
             )
 
-        # Define model parameters for logging
-        # model_parameters = {
-        #     "SVD_movie_recommender.pkl": {
-        #         'model_version': 'SVDv1',
-        #         'parameters': {'n_factors': 100, 'n_epochs': 20, 'biased': True, 'lr_all': 0.005, 'reg_all': 0.02},
-        #     },
-        #     "SVD_movie_recommender_2.pkl": {
-        #         'model_version': 'SVDv2',
-        #         'parameters': {'n_factors': 50, 'n_epochs': 10, 'biased': True, 'lr_all': 0.001, 'reg_all': 0.5},
-        #     },
-        # }
-
-        # model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
-        # pipeline_version = os.popen("git rev-parse --short HEAD || echo 'unknown'").read().strip()
-
-        # training_data_info = {
-        #     "file_path": ratings_file,
-        #     "split_ratio": 0.8,
-        #     "record_count": len(train_data.raw_ratings),
-        # }
-
-        # prediction_counter += 1
-        # uuid_name = uuid.uuid4()
-        # run_name = f"Recommendation-{model_info['model_version']}-Pred-{uuid_name}"
-
-        # Ensure no lingering active MLflow run persists before starting a new one
-        # mlflow.end_run()
-
-        # Start a new MLflow run
-        # with mlflow.start_run(run_name=run_name, nested=True) as run:
-        #     # Log metadata and parameters
-        #     mlflow.set_tag("Model Type", "SVD")
-        #     mlflow.set_tag("Model Version", model_info['model_version'])
-        #     mlflow.set_tag("Pipeline Version", pipeline_version)
-            # mlflow.log_params(model_info['parameters'])
-
-            # Log static artifacts
-            # if not hasattr(app, "static_artifacts_logged"):
-            #     mlflow.log_artifact(ratings_file, artifact_path="training_data")
-            #     app.static_artifacts_logged = True  # Ensure static artifacts are logged only once
-
-            # mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
-
-            # Generate recommendations
-
-            # Log recommendations
-            # recommendations_file = f"recommendations_{user_id}_{uuid_name}.json"
-            # with open(recommendations_file, "w") as rec_file:
-            #     json.dump({"user_id": user_id, "recommendations": recommendations}, rec_file)
-            # mlflow.log_artifact(recommendations_file, artifact_path="predictions")
-
-            # Log provenance information
-            # provenance_info = {
-            #     "model_version": model_info['model_version'],
-            #     "parameters": model_info['parameters'],
-            #     "pipeline_version": pipeline_version,
-            #     "training_data": training_data_info,
-            # }
-            # provenance_file = "provenance_info_{user_id}_{uuid_name}.json"
-            # with open(provenance_file, "w") as prov_file:
-            #     json.dump(provenance_info, prov_file)
-            # mlflow.log_artifact(provenance_file, artifact_path="provenance")
-
             # Log metrics
-        latency = time.time() - start_time_inner
+        latency = (time.time() - start_time_inner) * 1000 
             # mlflow.log_metric("latency_seconds", latency)
+        
+        log_prediction_provenance(
+            model_id=model_id,
+            response_time=latency,
+            status_code=200,  
+            recommendations=recommendations,
+            user_id=user_id
+        )
 
         user_ratings = utils.get_user_ratings(user_id)
         rmse=None
@@ -247,6 +251,7 @@ def recommend_movies(user_id):
         REQUEST_LATENCY.observe(latency)
         uptime = int(time.time() - start_time)
         UPTIME_SECONDS.set(uptime)
+
 
             # Calculate Precision@10
         precision_at_10 = 0.0  # Default value in case of errors
@@ -276,6 +281,18 @@ def recommend_movies(user_id):
         HEALTH_CHECK_FAILURE.inc()
         print(f"Error in recommend_movies: {e}")
         traceback.print_exc()
+
+        response_time = (time.time() - start_time_inner) * 1000 
+
+        log_prediction_provenance(
+            model_id="unknown",
+            response_time=response_time,
+            status_code=500,  # Error status
+            recommendations=[],
+            user_id=user_id
+        )
+
+
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
         return jsonify({'error': str(e)}), 500
 
