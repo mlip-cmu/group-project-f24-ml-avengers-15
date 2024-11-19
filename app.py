@@ -54,11 +54,12 @@ all_movies_list = train_df['movie_id'].unique().tolist()
 user_movie_list = train_df.groupby('user_id')['movie_id'].apply(set).to_dict()
 
 def cleanup_experiments():
-    """Clean up all active experiments."""
+    """Clean up all active experiments"""
     print("Cleaning up experiments before shutdown...")
+    # Get a list of experiment names first to avoid dictionary modification during iteration
     active_experiments = experiment_manager.get_active_experiments()
     experiment_names = list(active_experiments.keys())
-
+    
     for exp_name in experiment_names:
         try:
             experiment_manager.delete_experiment(exp_name)
@@ -74,6 +75,7 @@ def signal_handler(signum, frame):
     sys.exit(0)
 
 # Register cleanup handlers
+
 atexit.register(cleanup_experiments)
 signal.signal(signal.SIGTERM, signal_handler)
 signal.signal(signal.SIGINT, signal_handler)
@@ -94,36 +96,48 @@ def select_model(user_id):
     return default_model_id, models[default_model_id]
 
 def recommend_movies(user_id):
-    """Recommend movies for a user."""
-    REQUEST_COUNT.inc()
+    """Recommend movies for a user"""
+    REQUEST_COUNT.inc()  # Increment request count for every recommendation request
     try:
-        start_time = time.time()
+        start_time_inner = time.time()
         model_id, selected_model = select_model(user_id)
         recommendations = utils.predict(selected_model, user_id, all_movies_list, user_movie_list)
-        SUCCESSFUL_REQUESTS.inc()
-        REQUEST_LATENCY.observe(time.time() - start_time)
+        latency = time.time() - start_time
+        SUCCESSFUL_REQUESTS.inc()  # Increment successful request count
+        REQUEST_LATENCY.observe(time.time() - start_time_inner)  # Observe request latency
+        
+        # Calculate uptime and set Prometheus uptime metric
         uptime = int(time.time() - start_time)
         UPTIME_SECONDS.set(uptime)
 
-        # Update model accuracy metric
-        precision_at_10 = 0.0
-        try:
-            with open("evaluation/online_evaluation_output.txt", "r") as f:
-                for line in f:
-                    if "Precision@10:" in line:
-                        precision_at_10 = float(line.split("Precision@10:")[1].strip())
-                        break
-        except Exception as file_error:
-            print(f"Error reading precision from file: {file_error}")
-        MODEL_ACCURACY.set(precision_at_10)
-
-        return recommendations
+        # Calculate RMSE if actual ratings are available
+        user_ratings = utils.get_user_ratings(user_id)
+        if user_ratings:
+            movie_ids = [movie_id for movie_id, _ in user_ratings]
+            actual_ratings = user_ratings
+            predicted_values = utils.get_predicted_ratings(selected_model, user_id, movie_ids)
+            predicted_ratings = list(zip(movie_ids, predicted_values))
+            rmse = utils.calculate_rmse(predicted_ratings, actual_ratings)
+            
+            # Record RMSE and latency in experiments
+            for experiment in experiment_manager.active_experiments.values():
+                if model_id in [experiment.model_a_id, experiment.model_b_id]:
+                    experiment_manager.record_performance(
+                        experiment.name,
+                        model_id,
+                        1 - rmse,
+                        latency
+                    )
+        else:
+            pass
+        
+        return jsonify(recommendations)
     except Exception as e:
         FAILED_REQUESTS.inc()
         HEALTH_CHECK_FAILURE.inc()
         print(f"Error in recommend_movies: {e}")
         traceback.print_exc()
-        return []
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/recommend/<int:user_id>', methods=['GET'])
 def recommend(user_id):
@@ -142,6 +156,11 @@ def experiments_dashboard():
 @app.route('/metrics', methods=['GET'])
 def metrics():
     return generate_latest(), 200, {'Content-Type': CONTENT_TYPE_LATEST}
+
+
+@app.route('/experiments/dashboard')
+def experiments_dashboard():
+    return render_template('experiments.html')
 
 if __name__ == '__main__':
     try:
