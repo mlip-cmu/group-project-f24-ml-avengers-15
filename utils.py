@@ -120,7 +120,7 @@ def predict(model, user_id, movie_list, user_movie_list, K=20):
         recommended_ids = [movie for _, movie in scores[:K]]
         
         # Return movie IDs as-is without modification
-        return recommended_ids
+        return ",".join(recommended_ids)
     except Exception as e:
         print(f"Error in predict: {str(e)}")
         return []

@@ -214,7 +214,6 @@ def recommend_movies(user_id):
         recommendations = utils.predict(
                 selected_model, user_id, all_movies_list, user_movie_list, K=20
             )
-        recommendations_str = ",".join(recommendations)
 
             # Log metrics
         latency = (time.time() - start_time_inner) * 1000 
@@ -275,7 +274,7 @@ def recommend_movies(user_id):
 
             # Return recommendations
         # return jsonify(recommendations)
-        return PlainTextResponse(recommendations_str)
+        return PlainTextResponse(recommendations)
 
     except Exception as e:
         # Handle and log errors
