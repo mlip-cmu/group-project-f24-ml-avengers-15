@@ -18,6 +18,7 @@ from prometheus_client import Counter, Gauge, Histogram, generate_latest, CONTEN
 import mlflow
 import uuid
 import logging
+from fastapi.responses import PlainTextResponse
 
 IS_TESTING = os.getenv("TESTING", "false").lower() == "true"
 IS_ONLINE_EVALUATION = os.getenv("ONLINE_EVALUATION", "false").lower() == "true"
@@ -213,18 +214,19 @@ def recommend_movies(user_id):
         recommendations = utils.predict(
                 selected_model, user_id, all_movies_list, user_movie_list, K=20
             )
+        recommendations_str = ",".join(recommendations)
 
             # Log metrics
         latency = (time.time() - start_time_inner) * 1000 
             # mlflow.log_metric("latency_seconds", latency)
         
-        # log_prediction_provenance(
-        #     model_id=model_id,
-        #     response_time=latency,
-        #     status_code=200,  
-        #     recommendations=recommendations,
-        #     user_id=user_id
-        # )
+        log_prediction_provenance(
+            model_id=model_id,
+            response_time=latency,
+            status_code=200,  
+            recommendations=recommendations,
+            user_id=user_id
+        )
 
         user_ratings = utils.get_user_ratings(user_id)
         rmse=None
@@ -272,7 +274,8 @@ def recommend_movies(user_id):
         HEALTH_CHECK_SUCCESS.inc()
 
             # Return recommendations
-        return jsonify(recommendations)
+        # return jsonify(recommendations)
+        return PlainTextResponse(recommendations_str)
 
     except Exception as e:
         # Handle and log errors
