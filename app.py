@@ -184,6 +184,10 @@ def recommend_movies(user_id):
             recommendations = utils.predict(
                 selected_model, user_id, all_movies_list, user_movie_list, K=20
             )
+            SUCCESSFUL_REQUESTS.inc()
+            REQUEST_LATENCY.observe(time.time() - start_time)
+            uptime = int(time.time() - start_time)
+            UPTIME_SECONDS.set(uptime)
 
             # Log recommendations
 
@@ -224,6 +228,22 @@ def recommend_movies(user_id):
                             1 - rmse,  # Already normalized
                             latency
                         )
+        precision_at_10 = 0.0  # Default value in case of errors
+        try:
+            with open("evaluation/online_evaluation_output.txt", "r") as f:
+                for line in f:
+                    if "Precision@10:" in line:
+                        # Extract the precision value from the line
+                        precision_at_10 = float(line.split("Precision@10:")[1].strip())
+                        print(precision_at_10)
+                        break
+        except Exception as file_error:
+            print(f"Error reading precision from file: {file_error}")
+
+        # Update Prometheus metric with the precision value
+        MODEL_ACCURACY.set(precision_at_10)
+
+        HEALTH_CHECK_SUCCESS.inc()
 
         return jsonify(recommendations)
       
@@ -231,6 +251,7 @@ def recommend_movies(user_id):
         FAILED_REQUESTS.inc()
         HEALTH_CHECK_FAILURE.inc()
         print(f"Error in recommend_movies: {e}")
+        REQUEST_LATENCY.observe(time.time() - start_time)
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
