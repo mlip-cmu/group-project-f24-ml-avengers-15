@@ -185,7 +185,7 @@ def recommend_movies(user_id):
                 selected_model, user_id, all_movies_list, user_movie_list, K=20
             )
             SUCCESSFUL_REQUESTS.inc()
-            REQUEST_LATENCY.observe(time.time() - start_time)
+            REQUEST_LATENCY.observe(time.time() - start_time_inner)
             uptime = int(time.time() - start_time)
             UPTIME_SECONDS.set(uptime)
 
