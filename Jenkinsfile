@@ -25,7 +25,6 @@ pipeline {
             }
         }
 
-
         stage('Consume Data from Kafka') {
             steps {
                 echo 'Starting Kafka data consumer...'
@@ -34,14 +33,6 @@ pipeline {
                 python consume_kafka_logs.py 
                 deactivate
                 '''
-            }
-        }
-
-        stage('Cleanup Kafka Tunnel') {
-            steps {
-                script {
-                    sh 'pkill -f "ssh -o ServerAliveInterval=60 -L 9092:localhost:9092" || true'
-                }
             }
         }
 
