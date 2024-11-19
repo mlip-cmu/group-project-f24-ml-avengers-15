@@ -13,7 +13,7 @@ import atexit
 from experiments.experiment_manager import ExperimentManager
 from experiments.api import experiment_api
 from prometheus_client import Counter, Gauge, Histogram, generate_latest, CONTENT_TYPE_LATEST
-from evaluation.online_evaluation import evaluate_snapshot
+
 
 # Initialize Flask app
 app = Flask(__name__, template_folder='experiments/templates')
@@ -53,13 +53,45 @@ train_data, valid_data = utils.prepare_data_model(train_df, val_df)
 all_movies_list = train_df['movie_id'].unique().tolist()
 user_movie_list = train_df.groupby('user_id')['movie_id'].apply(set).to_dict()
 
+# Function to calculate Precision@K
+def calculate_precision_at_k(user_recommendations, user_relevant_movies, k=10):
+    total_precision = 0
+    total_users = 0
+
+    for user_id, rec_movies in user_recommendations.items():
+        relevant_movies = user_relevant_movies.get(user_id, set())
+        if relevant_movies:
+            top_k_recommendations = set(rec_movies[:k])  # Get top K recommendations
+            relevant_count = len(top_k_recommendations.intersection(relevant_movies))
+            precision = relevant_count / k  
+            total_precision += precision
+            total_users += 1
+
+    return total_precision / total_users if total_users > 0 else 0  # Average Precision@K over users
+
+def get_user_relevant_movies(df, rating_threshold=4):
+    return df[df['rating'] >= rating_threshold].groupby('user_id')['movie_id'].apply(set).to_dict()
+
+def evaluate_snapshot():
+    try:
+        snapshot_df = pd.read_csv(os.path.join(base_dir, "data", "extracted_ratings.csv"))
+        user_relevant_movies = get_user_relevant_movies(snapshot_df)
+        user_recommendations = {user_id: recommend_movies(user_id) for user_id in user_relevant_movies.keys()}
+        
+        # Calculate Precision@K
+        precision = calculate_precision_at_k(user_recommendations, user_relevant_movies, 10)
+        with open("online_evaluation_output.txt", 'w') as f:
+            f.write(f"Precision@10: {precision:.4f}\n")
+    
+    except Exception as e:
+        with open("online_evaluation_output.txt", 'w') as f:
+            f.write(f"An error occurred while calculating Precision@K: {e}")
 def cleanup_experiments():
-    """Clean up all active experiments"""
+    """Clean up all active experiments."""
     print("Cleaning up experiments before shutdown...")
-    # Get a list of experiment names first to avoid dictionary modification during iteration
     active_experiments = experiment_manager.get_active_experiments()
     experiment_names = list(active_experiments.keys())
-    
+
     for exp_name in experiment_names:
         try:
             experiment_manager.delete_experiment(exp_name)
@@ -75,7 +107,6 @@ def signal_handler(signum, frame):
     sys.exit(0)
 
 # Register cleanup handlers
-
 atexit.register(cleanup_experiments)
 signal.signal(signal.SIGTERM, signal_handler)
 signal.signal(signal.SIGINT, signal_handler)
@@ -143,11 +174,11 @@ def recommend_movies(user_id):
 def recommend(user_id):
     try:
         recommendations = recommend_movies(user_id)
-        return jsonify(recommendations)
+        return recommendations
     except Exception as e:
         print(f"An error occurred while generating recommendations: {e}")
         traceback.print_exc()
-        return jsonify({'error': str(e)}), 500
+        return []
 
 @app.route('/experiments/dashboard')
 def experiments_dashboard():
@@ -158,12 +189,8 @@ def metrics():
     return generate_latest(), 200, {'Content-Type': CONTENT_TYPE_LATEST}
 
 
-@app.route('/experiments/dashboard')
-def experiments_dashboard():
-    return render_template('experiments.html')
-
 if __name__ == '__main__':
     try:
-        app.run(host='0.0.0.0', port=8082)
+        app.run(host='0.0.0.0', port=8083)
     finally:
         cleanup_experiments()
