@@ -137,12 +137,12 @@ def select_model(user_id):
 
 prediction_counter = 0
 def recommend_movies(user_id):
-    global prediction_counter 
+    global prediction_counter
     """Recommend movies for a user"""
     REQUEST_COUNT.inc()  # Increment request count for every recommendation request
     try:
         # Check and end any active MLflow run
-        if mlflow.active_run() is not None:
+        if mlflow.active_run():
             mlflow.end_run()
 
         start_time_inner = time.time()
@@ -172,7 +172,7 @@ def recommend_movies(user_id):
         prediction_counter += 1
         run_name = f"Recommendation-{model_info['model_version']}-Pred{prediction_counter}"
 
-        with mlflow.start_run(run_name=run_name):  # Start a new run
+        with mlflow.start_run(run_name=run_name, nested=True):  # Start a new run
             mlflow.set_tag("Model Type", "SVD")
             mlflow.set_tag("Model Version", model_info['model_version'])
             mlflow.set_tag("Pipeline Version", pipeline_version)
@@ -224,9 +224,6 @@ def recommend_movies(user_id):
                             latency
                         )
 
-        # Explicitly end the MLflow run
-        mlflow.end_run()
-
         SUCCESSFUL_REQUESTS.inc()  # Increment successful request count
         return jsonify(recommendations)
 
@@ -235,10 +232,12 @@ def recommend_movies(user_id):
         HEALTH_CHECK_FAILURE.inc()
         print(f"Error in recommend_movies: {e}")
         traceback.print_exc()
-        if mlflow.active_run() is not None:
-            mlflow.end_run()  # Ensure the active run is ended in case of an error
         return jsonify({'error': str(e)}), 500
 
+    finally:
+        # Ensure the active run is ended after every request
+        if mlflow.active_run():
+            mlflow.end_run()
 @app.route('/recommend/<int:user_id>', methods=['GET'])
 def recommend(user_id):
     try:
