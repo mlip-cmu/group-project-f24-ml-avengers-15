@@ -168,7 +168,7 @@ def recommend_movies(user_id):
         }
 
         model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
-        # pipeline_version = os.popen("git rev-parse --short HEAD").read().strip()
+        pipeline_version = os.popen("git rev-parse --short HEAD").read().strip()
 
         training_data_info = {
             "file_path": ratings_file,
@@ -185,7 +185,7 @@ def recommend_movies(user_id):
 
         mlflow.set_tag("Model Type", "SVD")
         mlflow.set_tag("Model Version", model_info['model_version'])
-        # mlflow.set_tag("Pipeline Version", pipeline_version)
+        mlflow.set_tag("Pipeline Version", pipeline_version)
         mlflow.log_params(model_info['parameters'])
         mlflow.log_artifact(ratings_file, artifact_path="training_data")
         mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
@@ -205,7 +205,7 @@ def recommend_movies(user_id):
         provenance_info = {
             "model_version": model_info['model_version'],
             "parameters": model_info['parameters'],
-            # "pipeline_version": pipeline_version,
+            "pipeline_version": pipeline_version,
             "training_data": training_data_info,
         }
         provenance_file = "provenance_info.json"
