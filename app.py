@@ -82,7 +82,7 @@ def log_prediction_provenance(model_id, response_time, status_code, recommendati
     pipeline_version = JENKINS_BUILD_NUMBER  # Track Jenkins pipeline version
     model_info = model_parameters.get(model_id, {})
     run_id = uuid.uuid4()
-    with mlflow.start_run(run_name=f"Prediction-{run_id}", nested=True):
+    with mlflow.start_run(run_name=f"Prediction-{run_id}"):
 
         mlflow.set_tag("Model ID", model_id)
         mlflow.set_tag("Model Version", model_info.get('model_version', 'Unknown'))
