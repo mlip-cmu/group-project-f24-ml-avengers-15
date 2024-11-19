@@ -19,7 +19,7 @@ import uuid
 import logging
 
 IS_TESTING = os.getenv("TESTING", "false").lower() == "true"
-
+IS_ONLINE_EVALUATION = os.getenv("ONLINE_EVALUATION", "false").lower() == "true"
 
 def initialize_mlflow():
     """Initialize mlflow tracking URI and experiment."""
@@ -28,7 +28,7 @@ def initialize_mlflow():
     experiment_name = "Movie Recommendation Predictions"
     mlflow.set_experiment(experiment_name)
 
-if not IS_TESTING:
+if not IS_TESTING and not IS_ONLINE_EVALUATION:
     initialize_mlflow()
 
 # Initialize Flask app
