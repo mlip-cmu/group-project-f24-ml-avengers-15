@@ -2,21 +2,21 @@ version: '3.8'
 
 services:
 
-  # mlflow:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.mlflow_service
-  #   container_name: mlflow-service
-  #   ports:
-  #     - "6001:6001"
-  #   volumes:
-  #     - ./mlruns:/app/mlruns
-  #   restart: unless-stopped
-  #   healthcheck:
-  #     test: [ "CMD-SHELL", "curl -f http://0.0.0.0:6001 || exit 1" ]
-  #     interval: 5s
-  #     timeout: 5s
-  #     retries: 3
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow_service
+    container_name: mlflow-service
+    ports:
+      - "6001:6001"
+    volumes:
+      - ./mlruns:/app/mlruns
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://0.0.0.0:6001 || exit 1" ]
+      interval: 5s
+      timeout: 5s
+      retries: 3
 
   recommender-service:
     build:
