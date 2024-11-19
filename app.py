@@ -73,7 +73,7 @@ all_movies_list = train_df['movie_id'].unique().tolist()
 user_movie_list = train_df.groupby('user_id')['movie_id'].apply(set).to_dict()
 
 if not IS_TESTING and not IS_ONLINE_EVALUATION:
-    mlflow.set_tracking_uri("http://mlflow:6001")
+    mlflow.set_tracking_uri("http://mlflow-service:6001")
     mlflow.set_experiment("Movie Recommendation Predictions")
 
 def log_prediction_provenance(model_id, response_time, status_code, recommendations, user_id):
