@@ -10,6 +10,7 @@ pipeline {
         PYTHONPATH = "${WORKSPACE}"
         PROJECT_NAME = "group-project-f24-ml-avengers-15"
         TESTING = "1"
+        BUILD_NUMBER = "${env.BUILD_NUMBER}" 
 
     }
 
