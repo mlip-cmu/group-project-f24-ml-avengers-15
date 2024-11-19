@@ -1,6 +1,4 @@
 # test_data_qualitycheck.py
-import sys
-import os
 import pytest
 import os
 import sys
@@ -10,7 +8,6 @@ project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(project_root)
 
 from evaluation.data_qualitycheck import check_timestamp_format, validate_user_id_format, check_watch_action, validate_rating_value, validate_recommend_result_structure, verify_action_schema, assess_log_entry
-
 
 # Timestamp validation tests
 @pytest.mark.parametrize("timestamp,expected", [

@@ -148,7 +148,7 @@ pipeline {
                 script {
                     echo 'Deploying Using Docker Compose'
                     sh '''
-                    docker-compose -p ${PROJECT_NAME} down || true
+                    docker-compose -p ${PROJECT_NAME} down --volumes || true
                     docker-compose -p ${PROJECT_NAME} up -d --build
                     '''
                 }

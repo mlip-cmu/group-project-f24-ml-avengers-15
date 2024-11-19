@@ -1,0 +1,17 @@
+# Base image
+FROM python:3.11-slim
+
+# Install system-level dependencies
+RUN apt-get update && apt-get install -y curl
+
+# Install MLflow
+RUN pip install mlflow
+
+# Expose MLflow port
+EXPOSE 6001
+
+# Set working directory
+WORKDIR /app
+
+# Run MLflow UI
+CMD ["mlflow", "ui", "--backend-store-uri", "./mlruns", "--port", "6001", "--host", "0.0.0.0"]
