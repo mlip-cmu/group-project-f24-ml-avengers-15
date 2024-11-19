@@ -107,10 +107,21 @@ def predict(model, user_id, movie_list, user_movie_list, K=20):
     scores = []
 
     try:
+        # Load valid movie IDs from mapping file
+        movie_mapping_file = os.path.join(BASE_DIR, 'data', 'movie_id_mapping.csv')
+        valid_movies = set()
+        if os.path.exists(movie_mapping_file):
+            valid_movies = set(pd.read_csv(movie_mapping_file)['movie_id'].str.lower())
+
         # Convert user_id to int but leave movie_ids as strings
         user_id_int = int(user_id)
         
         for movie in movie_list:
+            # Skip if movie not in mapping file
+            movie_id = movie.replace(' ', '+').lower()
+            if movie_id not in valid_movies:
+                continue
+                
             if user_id in user_movie_list and movie in user_movie_list[user_id]:
                 continue
             prediction = model.predict(user_id_int, movie)
@@ -120,7 +131,9 @@ def predict(model, user_id, movie_list, user_movie_list, K=20):
         recommended_ids = [movie for _, movie in scores[:K]]
         
         # Return movie IDs as-is without modification
-        return recommended_ids
+        # return recommended_ids
+        replaced_list = [movie_id.replace(' ', '+').lower() for movie_id in recommended_ids]
+        return replaced_list
     except Exception as e:
         print(f"Error in predict: {str(e)}")
         return []

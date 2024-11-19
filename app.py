@@ -102,6 +102,7 @@ def evaluate_snapshot():
     except Exception as e:
         with open("online_evaluation_output.txt", 'w') as f:
             f.write(f"An error occurred while calculating Precision@K: {e}")
+            
 def cleanup_experiments():
     """Clean up all active experiments."""
     print("Cleaning up experiments before shutdown...")
