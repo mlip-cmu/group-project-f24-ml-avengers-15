@@ -25,6 +25,10 @@ from threading import local
 #     experiment_name = "Movie Recommendation Predictions"
 #     mlflow.set_experiment(experiment_name)
 
+MLFLOW_URI = "http://mlflow:6001"
+EXPERIMENT_NAME = "Movie Recommendation Predictions"
+mlflow.set_tracking_uri(MLFLOW_URI)
+mlflow.set_experiment(EXPERIMENT_NAME)
 
 # Initialize Flask app
 app = Flask(__name__, template_folder='experiments/templates')
@@ -155,29 +159,35 @@ def recommend_movies(user_id):
         start_time_inner = time.time()
         model_id, selected_model = select_model(user_id)
 
+
         # # Define model parameters for logging
-        # model_parameters = {
-        #     "SVD_movie_recommender.pkl": {
-        #         'model_version': 'SVDv1',
-        #         'parameters': {'n_factors': 100, 'n_epochs': 20, 'biased': True, 'lr_all': 0.005, 'reg_all': 0.02},
-        #     },
-        #     "SVD_movie_recommender_2.pkl": {
-        #         'model_version': 'SVDv2',
-        #         'parameters': {'n_factors': 50, 'n_epochs': 10, 'biased': True, 'lr_all': 0.001, 'reg_all': 0.5},
-        #     },
-        # }
+        model_parameters = {
+            "SVD_movie_recommender.pkl": {
+                'model_version': 'SVDv1',
+                'parameters': {'n_factors': 100, 'n_epochs': 20, 'biased': True, 'lr_all': 0.005, 'reg_all': 0.02},
+            },
+            "SVD_movie_recommender_2.pkl": {
+                'model_version': 'SVDv2',
+                'parameters': {'n_factors': 50, 'n_epochs': 10, 'biased': True, 'lr_all': 0.001, 'reg_all': 0.5},
+            },
+        }
 
-        # model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
-        # pipeline_version = os.popen("git rev-parse --short HEAD").read().strip()
+        model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
+        pipeline_version = os.popen("git rev-parse --short HEAD").read().strip()
 
-        # training_data_info = {
-        #     "file_path": ratings_file,
-        #     "split_ratio": 0.8,
-        #     "record_count": len(train_data.raw_ratings),
-        # }
+        training_data_info = {
+            "file_path": ratings_file,
+            "split_ratio": 0.8,
+            "record_count": len(train_data.raw_ratings),
+        }
 
-        # prediction_counter += 1
-        # run_name = f"Recommendation-{model_info['model_version']}-Pred{prediction_counter}"
+        prediction_counter += 1
+        run_name = f"Recommendation-{model_info['model_version']}-Pred{prediction_counter}"
+
+        # Generate recommendations
+        recommendations = utils.predict(
+            selected_model, user_id, all_movies_list, user_movie_list, K=20
+        )
 
         # # Start a new MLflow run with nesting enabled
         # run = mlflow.start_run(run_name=run_name, nested=True)
@@ -190,10 +200,7 @@ def recommend_movies(user_id):
         # mlflow.log_artifact(ratings_file, artifact_path="training_data")
         # mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
 
-        # Generate recommendations
-        recommendations = utils.predict(
-            selected_model, user_id, all_movies_list, user_movie_list, K=20
-        )
+        
 
         # Log recommendations
         # recommendations_file = "recommendations.json"
@@ -218,12 +225,16 @@ def recommend_movies(user_id):
 
         user_ratings = utils.get_user_ratings(user_id)
 
+        rmse = None
+
         if user_ratings:
             movie_ids = [movie_id for movie_id, _ in user_ratings]
             predicted_values = utils.get_predicted_ratings(selected_model, user_id, movie_ids)
             predicted_ratings = list(zip(movie_ids, predicted_values))
             rmse = utils.calculate_rmse(predicted_ratings, user_ratings)
             # mlflow.log_metric("rmse", rmse)
+        
+        
 
             for experiment in experiment_manager.active_experiments.values():
                 if model_id in [experiment.model_a_id, experiment.model_b_id]:
@@ -233,6 +244,34 @@ def recommend_movies(user_id):
                         1 - rmse,  # Already normalized
                         latency
                     )
+        with mlflow.start_run(run_name=run_name):
+            mlflow.set_tag("Model Type", "SVD")
+            mlflow.set_tag("Model Version", model_info['model_version'])
+            mlflow.set_tag("Pipeline Version", pipeline_version)
+            mlflow.log_params(model_info['parameters'])
+            mlflow.log_artifact(ratings_file, artifact_path="training_data")
+            # mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
+
+            recommendations_file = "recommendations.json"
+            recommendations_data = {"user_id": user_id, "recommendations": recommendations}
+            with open(recommendations_file, "w") as rec_file:
+                json.dump(recommendations_data, rec_file)
+            mlflow.log_artifact(recommendations_file, artifact_path="predictions")
+
+            provenance_info = {
+                "model_version": model_info['model_version'],
+                "parameters": model_info['parameters'],
+                "pipeline_version": pipeline_version,
+                "training_data": training_data_info,
+            }
+            provenance_file = "provenance_info.json"
+            with open(provenance_file, "w") as prov_file:
+                json.dump(provenance_info, prov_file)
+            mlflow.log_artifact(provenance_file, artifact_path="provenance")
+
+            mlflow.log_metric("latency_seconds", latency)
+            if rmse:
+                mlflow.log_metric("rmse", rmse)
 
         SUCCESSFUL_REQUESTS.inc()
         REQUEST_LATENCY.observe(time.time() - start_time_inner)

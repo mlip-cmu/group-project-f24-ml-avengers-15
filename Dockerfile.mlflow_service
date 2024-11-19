@@ -2,10 +2,14 @@
 FROM python:3.11-slim
 
 # Install system-level dependencies
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y \
+    curl \
+    libpq-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install MLflow
-RUN pip install mlflow
+RUN pip install mlflow gunicorn
 
 # Expose MLflow port
 EXPOSE 6001
@@ -13,5 +17,8 @@ EXPOSE 6001
 # Set working directory
 WORKDIR /app
 
-# Run MLflow UI
-CMD ["mlflow", "ui", "--backend-store-uri", "./mlruns", "--port", "6001", "--host", "0.0.0.0"]
+# Add backend store volume for persistence
+VOLUME ["/app/mlruns"]
+
+# Run MLflow UI using Gunicorn with multiple workers
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:6001", "mlflow.server"]
