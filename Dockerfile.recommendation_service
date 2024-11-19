@@ -25,9 +25,9 @@ COPY utils.py .
 COPY config.py .
 COPY kafka_server_apis.py .
 COPY models/ ./models
-COPY data/extracted_ratings.csv ./data/
+COPY data/ ./data
 COPY experiments/ ./experiments
-COPY evaluation/online_evaluation_output.txt ./evaluation/
+COPY evaluation/ ./evaluation
 
 # Expose Flask port
 EXPOSE 8082

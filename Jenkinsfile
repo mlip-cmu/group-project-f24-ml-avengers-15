@@ -34,18 +34,19 @@ pipeline {
                 sh '''
                 . venv/bin/activate
                 python consume_kafka_logs.py
+                echo "Done"
                 deactivate
                 '''
             }
         }
 
-        stage('Cleanup Kafka Tunnel') {
-            steps {
-                script {
-                    sh 'pkill -f "ssh -o ServerAliveInterval=60 -L 9092:localhost:9092" || true'
-                }
-            }
-        }
+        // stage('Cleanup Kafka Tunnel') {
+        //     steps {
+        //         script {
+        //             sh 'pkill -f "ssh -o ServerAliveInterval=60 -L 9092:localhost:9092" || true'
+        //         }
+        //     }
+        // }
 
         stage('Run Unit Tests and generate test report') {
             steps {

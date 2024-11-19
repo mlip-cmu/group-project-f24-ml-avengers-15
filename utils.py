@@ -119,9 +119,8 @@ def predict(model, user_id, movie_list, user_movie_list, K=20):
         scores.sort(reverse=True)
         recommended_ids = [movie for _, movie in scores[:K]]
         
-        # Format movie titles for output
-        recommendations = [movie_id.replace(' ', '+') for movie_id in recommended_ids]
-        return recommendations
+        # Return movie IDs as-is without modification
+        return recommended_ids
     except Exception as e:
         print(f"Error in predict: {str(e)}")
         return []
