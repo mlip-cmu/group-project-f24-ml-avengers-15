@@ -64,7 +64,6 @@ def consume_kafka_logs(limit=100000):
                 })
                 
                 message_count += 1
-                print(message_count)
 
                 if message_count >= limit:
                     break
