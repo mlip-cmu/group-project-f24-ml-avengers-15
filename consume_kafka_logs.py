@@ -6,7 +6,7 @@ from datetime import datetime
 import os
 
 
-def consume_kafka_logs(limit=60000):
+def consume_kafka_logs(limit=100):
     TOPIC_NAME = "movielog15"
     rate_pattern = re.compile(r'^.*?,\d+,GET /rate/.*?=\d+$')
 
