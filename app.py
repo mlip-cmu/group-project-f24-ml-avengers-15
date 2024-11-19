@@ -256,7 +256,6 @@ def recommend_movies(user_id):
                     if "Precision@10:" in line:
                             # Extract the precision value from the line
                         precision_at_10 = float(line.split("Precision@10:")[1].strip())
-                        print(precision_at_10)
                         break
         except Exception as file_error:
             print(f"Error reading precision from file: {file_error}")
