@@ -141,9 +141,12 @@ def recommend_movies(user_id):
     """Recommend movies for a user"""
     REQUEST_COUNT.inc()  # Increment request count for every recommendation request
     try:
+        # Check and end any active MLflow run
+        if mlflow.active_run() is not None:
+            mlflow.end_run()
+
         start_time_inner = time.time()
         model_id, selected_model = select_model(user_id)
-        #print(f"Selected model {model_id} for user {user_id}")
 
         # Define model parameters for logging
         model_parameters = {
@@ -158,26 +161,23 @@ def recommend_movies(user_id):
         }
 
         model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
-
         pipeline_version = os.popen("git rev-parse --short HEAD").read().strip()
-        
 
         training_data_info = {
             "file_path": ratings_file,
             "split_ratio": 0.8,
             "record_count": len(train_data.raw_ratings),
         }
+
         prediction_counter += 1
         run_name = f"Recommendation-{model_info['model_version']}-Pred{prediction_counter}"
 
-        with mlflow.start_run(run_name=run_name):
+        with mlflow.start_run(run_name=run_name):  # Start a new run
             mlflow.set_tag("Model Type", "SVD")
             mlflow.set_tag("Model Version", model_info['model_version'])
             mlflow.set_tag("Pipeline Version", pipeline_version)
             mlflow.log_params(model_info['parameters'])
-
             mlflow.log_artifact(ratings_file, artifact_path="training_data")
-
             mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
 
             # Get recommendations
@@ -186,7 +186,6 @@ def recommend_movies(user_id):
             )
 
             # Log recommendations
-
             recommendations_file = "recommendations.json"
             with open(recommendations_file, "w") as rec_file:
                 json.dump({"user_id": user_id, "recommendations": recommendations}, rec_file)
@@ -197,14 +196,14 @@ def recommend_movies(user_id):
                 "model_version": model_info['model_version'],
                 "parameters": model_info['parameters'],
                 "pipeline_version": pipeline_version,
-                "training_data": training_data_info,  
+                "training_data": training_data_info,
             }
             provenance_file = "provenance_info.json"
             with open(provenance_file, "w") as prov_file:
                 json.dump(provenance_info, prov_file)
             mlflow.log_artifact(provenance_file, artifact_path="provenance")
 
-            latency = time.time() - start_time
+            latency = time.time() - start_time_inner
             mlflow.log_metric("latency_seconds", latency)
 
             user_ratings = utils.get_user_ratings(user_id)
@@ -225,13 +224,19 @@ def recommend_movies(user_id):
                             latency
                         )
 
+        # Explicitly end the MLflow run
+        mlflow.end_run()
+
+        SUCCESSFUL_REQUESTS.inc()  # Increment successful request count
         return jsonify(recommendations)
-      
+
     except Exception as e:
         FAILED_REQUESTS.inc()
         HEALTH_CHECK_FAILURE.inc()
         print(f"Error in recommend_movies: {e}")
         traceback.print_exc()
+        if mlflow.active_run() is not None:
+            mlflow.end_run()  # Ensure the active run is ended in case of an error
         return jsonify({'error': str(e)}), 500
 
 @app.route('/recommend/<int:user_id>', methods=['GET'])
