@@ -18,18 +18,18 @@ import mlflow
 import uuid
 import logging
 
-IS_TESTING = os.getenv("TESTING", "false").lower() == "true"
-IS_ONLINE_EVALUATION = os.getenv("ONLINE_EVALUATION", "false").lower() == "true"
+# IS_TESTING = os.getenv("TESTING", "false").lower() == "true"
+# IS_ONLINE_EVALUATION = os.getenv("ONLINE_EVALUATION", "false").lower() == "true"
 
-def initialize_mlflow():
-    """Initialize mlflow tracking URI and experiment."""
-    uri = "http://mlflow:6001"
-    mlflow.set_tracking_uri(uri)
-    experiment_name = "Movie Recommendation Predictions"
-    mlflow.set_experiment(experiment_name)
+# def initialize_mlflow():
+#     """Initialize mlflow tracking URI and experiment."""
+#     uri = "http://mlflow:6001"
+#     mlflow.set_tracking_uri(uri)
+#     experiment_name = "Movie Recommendation Predictions"
+#     mlflow.set_experiment(experiment_name)
 
-if not IS_TESTING and not IS_ONLINE_EVALUATION:
-    initialize_mlflow()
+# if not IS_TESTING and not IS_ONLINE_EVALUATION:
+#     initialize_mlflow()
 
 # Initialize Flask app
 app = Flask(__name__, template_folder='experiments/templates')
@@ -151,122 +151,124 @@ def recommend_movies(user_id):
         start_time_inner = time.time()
         model_id, selected_model = select_model(user_id)
 
-        # Define model parameters for logging
-        model_parameters = {
-            "SVD_movie_recommender.pkl": {
-                'model_version': 'SVDv1',
-                'parameters': {'n_factors': 100, 'n_epochs': 20, 'biased': True, 'lr_all': 0.005, 'reg_all': 0.02},
-            },
-            "SVD_movie_recommender_2.pkl": {
-                'model_version': 'SVDv2',
-                'parameters': {'n_factors': 50, 'n_epochs': 10, 'biased': True, 'lr_all': 0.001, 'reg_all': 0.5},
-            },
-        }
-
-        model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
-        pipeline_version = os.popen("git rev-parse --short HEAD || echo 'unknown'").read().strip()
-
-        training_data_info = {
-            "file_path": ratings_file,
-            "split_ratio": 0.8,
-            "record_count": len(train_data.raw_ratings),
-        }
-
-        prediction_counter += 1
-        uuid_name = uuid.uuid4()
-        run_name = f"Recommendation-{model_info['model_version']}-Pred-{uuid_name}"
-
-        # Ensure no lingering active MLflow run persists before starting a new one
-        mlflow.end_run()
-
-        # Start a new MLflow run
-        with mlflow.start_run(run_name=run_name, nested=True) as run:
-            # Log metadata and parameters
-            mlflow.set_tag("Model Type", "SVD")
-            mlflow.set_tag("Model Version", model_info['model_version'])
-            mlflow.set_tag("Pipeline Version", pipeline_version)
-            mlflow.log_params(model_info['parameters'])
-
-            # Log static artifacts
-            if not hasattr(app, "static_artifacts_logged"):
-                mlflow.log_artifact(ratings_file, artifact_path="training_data")
-                app.static_artifacts_logged = True  # Ensure static artifacts are logged only once
-
-            mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
-
-            # Generate recommendations
-            recommendations = utils.predict(
+        recommendations = utils.predict(
                 selected_model, user_id, all_movies_list, user_movie_list, K=20
             )
 
+        # Define model parameters for logging
+        # model_parameters = {
+        #     "SVD_movie_recommender.pkl": {
+        #         'model_version': 'SVDv1',
+        #         'parameters': {'n_factors': 100, 'n_epochs': 20, 'biased': True, 'lr_all': 0.005, 'reg_all': 0.02},
+        #     },
+        #     "SVD_movie_recommender_2.pkl": {
+        #         'model_version': 'SVDv2',
+        #         'parameters': {'n_factors': 50, 'n_epochs': 10, 'biased': True, 'lr_all': 0.001, 'reg_all': 0.5},
+        #     },
+        # }
+
+        # model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
+        # pipeline_version = os.popen("git rev-parse --short HEAD || echo 'unknown'").read().strip()
+
+        # training_data_info = {
+        #     "file_path": ratings_file,
+        #     "split_ratio": 0.8,
+        #     "record_count": len(train_data.raw_ratings),
+        # }
+
+        # prediction_counter += 1
+        # uuid_name = uuid.uuid4()
+        # run_name = f"Recommendation-{model_info['model_version']}-Pred-{uuid_name}"
+
+        # Ensure no lingering active MLflow run persists before starting a new one
+        # mlflow.end_run()
+
+        # Start a new MLflow run
+        # with mlflow.start_run(run_name=run_name, nested=True) as run:
+        #     # Log metadata and parameters
+        #     mlflow.set_tag("Model Type", "SVD")
+        #     mlflow.set_tag("Model Version", model_info['model_version'])
+        #     mlflow.set_tag("Pipeline Version", pipeline_version)
+            # mlflow.log_params(model_info['parameters'])
+
+            # Log static artifacts
+            # if not hasattr(app, "static_artifacts_logged"):
+            #     mlflow.log_artifact(ratings_file, artifact_path="training_data")
+            #     app.static_artifacts_logged = True  # Ensure static artifacts are logged only once
+
+            # mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
+
+            # Generate recommendations
+
             # Log recommendations
-            recommendations_file = f"recommendations_{user_id}_{uuid_name}.json"
-            with open(recommendations_file, "w") as rec_file:
-                json.dump({"user_id": user_id, "recommendations": recommendations}, rec_file)
-            mlflow.log_artifact(recommendations_file, artifact_path="predictions")
+            # recommendations_file = f"recommendations_{user_id}_{uuid_name}.json"
+            # with open(recommendations_file, "w") as rec_file:
+            #     json.dump({"user_id": user_id, "recommendations": recommendations}, rec_file)
+            # mlflow.log_artifact(recommendations_file, artifact_path="predictions")
 
             # Log provenance information
-            provenance_info = {
-                "model_version": model_info['model_version'],
-                "parameters": model_info['parameters'],
-                "pipeline_version": pipeline_version,
-                "training_data": training_data_info,
-            }
-            provenance_file = "provenance_info_{user_id}_{uuid_name}.json"
-            with open(provenance_file, "w") as prov_file:
-                json.dump(provenance_info, prov_file)
-            mlflow.log_artifact(provenance_file, artifact_path="provenance")
+            # provenance_info = {
+            #     "model_version": model_info['model_version'],
+            #     "parameters": model_info['parameters'],
+            #     "pipeline_version": pipeline_version,
+            #     "training_data": training_data_info,
+            # }
+            # provenance_file = "provenance_info_{user_id}_{uuid_name}.json"
+            # with open(provenance_file, "w") as prov_file:
+            #     json.dump(provenance_info, prov_file)
+            # mlflow.log_artifact(provenance_file, artifact_path="provenance")
 
             # Log metrics
-            latency = time.time() - start_time_inner
-            mlflow.log_metric("latency_seconds", latency)
+        latency = time.time() - start_time_inner
+            # mlflow.log_metric("latency_seconds", latency)
 
-            user_ratings = utils.get_user_ratings(user_id)
+        user_ratings = utils.get_user_ratings(user_id)
+        rmse=None
 
-            if user_ratings:
-                movie_ids = [movie_id for movie_id, _ in user_ratings]
-                predicted_values = utils.get_predicted_ratings(selected_model, user_id, movie_ids)
-                predicted_ratings = list(zip(movie_ids, predicted_values))
-                rmse = utils.calculate_rmse(predicted_ratings, user_ratings)
-                mlflow.log_metric("rmse", rmse)
+        if user_ratings:
+            movie_ids = [movie_id for movie_id, _ in user_ratings]
+            predicted_values = utils.get_predicted_ratings(selected_model, user_id, movie_ids)
+            predicted_ratings = list(zip(movie_ids, predicted_values))
+            rmse = utils.calculate_rmse(predicted_ratings, user_ratings)
+                # mlflow.log_metric("rmse", rmse)
 
                 # Record experiment performance
-                for experiment in experiment_manager.active_experiments.values():
-                    if model_id in [experiment.model_a_id, experiment.model_b_id]:
-                        experiment_manager.record_performance(
-                            experiment.name,
-                            model_id,
-                            1 - rmse,  # Already normalized
-                            latency
-                        )
+            for experiment in experiment_manager.active_experiments.values():
+                if model_id in [experiment.model_a_id, experiment.model_b_id]:
+                    experiment_manager.record_performance(
+                        experiment.name,
+                        model_id,
+                        1 - rmse,  # Already normalized
+                        latency
+                    )
 
             # Update Prometheus metrics
-            SUCCESSFUL_REQUESTS.inc()
-            REQUEST_LATENCY.observe(latency)
-            uptime = int(time.time() - start_time)
-            UPTIME_SECONDS.set(uptime)
+        SUCCESSFUL_REQUESTS.inc()
+        REQUEST_LATENCY.observe(latency)
+        uptime = int(time.time() - start_time)
+        UPTIME_SECONDS.set(uptime)
 
             # Calculate Precision@10
-            precision_at_10 = 0.0  # Default value in case of errors
-            try:
-                with open("evaluation/online_evaluation_output.txt", "r") as f:
-                    for line in f:
-                        if "Precision@10:" in line:
+        precision_at_10 = 0.0  # Default value in case of errors
+        try:
+            with open("evaluation/online_evaluation_output.txt", "r") as f:
+                for line in f:
+                    if "Precision@10:" in line:
                             # Extract the precision value from the line
-                            precision_at_10 = float(line.split("Precision@10:")[1].strip())
-                            print(precision_at_10)
-                            break
-            except Exception as file_error:
-                print(f"Error reading precision from file: {file_error}")
+                        precision_at_10 = float(line.split("Precision@10:")[1].strip())
+                        print(precision_at_10)
+                        break
+        except Exception as file_error:
+            print(f"Error reading precision from file: {file_error}")
 
             # Update Prometheus metric with the precision value
-            MODEL_ACCURACY.set(precision_at_10)
+        MODEL_ACCURACY.set(precision_at_10)
 
             # Log health check success
-            HEALTH_CHECK_SUCCESS.inc()
+        HEALTH_CHECK_SUCCESS.inc()
 
             # Return recommendations
-            return jsonify(recommendations)
+        return jsonify(recommendations)
 
     except Exception as e:
         # Handle and log errors
@@ -277,9 +279,9 @@ def recommend_movies(user_id):
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
         return jsonify({'error': str(e)}), 500
 
-    finally:
-        # Ensure no lingering active MLflow runs
-        mlflow.end_run()
+    # finally:
+    #     # Ensure no lingering active MLflow runs
+    #     mlflow.end_run()
 
 @app.route('/recommend/<int:user_id>', methods=['GET'])
 def recommend(user_id):
@@ -302,9 +304,9 @@ def metrics():
 
 if __name__ == '__main__':
     try:
-        if not IS_TESTING:
-            initialize_mlflow()
+        # if not IS_TESTING:
+        #     initialize_mlflow()
         app.run(host='0.0.0.0', port=8082)
     finally:
-        if not IS_TESTING:
-            cleanup_experiments()
+        # if not IS_TESTING:
+        cleanup_experiments()
