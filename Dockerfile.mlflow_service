@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install MLflow
-RUN pip install mlflow gunicorn
+RUN pip install mlflow
 
 # Expose MLflow port
 EXPOSE 6001
@@ -20,5 +20,5 @@ WORKDIR /app
 # Add backend store volume for persistence
 VOLUME ["/app/mlruns"]
 
-# Run MLflow UI using Gunicorn with multiple workers
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:6001", "mlflow.server"]
+# Run MLflow server directly
+CMD ["mlflow", "server", "--host", "0.0.0.0", "--port", "6001", "--backend-store-uri", "file:/app/mlruns"]
