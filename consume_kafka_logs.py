@@ -2,12 +2,11 @@ from kafka import KafkaConsumer
 import re
 import csv
 import pandas as pd
-import glob
-from datetime import datetime, timedelta
+from datetime import datetime
+import os
 
 
-
-def consume_kafka_logs():
+def consume_kafka_logs(limit=1000):
     TOPIC_NAME = "movielog15"
     rate_pattern = re.compile(r'^.*?,\d+,GET /rate/.*?=\d+$')
 
@@ -20,34 +19,23 @@ def consume_kafka_logs():
         value_deserializer=lambda x: x.decode('utf-8')
     )
 
+    message_count = 0
+    all_data = []
+
     for message in consumer:
         line = message.value
 
         if rate_pattern.match(line):
             message_timestamp = message.timestamp
             message_time = datetime.fromtimestamp(message_timestamp / 1000.0)
-            date_str = message_time.strftime('%Y-%m-%d')
-            output_file_path = f"data/logs_{date_str}.txt"
-
-            with open(output_file_path, 'a') as output_file:
-                output_file.write(line + '\n')
-
-
-def convert_ratings_txt_to_csv(input_path, output_path):
-    with open(input_path, 'r') as infile, open(output_path, 'w', newline='') as outfile:
-        fieldnames = ['user_time', 'user_id', 'movie_id', 'movie_title', 'year', 'rating']
-        writer = csv.DictWriter(outfile, fieldnames=fieldnames)
-        
-        writer.writeheader()
-        
-        for line in infile:
+            time_str = message_time.strftime('%Y-%m-%dT%H:%M:%S')
+            
             parts = line.strip().split(',')
             
             if len(parts) < 3:
                 continue
-            
+
             try:
-                time = parts[0]
                 userid = parts[1]
                 request = parts[2].strip()
                 
@@ -64,47 +52,47 @@ def convert_ratings_txt_to_csv(input_path, output_path):
                 rating = movie_rating[1]
                 
                 year = movie_info[-1]  
-                movietitle = ' '.join(movie_info[:-1])  
-                
-                writer.writerow({
-                    'user_time': time,
+                movietitle = ' '.join(movie_info[:-1])
+
+                all_data.append({
+                    'user_time': time_str,
                     'user_id': userid,
                     'movie_id': movieid,
                     'movie_title': movietitle,
                     'year': year,
                     'rating': rating
                 })
+                
+                message_count += 1
+                print(message_count)
+
+                if message_count >= limit:
+                    break
             
             except Exception as e:
                 print(f"Error processing line: {line}, Error: {str(e)}")
                 continue
 
+    consumer.close()
+    return all_data
 
-def load_recent_data(days=3):
-    end_date = datetime.now()
-    start_date = end_date - timedelta(days=days)
-    data_frames = []
 
-    for i in range(days):
-        date_str = (start_date + timedelta(days=i)).strftime('%Y-%m-%d')
-        csv_file = f"data/logs_{date_str}.csv"
-        txt_file = f"data/logs_{date_str}.txt"
-        
-        # Convert TXT to CSV if CSV doesn't exist
-        if not os.path.exists(csv_file) and os.path.exists(txt_file):
-            convert_ratings_txt_to_csv(txt_file, csv_file)
-        
-        # Read the CSV file
-        if os.path.exists(csv_file):
-            df = pd.read_csv(csv_file)
-            data_frames.append(df)
-
-    if data_frames:
-        return pd.concat(data_frames, ignore_index=True)
-    else:
-        print("No data available for retraining.")
-        return pd.DataFrame()
+def save_data_to_csv(data, output_path="data/extracted_ratings.csv"):
+    if not data:
+        print("No data available to save.")
+        return
     
+    fieldnames = ['user_time', 'user_id', 'movie_id', 'movie_title', 'year', 'rating']
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    
+    with open(output_path, 'w', newline='') as outfile:
+        writer = csv.DictWriter(outfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(data)
+    
+    print(f"Data successfully saved to {output_path}")
+
 
 if __name__ == "__main__":
-    consume_kafka_logs()
+    latest_data = consume_kafka_logs()
+    save_data_to_csv(latest_data, output_path="data/extracted_ratings.csv")

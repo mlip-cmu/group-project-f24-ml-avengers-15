@@ -61,7 +61,21 @@ def train_model(train_data, model_name='SVD'):
     training_time = time.time() - start_time
     training_time_ms = training_time * 1000
 
-    model_filename = os.path.join(BASE_DIR, f'{model_name}_movie_recommender.pkl')
+    model_filename = os.path.join(BASE_DIR, f'{model_name}')
+    with open(model_filename, 'wb') as model_file:
+        pickle.dump(model, model_file)
+
+    return model,training_time_ms
+
+def train_model2(train_data, model_name='SVD'):
+    model = SVD(n_factors=50, n_epochs=10, biased=True, lr_all=0.001, reg_all=0.5)
+    start_time = time.time()
+    training_set = train_data.build_full_trainset()
+    model.fit(training_set)
+    training_time = time.time() - start_time
+    training_time_ms = training_time * 1000
+
+    model_filename = os.path.join(BASE_DIR, f'{model_name}')
     with open(model_filename, 'wb') as model_file:
         pickle.dump(model, model_file)
 
