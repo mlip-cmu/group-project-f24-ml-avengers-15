@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/501919032315852538/f2c13b3a24df4b3ebabeb034023c7dad/artifacts
+deleted_time: 1731972134437
 end_time: 1731964932539
 entry_point_name: ''
 experiment_id: '501919032315852538'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: f2c13b3a24df4b3ebabeb034023c7dad
 run_name: Recommendation-SVDv1
 run_uuid: f2c13b3a24df4b3ebabeb034023c7dad

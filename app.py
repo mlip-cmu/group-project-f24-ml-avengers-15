@@ -15,7 +15,7 @@ from experiments.experiment_manager import ExperimentManager
 from experiments.api import experiment_api
 import mlflow
 
-uri = "http://127.0.0.1:6001"  
+uri = "http://mlflow:6001"  
 mlflow.set_tracking_uri(uri)
 experiment_name = "Movie Recommendation Predictions"
 mlflow.set_experiment(experiment_name)

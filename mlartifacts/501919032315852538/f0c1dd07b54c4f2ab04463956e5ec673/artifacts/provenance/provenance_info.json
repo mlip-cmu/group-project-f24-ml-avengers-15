@@ -1,0 +1,1 @@
+{"model_version": "SVDv1", "parameters": {"n_factors": 100, "n_epochs": 20, "biased": true, "lr_all": 0.005, "reg_all": 0.02}, "pipeline_version": "9e0beb7", "training_data": {"file_path": "/Users/priyangadurairaj/Documents/MLIP-ASSIGNMENTS/Project/group-project-f24-ml-avengers-15/data/extracted_ratings.csv", "split_ratio": 0.8, "record_count": 103}}
