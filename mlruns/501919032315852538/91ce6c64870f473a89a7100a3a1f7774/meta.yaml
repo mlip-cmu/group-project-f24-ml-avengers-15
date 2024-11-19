@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/501919032315852538/91ce6c64870f473a89a7100a3a1f7774/artifacts
+deleted_time: 1731972134437
+end_time: 1731965875302
+entry_point_name: ''
+experiment_id: '501919032315852538'
+lifecycle_stage: deleted
+run_id: 91ce6c64870f473a89a7100a3a1f7774
+run_name: Recommendation-SVDv1-Pred1
+run_uuid: 91ce6c64870f473a89a7100a3a1f7774
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1731965875126
+status: 3
+tags: []
+user_id: priyangadurairaj

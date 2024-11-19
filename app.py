@@ -8,11 +8,23 @@ from config import MODEL_PATH, MODEL_PATH_2
 import hashlib
 import time
 import signal
+import json
 import sys
 import atexit
 from experiments.experiment_manager import ExperimentManager
 from experiments.api import experiment_api
+from prometheus_client import Counter, Gauge, Histogram, generate_latest, CONTENT_TYPE_LATEST
+import mlflow
 
+def initialize_mlflow():
+    """Initialize mlflow tracking URI and experiment."""
+    uri = "http://mlflow:6001"
+    mlflow.set_tracking_uri(uri)
+    experiment_name = "Movie Recommendation Predictions"
+    mlflow.set_experiment(experiment_name)
+
+
+# Initialize Flask app
 app = Flask(__name__, template_folder='experiments/templates')
 app.register_blueprint(experiment_api)
 
@@ -22,8 +34,21 @@ MOVIES_CSV = os.path.join("data", "movies.csv")
 kafka_server = kafka.KafkaServerApi()
 experiment_manager = ExperimentManager()
 
-# Load all models and keep in a list
-models = {}  # Change to dictionary for easier lookup
+# Prometheus metrics
+REQUEST_COUNT = Counter('total_requests_total', 'Total number of requests to the application')
+SUCCESSFUL_REQUESTS = Counter('successful_requests_total', 'Number of successful requests')
+FAILED_REQUESTS = Counter('failed_requests_total', 'Number of failed requests')
+UPTIME_SECONDS = Gauge('uptime_seconds', 'Application uptime in seconds')
+REQUEST_LATENCY = Histogram('request_latency_seconds', 'Request processing time', buckets=[0.1, 0.5, 1, 2, 5, 10])
+HEALTH_CHECK_SUCCESS = Counter('health_check_success_total', 'Successful health check requests')
+HEALTH_CHECK_FAILURE = Counter('health_check_failure_total', 'Failed health check requests')
+MODEL_ACCURACY = Gauge('model_accuracy', 'Precision at K (e.g., Precision@10) of the recommendation model')
+
+# Start time
+start_time = time.time()
+
+# Load all models and keep in a dictionary
+models = {}
 for path in [MODEL_PATH, MODEL_PATH_2]:
     with open(path, 'rb') as f:
         model_id = os.path.basename(path)
@@ -37,13 +62,45 @@ train_data, valid_data = utils.prepare_data_model(train_df, val_df)
 all_movies_list = train_df['movie_id'].unique().tolist()
 user_movie_list = train_df.groupby('user_id')['movie_id'].apply(set).to_dict()
 
+# Function to calculate Precision@K
+def calculate_precision_at_k(user_recommendations, user_relevant_movies, k=10):
+    total_precision = 0
+    total_users = 0
+
+    for user_id, rec_movies in user_recommendations.items():
+        relevant_movies = user_relevant_movies.get(user_id, set())
+        if relevant_movies:
+            top_k_recommendations = set(rec_movies[:k])  # Get top K recommendations
+            relevant_count = len(top_k_recommendations.intersection(relevant_movies))
+            precision = relevant_count / k  
+            total_precision += precision
+            total_users += 1
+
+    return total_precision / total_users if total_users > 0 else 0  # Average Precision@K over users
+
+def get_user_relevant_movies(df, rating_threshold=4):
+    return df[df['rating'] >= rating_threshold].groupby('user_id')['movie_id'].apply(set).to_dict()
+
+def evaluate_snapshot():
+    try:
+        snapshot_df = pd.read_csv(os.path.join(base_dir, "data", "extracted_ratings.csv"))
+        user_relevant_movies = get_user_relevant_movies(snapshot_df)
+        user_recommendations = {user_id: recommend_movies(user_id) for user_id in user_relevant_movies.keys()}
+        
+        # Calculate Precision@K
+        precision = calculate_precision_at_k(user_recommendations, user_relevant_movies, 10)
+        with open("online_evaluation_output.txt", 'w') as f:
+            f.write(f"Precision@10: {precision:.4f}\n")
+    
+    except Exception as e:
+        with open("online_evaluation_output.txt", 'w') as f:
+            f.write(f"An error occurred while calculating Precision@K: {e}")
 def cleanup_experiments():
-    """Clean up all active experiments"""
+    """Clean up all active experiments."""
     print("Cleaning up experiments before shutdown...")
-    # Get a list of experiment names first to avoid dictionary modification during iteration
     active_experiments = experiment_manager.get_active_experiments()
     experiment_names = list(active_experiments.keys())
-    
+
     for exp_name in experiment_names:
         try:
             experiment_manager.delete_experiment(exp_name)
@@ -53,99 +110,126 @@ def cleanup_experiments():
     print("Experiment cleanup complete")
 
 def signal_handler(signum, frame):
-    """Handle shutdown signals"""
+    """Handle shutdown signals."""
     print(f"Received signal {signum}")
     cleanup_experiments()
     sys.exit(0)
 
 # Register cleanup handlers
-atexit.register(cleanup_experiments)  # For normal termination
-signal.signal(signal.SIGTERM, signal_handler)  # For graceful termination
-signal.signal(signal.SIGINT, signal_handler)   # For keyboard interrupt
+atexit.register(cleanup_experiments)
+signal.signal(signal.SIGTERM, signal_handler)
+signal.signal(signal.SIGINT, signal_handler)
 
 def select_model_for_experiment(user_id, experiment):
-    """Select model based on experiment traffic split"""
-    # Convert traffic split to percentage (0-100)
     split_point = int(experiment.traffic_split * 100)
-    
-    # Use modulo to get a number between 0-99
     user_bucket = hash(str(user_id)) % 100
-    
-    # Assign to Model A if bucket is below split point
     if user_bucket < split_point:
-        #print(f"Assigning user {user_id} to model A: {experiment.model_a_id} (bucket: {user_bucket})")
         return experiment.model_a_id, models[experiment.model_a_id]
-    
-    #print(f"Assigning user {user_id} to model B: {experiment.model_b_id} (bucket: {user_bucket})")
     return experiment.model_b_id, models[experiment.model_b_id]
 
 def select_model(user_id):
-    """Select model based on active experiments or default to first model"""
-    #print(f"\nSelecting model for user {user_id}")
-    #print(f"Active experiments: {list(experiment_manager.active_experiments.keys())}")
-    
     for experiment in experiment_manager.active_experiments.values():
-        #print(f"\nChecking experiment: {experiment.name}")
-        #print(f"Models: A={experiment.model_a_id}, B={experiment.model_b_id}")
-        #print(f"Traffic split: {experiment.traffic_split}")
-        
         model_id, selected_model = select_model_for_experiment(user_id, experiment)
         if model_id:
-            #print(f"User {user_id} assigned to model {model_id} in experiment {experiment.name}")
             return model_id, selected_model
-    
-    # Default to first model if no experiment matches
     default_model_id = MODEL_PATH.split('/')[-1]
-    #print(f"No active experiments, using default model {default_model_id}")
     return default_model_id, models[default_model_id]
 
+prediction_counter = 0
 def recommend_movies(user_id):
+    global prediction_counter 
     """Recommend movies for a user"""
+    REQUEST_COUNT.inc()  # Increment request count for every recommendation request
     try:
-        start_time = time.time()
+        start_time_inner = time.time()
         model_id, selected_model = select_model(user_id)
         #print(f"Selected model {model_id} for user {user_id}")
-        
-        # Get recommendations
-        recommendations = utils.predict(selected_model, user_id, all_movies_list, user_movie_list)
-        latency = time.time() - start_time
-        
-        # Calculate accuracy based on user's actual ratings
-        user_ratings = utils.get_user_ratings(user_id)
-        if user_ratings:
-            # Get movie IDs and actual ratings
-            movie_ids = [movie_id for movie_id, _ in user_ratings]
-            actual_ratings = user_ratings  # Already in (movie_id, rating) format
-            
-            # Get predicted ratings in same format
-            predicted_values = utils.get_predicted_ratings(selected_model, user_id, movie_ids)
-            predicted_ratings = list(zip(movie_ids, predicted_values))
-            
-            #print(f"Predicted ratings: {predicted_ratings}")
-            #print(f"Actual ratings: {actual_ratings}")
 
-            # Calculate RMSE
-            rmse = utils.calculate_rmse(predicted_ratings, actual_ratings)
-            #print(f"Calculated RMSE: {rmse}")
+        # Define model parameters for logging
+        model_parameters = {
+            "SVD_movie_recommender.pkl": {
+                'model_version': 'SVDv1',
+                'parameters': {'n_factors': 100, 'n_epochs': 20, 'biased': True, 'lr_all': 0.005, 'reg_all': 0.02},
+            },
+            "SVD_movie_recommender_2.pkl": {
+                'model_version': 'SVDv2',
+                'parameters': {'n_factors': 50, 'n_epochs': 10, 'biased': True, 'lr_all': 0.001, 'reg_all': 0.5},
+            },
+        }
 
-            # Record metrics only if we have actual ratings to compare against
-            for experiment in experiment_manager.active_experiments.values():
-                #print(f"Checking experiment {experiment.name}")
-                if model_id in [experiment.model_a_id, experiment.model_b_id]:
-                    #print(f"Recording metrics for experiment {experiment.name}, model {model_id}")
-                    experiment_manager.record_performance(
-                        experiment.name,
-                        model_id,
-                        1 - rmse,  # Already normalized in calculate_rmse
-                        latency
-                    )
-        else:
-            #print(f"No ratings found for user {user_id}")
-            pass
+        model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
+
+        pipeline_version = os.popen("git rev-parse --short HEAD").read().strip()
+        
+
+        training_data_info = {
+            "file_path": ratings_file,
+            "split_ratio": 0.8,
+            "record_count": len(train_data.raw_ratings),
+        }
+        prediction_counter += 1
+        run_name = f"Recommendation-{model_info['model_version']}-Pred{prediction_counter}"
+
+        with mlflow.start_run(run_name=run_name):
+            mlflow.set_tag("Model Type", "SVD")
+            mlflow.set_tag("Model Version", model_info['model_version'])
+            mlflow.set_tag("Pipeline Version", pipeline_version)
+            mlflow.log_params(model_info['parameters'])
+
+            mlflow.log_artifact(ratings_file, artifact_path="training_data")
+
+            mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
+
+            # Get recommendations
+            recommendations = utils.predict(
+                selected_model, user_id, all_movies_list, user_movie_list, K=20
+            )
+
+            # Log recommendations
+
+            recommendations_file = "recommendations.json"
+            with open(recommendations_file, "w") as rec_file:
+                json.dump({"user_id": user_id, "recommendations": recommendations}, rec_file)
+            mlflow.log_artifact(recommendations_file, artifact_path="predictions")
+
+            # Log provenance information
+            provenance_info = {
+                "model_version": model_info['model_version'],
+                "parameters": model_info['parameters'],
+                "pipeline_version": pipeline_version,
+                "training_data": training_data_info,  
+            }
+            provenance_file = "provenance_info.json"
+            with open(provenance_file, "w") as prov_file:
+                json.dump(provenance_info, prov_file)
+            mlflow.log_artifact(provenance_file, artifact_path="provenance")
+
+            latency = time.time() - start_time
+            mlflow.log_metric("latency_seconds", latency)
+
+            user_ratings = utils.get_user_ratings(user_id)
+
+            if user_ratings:
+                movie_ids = [movie_id for movie_id, _ in user_ratings]
+                predicted_values = utils.get_predicted_ratings(selected_model, user_id, movie_ids)
+                predicted_ratings = list(zip(movie_ids, predicted_values))
+                rmse = utils.calculate_rmse(predicted_ratings, user_ratings)
+                mlflow.log_metric("rmse", rmse)
+
+                for experiment in experiment_manager.active_experiments.values():
+                    if model_id in [experiment.model_a_id, experiment.model_b_id]:
+                        experiment_manager.record_performance(
+                            experiment.name,
+                            model_id,
+                            1 - rmse,  # Already normalized
+                            latency
+                        )
 
         return jsonify(recommendations)
-
+      
     except Exception as e:
+        FAILED_REQUESTS.inc()
+        HEALTH_CHECK_FAILURE.inc()
         print(f"Error in recommend_movies: {e}")
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
@@ -164,8 +248,14 @@ def recommend(user_id):
 def experiments_dashboard():
     return render_template('experiments.html')
 
+@app.route('/metrics', methods=['GET'])
+def metrics():
+    return generate_latest(), 200, {'Content-Type': CONTENT_TYPE_LATEST}
+
+
 if __name__ == '__main__':
     try:
+        initialize_mlflow()
         app.run(host='0.0.0.0', port=8082)
     finally:
         cleanup_experiments()

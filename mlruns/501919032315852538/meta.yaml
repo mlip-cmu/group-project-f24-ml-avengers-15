@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/501919032315852538
+creation_time: 1731964896463
+experiment_id: '501919032315852538'
+last_update_time: 1731964896463
+lifecycle_stage: active
+name: Movie Recommendation Predictions
