@@ -24,15 +24,25 @@ pipeline {
                 '''
             }
         }
+        
 
         stage('Consume Data from Kafka') {
             steps {
                 echo 'Starting Kafka data consumer...'
                 sh '''
                 . venv/bin/activate
+                ssh -o ServerAliveInterval=60 -L 9092:localhost:9092 tunnel@128.2.204.215 -NTf
                 python consume_kafka_logs.py 
                 deactivate
                 '''
+            }
+        }
+
+        stage('Cleanup Kafka Tunnel') {
+            steps {
+                script {
+                    sh 'pkill -f "ssh -o ServerAliveInterval=60 -L 9092:localhost:9092" || true'
+                }
             }
         }
 
@@ -126,7 +136,7 @@ pipeline {
                 script {
                     echo 'Deploying Using Docker Compose'
                     sh '''
-                    docker-compose -p ${PROJECT_NAME} down --volumes || true
+                    docker-compose -p ${PROJECT_NAME} down || true
                     docker-compose -p ${PROJECT_NAME} up -d --build
                     '''
                 }

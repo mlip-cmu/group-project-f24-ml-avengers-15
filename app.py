@@ -238,13 +238,14 @@ def recommend_movies(user_id):
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
         uptime = int(time.time() - start_time)
         UPTIME_SECONDS.set(uptime)
-
+        
         # Calculate Precision@10
         precision_at_10 = 0.0  # Default value in case of errors
         try:
             with open("evaluation/online_evaluation_output.txt", "r") as f:
                 for line in f:
                     if "Precision@10:" in line:
+                        # Extract the precision value from the line
                         precision_at_10 = float(line.split("Precision@10:")[1].strip())
                         break
         except Exception as file_error:
@@ -252,14 +253,15 @@ def recommend_movies(user_id):
 
         # Update Prometheus metric with the precision value
         MODEL_ACCURACY.set(precision_at_10)
-
         HEALTH_CHECK_SUCCESS.inc()
+        
         return jsonify(recommendations)
 
     except Exception as e:
         FAILED_REQUESTS.inc()
         HEALTH_CHECK_FAILURE.inc()
         print(f"Error in recommend_movies: {e}")
+        REQUEST_LATENCY.observe(time.time() - start_time)
         traceback.print_exc()
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
         return jsonify({'error': str(e)}), 500
