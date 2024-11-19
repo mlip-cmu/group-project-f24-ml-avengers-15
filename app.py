@@ -184,10 +184,6 @@ def recommend_movies(user_id):
             recommendations = utils.predict(
                 selected_model, user_id, all_movies_list, user_movie_list, K=20
             )
-            SUCCESSFUL_REQUESTS.inc()
-            REQUEST_LATENCY.observe(time.time() - start_time_inner)
-            uptime = int(time.time() - start_time)
-            UPTIME_SECONDS.set(uptime)
 
             # Log recommendations
 
@@ -228,6 +224,10 @@ def recommend_movies(user_id):
                             1 - rmse,  # Already normalized
                             latency
                         )
+        SUCCESSFUL_REQUESTS.inc()
+        REQUEST_LATENCY.observe(time.time() - start_time_inner)
+        uptime = int(time.time() - start_time)
+        UPTIME_SECONDS.set(uptime)
         precision_at_10 = 0.0  # Default value in case of errors
         try:
             with open("evaluation/online_evaluation_output.txt", "r") as f:
