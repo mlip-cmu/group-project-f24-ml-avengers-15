@@ -8,6 +8,7 @@ from config import MODEL_PATH, MODEL_PATH_2
 import hashlib
 import time
 import signal
+import pandas as pd
 import json
 import sys
 import atexit
@@ -18,7 +19,6 @@ import mlflow
 import uuid
 
 
-
 # def initialize_mlflow():
 #     """Initialize mlflow tracking URI and experiment."""
 #     uri = "http://mlflow:6001"
@@ -26,12 +26,12 @@ import uuid
 #     experiment_name = "Movie Recommendation Predictions"
 #     mlflow.set_experiment(experiment_name)
 
-MLFLOW_URI = "http://mlflow:6001"
-EXPERIMENT_NAME = "Movie Recommendation Predictions"
+# MLFLOW_URI = "http://mlflow:6001"
+# EXPERIMENT_NAME = "Movie Recommendation Predictions"
 
-if os.getenv("TESTING") != "1":
-    mlflow.set_tracking_uri(MLFLOW_URI)
-    mlflow.set_experiment(EXPERIMENT_NAME)
+# if os.getenv("TESTING") != "1":
+#     mlflow.set_tracking_uri(MLFLOW_URI)
+#     mlflow.set_experiment(EXPERIMENT_NAME)
 
 # Initialize Flask app
 app = Flask(__name__, template_folder='experiments/templates')
@@ -154,29 +154,29 @@ def recommend_movies(user_id):
         model_id, selected_model = select_model(user_id)
 
 
-        # # Define model parameters for logging
-        model_parameters = {
-            "SVD_movie_recommender.pkl": {
-                'model_version': 'SVDv1',
-                'parameters': {'n_factors': 100, 'n_epochs': 20, 'biased': True, 'lr_all': 0.005, 'reg_all': 0.02},
-            },
-            "SVD_movie_recommender_2.pkl": {
-                'model_version': 'SVDv2',
-                'parameters': {'n_factors': 50, 'n_epochs': 10, 'biased': True, 'lr_all': 0.001, 'reg_all': 0.5},
-            },
-        }
+        # # # Define model parameters for logging
+        # model_parameters = {
+        #     "SVD_movie_recommender.pkl": {
+        #         'model_version': 'SVDv1',
+        #         'parameters': {'n_factors': 100, 'n_epochs': 20, 'biased': True, 'lr_all': 0.005, 'reg_all': 0.02},
+        #     },
+        #     "SVD_movie_recommender_2.pkl": {
+        #         'model_version': 'SVDv2',
+        #         'parameters': {'n_factors': 50, 'n_epochs': 10, 'biased': True, 'lr_all': 0.001, 'reg_all': 0.5},
+        #     },
+        # }
 
-        model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
-        pipeline_version = os.popen("git rev-parse --short HEAD").read().strip()
+        # model_info = model_parameters.get(model_id, {'model_version': 'Unknown', 'parameters': {}})
+        # pipeline_version = os.popen("git rev-parse --short HEAD").read().strip()
 
-        training_data_info = {
-            "file_path": ratings_file,
-            "split_ratio": 0.8,
-            "record_count": len(train_data.raw_ratings),
-        }
+        # training_data_info = {
+        #     "file_path": ratings_file,
+        #     "split_ratio": 0.8,
+        #     "record_count": len(train_data.raw_ratings),
+        # }
 
-        prediction_counter += 1
-        run_name = f"Recommendation-{model_info['model_version']}-Pred{prediction_counter}"
+        # prediction_counter += 1
+        # run_name = f"Recommendation-{model_info['model_version']}-Pred{prediction_counter}"
 
         # Generate recommendations
         recommendations = utils.predict(
@@ -202,34 +202,34 @@ def recommend_movies(user_id):
                         1 - rmse,  # Already normalized
                         latency
                     )
-        with mlflow.start_run(run_name=run_name):
-            mlflow.set_tag("Model Type", "SVD")
-            mlflow.set_tag("Model Version", model_info['model_version'])
-            mlflow.set_tag("Pipeline Version", pipeline_version)
-            mlflow.log_params(model_info['parameters'])
-            mlflow.log_artifact(ratings_file, artifact_path="training_data")
-            # mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
+        # with mlflow.start_run(run_name=run_name):
+        #     mlflow.set_tag("Model Type", "SVD")
+        #     mlflow.set_tag("Model Version", model_info['model_version'])
+        #     mlflow.set_tag("Pipeline Version", pipeline_version)
+        #     mlflow.log_params(model_info['parameters'])
+        #     mlflow.log_artifact(ratings_file, artifact_path="training_data")
+        #     # mlflow.log_artifact(os.path.join(base_dir, f"models/{model_id}"), artifact_path="models")
 
-            recommendations_file = "recommendations.json"
-            recommendations_data = {"user_id": user_id, "recommendations": recommendations}
-            with open(recommendations_file, "w") as rec_file:
-                json.dump(recommendations_data, rec_file)
-            mlflow.log_artifact(recommendations_file, artifact_path="predictions")
+        #     recommendations_file = "recommendations.json"
+        #     recommendations_data = {"user_id": user_id, "recommendations": recommendations}
+        #     with open(recommendations_file, "w") as rec_file:
+        #         json.dump(recommendations_data, rec_file)
+        #     mlflow.log_artifact(recommendations_file, artifact_path="predictions")
 
-            provenance_info = {
-                "model_version": model_info['model_version'],
-                "parameters": model_info['parameters'],
-                "pipeline_version": pipeline_version,
-                "training_data": training_data_info,
-            }
-            provenance_file = "provenance_info.json"
-            with open(provenance_file, "w") as prov_file:
-                json.dump(provenance_info, prov_file)
-            mlflow.log_artifact(provenance_file, artifact_path="provenance")
+        #     provenance_info = {
+        #         "model_version": model_info['model_version'],
+        #         "parameters": model_info['parameters'],
+        #         "pipeline_version": pipeline_version,
+        #         "training_data": training_data_info,
+        #     }
+        #     provenance_file = "provenance_info.json"
+        #     with open(provenance_file, "w") as prov_file:
+        #         json.dump(provenance_info, prov_file)
+        #     mlflow.log_artifact(provenance_file, artifact_path="provenance")
 
-            mlflow.log_metric("latency_seconds", latency)
-            if rmse:
-                mlflow.log_metric("rmse", rmse)
+        #     mlflow.log_metric("latency_seconds", latency)
+        #     if rmse:
+        #         mlflow.log_metric("rmse", rmse)
 
            
 
@@ -270,9 +270,9 @@ def recommend_movies(user_id):
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
         return jsonify({'error': str(e)}), 500
 
-    finally:
-        # Ensure no lingering active MLflow runs
-        mlflow.end_run()
+    # finally:
+    #     # Ensure no lingering active MLflow runs
+    #     mlflow.end_run()
 
 @app.route('/recommend/<int:user_id>', methods=['GET'])
 def recommend(user_id):
