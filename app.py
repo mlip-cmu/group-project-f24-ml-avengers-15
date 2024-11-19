@@ -274,7 +274,7 @@ def recommend_movies(user_id):
 
             # Return recommendations
         # return jsonify(recommendations)
-        return jsonify(recommendations), 200
+        return jsonify(recommendations)
 
     except Exception as e:
         # Handle and log errors
@@ -295,7 +295,7 @@ def recommend_movies(user_id):
 
 
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
-        return jsonify({'error': str(e)}), 500
+        return jsonify([])
 
     # finally:
     #     # Ensure no lingering active MLflow runs
@@ -322,6 +322,9 @@ def metrics():
 
 if __name__ == '__main__':
     try:
+        # if not IS_TESTING:
+        #     initialize_mlflow()
         app.run(host='0.0.0.0', port=8082)
     finally:
+        # if not IS_TESTING:
         cleanup_experiments()
