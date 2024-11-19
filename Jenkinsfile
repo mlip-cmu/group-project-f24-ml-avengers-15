@@ -25,39 +25,14 @@ pipeline {
             }
         }
 
-        stage('Setup Kafka Tunnel') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'KAFKA_SSH_CREDENTIALS', usernameVariable: 'SSH_USER', passwordVariable: 'SSH_PASSWORD')]) {
-                        sh '''
-                        echo "Checking SSH_USER: $SSH_USER"
-                        echo "Checking SSH_PASSWORD: $SSH_PASSWORD"
-        
-                        sshpass -p "$SSH_PASSWORD" ssh -o ServerAliveInterval=60 \
-                            -L 9092:localhost:9092 $SSH_USER@128.2.204.215 -NTf
-                        '''
-                    }
-                }
-            }
-        }
-
         stage('Consume Data from Kafka') {
             steps {
                 echo 'Starting Kafka data consumer...'
                 sh '''
                 . venv/bin/activate
-                ssh -o ServerAliveInterval=60 -L 9092:localhost:9092 tunnel@128.2.204.215 -NTf
                 python consume_kafka_logs.py 
                 deactivate
                 '''
-            }
-        }
-
-        stage('Cleanup Kafka Tunnel') {
-            steps {
-                script {
-                    sh 'pkill -f "ssh -o ServerAliveInterval=60 -L 9092:localhost:9092" || true'
-                }
             }
         }
 
