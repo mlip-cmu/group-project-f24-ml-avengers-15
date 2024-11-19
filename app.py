@@ -274,7 +274,7 @@ def recommend_movies(user_id):
 
             # Return recommendations
         # return jsonify(recommendations)
-        return recommendations
+        return jsonify(recommendations), 200
 
     except Exception as e:
         # Handle and log errors
@@ -322,9 +322,6 @@ def metrics():
 
 if __name__ == '__main__':
     try:
-        # if not IS_TESTING:
-        #     initialize_mlflow()
         app.run(host='0.0.0.0', port=8082)
     finally:
-        # if not IS_TESTING:
         cleanup_experiments()
