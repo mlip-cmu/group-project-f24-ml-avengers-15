@@ -34,7 +34,6 @@ pipeline {
                 sh '''
                 . venv/bin/activate
                 python consume_kafka_logs.py
-                echo "Done"
                 deactivate
                 '''
             }
