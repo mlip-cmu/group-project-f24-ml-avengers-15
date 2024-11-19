@@ -27,9 +27,9 @@ services:
       - "8082:8082"
     volumes:
       - ./.git:/app/.git
-    # depends_on:
-    #   mlflow:
-    #     condition: service_healthy
+    depends_on:
+      mlflow:
+        condition: service_healthy
     environment:
       - SERVER_IP=127.0.0.1
       - KAFKA_PORT=9092
