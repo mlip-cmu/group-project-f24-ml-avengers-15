@@ -16,10 +16,12 @@ from experiments.api import experiment_api
 from prometheus_client import Counter, Gauge, Histogram, generate_latest, CONTENT_TYPE_LATEST
 import mlflow
 
-uri = "http://mlflow:6001"  
-mlflow.set_tracking_uri(uri)
-experiment_name = "Movie Recommendation Predictions"
-mlflow.set_experiment(experiment_name)
+def initialize_mlflow():
+    """Initialize mlflow tracking URI and experiment."""
+    uri = "http://mlflow:6001"
+    mlflow.set_tracking_uri(uri)
+    experiment_name = "Movie Recommendation Predictions"
+    mlflow.set_experiment(experiment_name)
 
 
 # Initialize Flask app
@@ -253,6 +255,7 @@ def metrics():
 
 if __name__ == '__main__':
     try:
-        app.run(host='0.0.0.0', port=8083)
+        initialize_mlflow()
+        app.run(host='0.0.0.0', port=8082)
     finally:
         cleanup_experiments()
