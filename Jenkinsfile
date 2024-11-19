@@ -103,6 +103,18 @@ pipeline {
             }
         }
 
+        stage('Deploy Using Docker Compose') {
+            steps {
+                script {
+                    echo 'Deploying Using Docker Compose'
+                    sh '''
+                    docker-compose -p ${PROJECT_NAME} down || true
+                    docker-compose -p ${PROJECT_NAME} up -d --build
+                    '''
+                }
+            }
+        }
+
         stage('Retrain Model') {
             steps {
                 echo 'Retraining Model...'
@@ -133,17 +145,7 @@ pipeline {
             }
         }
 
-        stage('Deploy Using Docker Compose') {
-            steps {
-                script {
-                    echo 'Deploying Using Docker Compose'
-                    sh '''
-                    docker-compose -p ${PROJECT_NAME} down || true
-                    docker-compose -p ${PROJECT_NAME} up -d --build
-                    '''
-                }
-            }
-        }
+        
     }
 
     post {

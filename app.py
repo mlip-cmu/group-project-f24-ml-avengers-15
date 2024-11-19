@@ -72,9 +72,9 @@ train_data, valid_data = utils.prepare_data_model(train_df, val_df)
 all_movies_list = train_df['movie_id'].unique().tolist()
 user_movie_list = train_df.groupby('user_id')['movie_id'].apply(set).to_dict()
 
-if not IS_TESTING and not IS_ONLINE_EVALUATION:
-    mlflow.set_tracking_uri("http://mlflow-service:6001")
-    mlflow.set_experiment("Movie Recommendation Predictions")
+# if not IS_TESTING and not IS_ONLINE_EVALUATION:
+#     mlflow.set_tracking_uri("http://mlflow:6001")
+#     mlflow.set_experiment("Movie Recommendation Predictions")
 
 def log_prediction_provenance(model_id, response_time, status_code, recommendations, user_id):
 
@@ -218,13 +218,13 @@ def recommend_movies(user_id):
         latency = (time.time() - start_time_inner) * 1000 
             # mlflow.log_metric("latency_seconds", latency)
         
-        log_prediction_provenance(
-            model_id=model_id,
-            response_time=latency,
-            status_code=200,  
-            recommendations=recommendations,
-            user_id=user_id
-        )
+        # log_prediction_provenance(
+        #     model_id=model_id,
+        #     response_time=latency,
+        #     status_code=200,  
+        #     recommendations=recommendations,
+        #     user_id=user_id
+        # )
 
         user_ratings = utils.get_user_ratings(user_id)
         rmse=None
@@ -283,13 +283,13 @@ def recommend_movies(user_id):
 
         response_time = (time.time() - start_time_inner) * 1000 
 
-        log_prediction_provenance(
-            model_id="unknown",
-            response_time=response_time,
-            status_code=500,  # Error status
-            recommendations=[],
-            user_id=user_id
-        )
+        # log_prediction_provenance(
+        #     model_id="unknown",
+        #     response_time=response_time,
+        #     status_code=500,  # Error status
+        #     recommendations=[],
+        #     user_id=user_id
+        # )
 
 
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
