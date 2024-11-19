@@ -30,8 +30,8 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'KAFKA_SSH_CREDENTIALS', usernameVariable: 'SSH_USER', passwordVariable: 'SSH_PASSWORD')]) {
                         sh '''
-                        sshpass -p "$SSH_PASSWORD" ssh -o ServerAliveInterval=60 \
-                            -L 9092:localhost:9092 $SSH_USER@128.2.204.215 -NTf
+                        sshpass -p "mlip-kafka" ssh -o ServerAliveInterval=60 \
+                            -L 9092:localhost:9092 tunnel@128.2.204.215 -NTf
                         '''
                     }
                 }
