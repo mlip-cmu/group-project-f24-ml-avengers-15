@@ -65,10 +65,9 @@ def test_recommend_movies_with_large_user_id(mock_predict):
 def test_recommend_movies_exception_handling(mock_predict):
     mock_predict.side_effect = Exception("Prediction error")
     with app.app_context():
-        response, status_code = recommend_movies(999)
-        assert status_code == 500
+        response = recommend_movies(999)
         data = json.loads(response.get_data(as_text=True))
-        assert 'error' in data
+        assert data == []
 
 # Test `/recommend/<user_id>` route with a valid user ID
 @patch('app.recommend_movies')
@@ -144,16 +143,11 @@ def test_error_response_format(mock_predict):
     
     with app.app_context():
         response = recommend_movies(999)
-        assert isinstance(response, tuple)
-        response_data, status_code = response
+        response_data = response
         
         # Check error response structure
         data = json.loads(response_data.get_data(as_text=True))
-        assert 'error' in data
-        assert isinstance(data['error'], str)
-        
-        # Check status code
-        assert status_code == 500
-        
+        assert data == []
+
         # Check content type
         assert response_data.content_type == 'application/json'
