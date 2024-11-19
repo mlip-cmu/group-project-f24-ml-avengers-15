@@ -25,17 +25,6 @@ pipeline {
             }
         }
 
-        stage('Consume Data from Kafka') {
-            steps {
-                echo 'Starting Kafka data consumer...'
-                sh '''
-                . venv/bin/activate
-                python consume_kafka_logs.py 
-                deactivate
-                '''
-            }
-        }
-
         stage('Run Unit Tests and generate test report') {
             steps {
                 sh '''
@@ -91,32 +80,42 @@ pipeline {
             }
         }
 
-        stage('Retrain Model') {
+        stage('Consume Data and Retrain Model') {
             steps {
-                echo 'Retraining Model...'
+                echo 'Starting Kafka data consumer...'
                 script {
-                    def status = sh(script: '''
-                        . venv/bin/activate
-                        python retrain.py
-                        deactivate
-                    ''', returnStatus: true)
+                    sh '''
+                    . venv/bin/activate
+                    
+                    # Start Kafka consumer in the background
+                    nohup python consume_kafka_logs.py > kafka_consumer.log 2>&1 &
+                    
+                    # Capture the PID of the Kafka consumer
+                    CONSUMER_PID=$!
 
-                    if (status == 0) {
-                        echo 'Retraining completed successfully.'
-                    } else if (status == 1) {
-                        echo 'No data available for retraining. Skipping model deployment.'
-                    } else if (status == 42) {
-                        echo 'An error occurred during retraining. Initiating rollback...'
-                        sh '''
-                        . venv/bin/activate
-                        python rollback_model.py
-                        deactivate
-                        '''
-                        error 'Retraining failed due to an error.'
-                    } else {
-                        echo "Unknown exit code: ${status}. Check logs for details."
-                        error 'Retraining failed with an unknown error.'
-                    }
+                    echo "Kafka consumer started with PID: $CONSUMER_PID"
+
+                    # Wait for the Kafka consumer to finish
+                    wait $CONSUMER_PID
+
+                    echo "Kafka consumer finished. Starting retraining..."
+
+                    # Start retraining
+                    python retrain.py
+                    deactivate
+                    '''
+                }
+            }
+        }
+
+        stage('Cleanup') {
+            steps {
+                script {
+                    echo 'Cleaning up any leftover Kafka consumer processes...'
+                    // Ensure any lingering Kafka consumer processes are terminated
+                    sh '''
+                    pkill -f "python consume_kafka_logs.py" || true
+                    '''
                 }
             }
         }
@@ -126,7 +125,7 @@ pipeline {
                 script {
                     echo 'Deploying Using Docker Compose'
                     sh '''
-                    docker-compose -p ${PROJECT_NAME} down --volumes || true
+                    docker-compose -p ${PROJECT_NAME} down || true
                     docker-compose -p ${PROJECT_NAME} up -d --build
                     '''
                 }
