@@ -15,11 +15,9 @@ def prepare_data_csv(file_path, split_ratio=0.8):
         file_path = os.path.join(BASE_DIR, file_path)
     df = pd.read_csv(file_path)
     
-    # Create numeric IDs for movies
+    # Keep original movie IDs/titles, no need to create new numeric IDs
     unique_movies = df['movie_id'].unique()
-    movie_id_map = {movie: idx + 1 for idx, movie in enumerate(unique_movies)}
-    df['movie_id'] = df['movie_id'].map(movie_id_map)
-
+    
     df = df.sort_values(by=['user_id', 'user_time'])
 
     train_data_list = []
@@ -33,8 +31,8 @@ def prepare_data_csv(file_path, split_ratio=0.8):
     train_df = pd.concat(train_data_list).reset_index(drop=True)
     val_df = pd.concat(val_data_list).reset_index(drop=True)
 
-    # Save movie ID mapping for later use
-    movie_map_df = pd.DataFrame(list(movie_id_map.items()), columns=['movie_title', 'movie_id'])
+    # Save movie ID mapping with original IDs
+    movie_map_df = pd.DataFrame({'movie_id': unique_movies})
     mapping_file = os.path.join(BASE_DIR, 'data', 'movie_id_mapping.csv')
     os.makedirs(os.path.dirname(mapping_file), exist_ok=True)
     movie_map_df.to_csv(mapping_file, index=False)
@@ -108,37 +106,39 @@ def predict(model, user_id, movie_list, user_movie_list, K=20):
     recommendations = []
     scores = []
 
-    for movie in movie_list:
-        if user_id in user_movie_list and movie in user_movie_list[user_id]:
-            continue
-        prediction = model.predict(uid=user_id, iid=movie)
-        scores.append((prediction.est, movie))
-
-    scores.sort(reverse=True)
-    recommended_ids = [movie for _, movie in scores[:K]]
-
-    # Convert movie IDs to titles
     try:
-        movie_map_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'movie_id_mapping.csv'))
-        id_to_title = dict(zip(movie_map_df['movie_id'], movie_map_df['movie_title']))
-        recommendations = [id_to_title[movie_id].replace(' ', '+') for movie_id in recommended_ids]
-    except Exception as e:
-        print(f"Error converting movie IDs to titles: {str(e)}")
-        recommendations = recommended_ids
+        # Convert user_id to int but leave movie_ids as strings
+        user_id_int = int(user_id)
+        
+        for movie in movie_list:
+            if user_id in user_movie_list and movie in user_movie_list[user_id]:
+                continue
+            prediction = model.predict(user_id_int, movie)
+            scores.append((prediction.est, movie))
 
-    return recommendations
+        scores.sort(reverse=True)
+        recommended_ids = [movie for _, movie in scores[:K]]
+        
+        # Format movie titles for output
+        recommendations = [movie_id.replace(' ', '+') for movie_id in recommended_ids]
+        return recommendations
+    except Exception as e:
+        print(f"Error in predict: {str(e)}")
+        return []
 
 def generate_test_ratings(user_id, num_ratings=10):
     """Generate test ratings for a user to simulate real usage"""
     try:
         # Read the movie mapping
         movie_map_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'movie_id_mapping.csv'))
+        # Read the movie mapping - now just a list of valid movies
+        movie_map_df = pd.read_csv('data/movie_id_mapping.csv')
         
         # Randomly select movies and generate ratings
         selected_movies = movie_map_df.sample(n=min(num_ratings, len(movie_map_df)))
         ratings = np.random.uniform(1, 5, size=len(selected_movies))
         
-        # Create (movie_id, rating) tuples
+        # Return (movie_id, rating) tuples using original movie IDs
         return list(zip(selected_movies['movie_id'], ratings))
     except Exception as e:
         print(f"Error generating test ratings: {str(e)}")
@@ -147,10 +147,8 @@ def generate_test_ratings(user_id, num_ratings=10):
 def get_user_ratings(user_id):
     """Get all ratings for a given user"""
     try:
-        # First try to get real ratings
+        # Read ratings using absolute path
         ratings_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'extracted_ratings.csv'))
-        movie_map_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'movie_id_mapping.csv'))
-        movie_id_map = dict(zip(movie_map_df['movie_title'], movie_map_df['movie_id']))
         
         # Filter ratings for the given user
         user_ratings = ratings_df[ratings_df['user_id'] == int(user_id)]
@@ -160,8 +158,8 @@ def get_user_ratings(user_id):
             print(f"No real ratings found for user {user_id}, generating test ratings")
             return generate_test_ratings(user_id)
             
-        # Return list of (movie_id, rating) tuples using the mapping
-        return [(movie_id_map[movie_id], rating) for movie_id, rating in zip(user_ratings['movie_id'], user_ratings['rating'])]
+        # Return list of (movie_id, rating) tuples directly
+        return list(zip(user_ratings['movie_id'], user_ratings['rating']))
     except Exception as e:
         print(f"Error getting user ratings: {str(e)}")
         return []
@@ -169,7 +167,8 @@ def get_user_ratings(user_id):
 def get_predicted_ratings(model, user_id, movie_ids):
     """Get predicted ratings for specific movies"""
     try:
-        return [model.predict(int(user_id), int(movie_id)).est for movie_id in movie_ids]
+        # Only convert user_id to int, leave movie_ids as strings
+        return [model.predict(int(user_id), movie_id).est for movie_id in movie_ids]
     except Exception as e:
         print(f"Error getting predicted ratings: {e}")
         return []
