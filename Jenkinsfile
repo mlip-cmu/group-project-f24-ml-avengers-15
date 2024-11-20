@@ -39,14 +39,6 @@ pipeline {
             }
         }
 
-        // stage('Cleanup Kafka Tunnel') {
-        //     steps {
-        //         script {
-        //             sh 'pkill -f "ssh -o ServerAliveInterval=60 -L 9092:localhost:9092" || true'
-        //         }
-        //     }
-        // }
-
         stage('Run Unit Tests and generate test report') {
             steps {
                 sh '''
@@ -149,7 +141,7 @@ pipeline {
 
     post {
         success {
-            junit 'report.xml' // Publish test results
+            junit 'report.xml'
             echo 'Pipeline completed successfully!'
         }
         failure {
