@@ -77,8 +77,8 @@ def main():
         model, training_time_ms = train_model(train_data, MODEL_PATH)
         model2, training_time_ms2 = train_model2(train_data, MODEL_PATH_2)
 
-        # log_retraining_provenance(model_id="SVD_movie_recommender.pkl", training_duration=training_time_ms / 1000, training_data_path="data/extracted_ratings.csv")
-        # log_retraining_provenance(model_id="SVD_movie_recommender_2.pkl", training_duration=training_time_ms2 / 1000, training_data_path="data/extracted_ratings.csv")
+        log_retraining_provenance(model_id="SVD_movie_recommender.pkl", training_duration=training_time_ms / 1000, training_data_path="data/extracted_ratings.csv")
+        log_retraining_provenance(model_id="SVD_movie_recommender_2.pkl", training_duration=training_time_ms2 / 1000, training_data_path="data/extracted_ratings.csv")
 
         rmse = evaluate(model, valid_data)
         rmse2 = evaluate(model2, valid_data)
