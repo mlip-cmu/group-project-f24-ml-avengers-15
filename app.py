@@ -94,7 +94,7 @@ def log_prediction_provenance(model_id, response_time, status_code, recommendati
     if experiment is None:
         mlflow.create_experiment(experiment_name)
     mlflow.set_experiment(experiment_name)
-    
+
     with mlflow.start_run(run_name=f"Prediction-{run_id}"):
 
         mlflow.set_tag("Model ID", model_id)
@@ -108,10 +108,7 @@ def log_prediction_provenance(model_id, response_time, status_code, recommendati
         # mlflow.log_artifact(ratings_file, artifact_path="training_data")
 
         mlflow.log_param("training_data_path", ratings_file) 
-        mlflow.log_dict(
-            {"user_id": user_id, "recommendations": recommendations},
-            artifact_file=f"recommendations_{user_id}_{run_id}.json"
-        )
+        
 
 def log_retraining_provenance(model_id, training_duration, training_data_path):
     
