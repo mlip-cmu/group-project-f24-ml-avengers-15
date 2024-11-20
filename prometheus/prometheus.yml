@@ -1,0 +1,33 @@
+global:
+  scrape_interval: 15s  # Scrape targets every 15 seconds by default.
+  evaluation_interval: 15s  # Evaluate rules every 15 seconds.
+  # scrape_timeout is set to the global default (10s).
+
+  # Attach these labels to any time series or alerts.
+  external_labels:
+    monitor: 'project-monitor'
+
+scrape_configs:
+  # Scrape Prometheus itself
+  - job_name: 'prometheus'
+    scrape_interval: 5s  # Override global scrape interval for Prometheus
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Scrape Node Exporter (system metrics)
+  - job_name: 'node_exporter'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['host.docker.internal:9100']
+
+  # Scrape the recommender-service Flask app
+  - job_name: 'recommender-service'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['recommender-service:8082'] 
+
+  # Scrape the MLflow service
+  - job_name: 'mlflow-service'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['mlflow-service:6001']
