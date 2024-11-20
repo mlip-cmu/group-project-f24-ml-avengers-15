@@ -19,6 +19,21 @@ def client():
     app.testing = True
     return app.test_client()
 
+# Mock mlflow globally for all tests
+@pytest.fixture(autouse=True)
+def mock_mlflow():
+    """Mock mlflow globally to prevent real API calls during tests."""
+    with patch('app.mlflow') as mock_mlflow:
+        # Mock mlflow functions
+        mock_mlflow.set_tracking_uri = MagicMock()
+        mock_mlflow.set_experiment = MagicMock()
+        mock_mlflow.start_run = MagicMock()
+        mock_mlflow.log_params = MagicMock()
+        mock_mlflow.log_artifact = MagicMock()
+        mock_mlflow.log_metric = MagicMock()
+        mock_mlflow.set_tag = MagicMock()
+        yield mock_mlflow
+
 # Test recommend_movies with a valid user ID
 @patch('app.utils.predict')
 def test_recommend_movies_with_valid_user_id(mock_predict):
