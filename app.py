@@ -87,6 +87,14 @@ def log_prediction_provenance(model_id, response_time, status_code, recommendati
     pipeline_version = JENKINS_BUILD_NUMBER  # Track Jenkins pipeline version
     model_info = model_parameters.get(model_id, {})
     run_id = uuid.uuid4()
+
+    experiment_name = "Movie Recommendation Predictions"
+
+    experiment = mlflow.get_experiment_by_name(experiment_name)
+    if experiment is None:
+        mlflow.create_experiment(experiment_name)
+    mlflow.set_experiment(experiment_name)
+    
     with mlflow.start_run(run_name=f"Prediction-{run_id}"):
 
         mlflow.set_tag("Model ID", model_id)
