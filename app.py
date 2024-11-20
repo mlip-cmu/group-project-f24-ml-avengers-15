@@ -68,10 +68,15 @@ for path in [MODEL_PATH, MODEL_PATH_2]:
 # Get absolute path for data files
 base_dir = os.path.dirname(os.path.abspath(__file__))
 ratings_file = os.path.join(base_dir, 'data', 'extracted_ratings.csv')
+
+# Read complete ratings file for all movies
+complete_ratings_df = pd.read_csv(ratings_file)
+all_movies_list = complete_ratings_df['movie_id'].unique().tolist()
+
+# Prepare train/val split for model
 train_df, val_df = utils.prepare_data_csv(ratings_file)
 train_data, valid_data = utils.prepare_data_model(train_df, val_df)
-all_movies_list = train_df['movie_id'].unique().tolist()
-user_movie_list = train_df.groupby('user_id')['movie_id'].apply(set).to_dict()
+user_movie_list = complete_ratings_df.groupby('user_id')['movie_id'].apply(set).to_dict()
 
 if not IS_TESTING and not IS_ONLINE_EVALUATION:
     mlflow.set_tracking_uri("http://mlflow:6001")
