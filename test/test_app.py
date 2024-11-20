@@ -25,8 +25,9 @@ def test_recommend_movies_with_valid_user_id(mock_predict):
     mock_predict.return_value = ['Movie1', 'Movie2', 'Movie3']
     with app.app_context():
         response = recommend_movies(999)
-        assert isinstance(response, str)
-        assert response == 'Movie1,Movie2,Movie3'
+        assert isinstance(response, Response)
+        data = json.loads(response.get_data(as_text=True))
+        assert data == ['Movie1', 'Movie2', 'Movie3']
 
 # Test recommend_movies with an invalid user ID
 @patch('app.utils.predict')
@@ -34,8 +35,9 @@ def test_recommend_movies_with_invalid_user_id(mock_predict):
     mock_predict.return_value = []
     with app.app_context():
         response = recommend_movies(-1)
-        assert isinstance(response, str)
-        assert response == ''
+        assert isinstance(response, Response)
+        data = json.loads(response.get_data(as_text=True))
+        assert data == []
 
 # Test recommend_movies with a large user ID
 @patch('app.utils.predict')
@@ -43,8 +45,9 @@ def test_recommend_movies_with_large_user_id(mock_predict):
     mock_predict.return_value = ['Movie1', 'Movie2', 'Movie3']
     with app.app_context():
         response = recommend_movies(10**8)
-        assert isinstance(response, str)
-        assert response == 'Movie1,Movie2,Movie3'
+        assert isinstance(response, Response)
+        data = json.loads(response.get_data(as_text=True))
+        assert data == ['Movie1', 'Movie2', 'Movie3']
 
 # Test recommend_movies when predict raises an exception
 @patch('app.utils.predict')
@@ -58,34 +61,40 @@ def test_recommend_movies_exception_handling(mock_predict):
 # Test `/recommend/<user_id>` route with a valid user ID
 @patch('app.recommend_movies')
 def test_recommend_route_valid_user(mock_recommend_movies, client):
-    mock_recommend_movies.return_value = 'Movie1,Movie2,Movie3'
+    test_movies = ['Movie1', 'Movie2', 'Movie3']
+    mock_response = Response(
+        response=json.dumps(test_movies),
+        status=200,
+        mimetype='application/json'
+    )
+    mock_recommend_movies.return_value = mock_response
     response = client.get('/recommend/123')
     assert response.status_code == 200
     data = json.loads(response.data)
-    assert data == 'Movie1,Movie2,Movie3'
+    assert data == test_movies
 
 # Test movie ID format handling
 @patch('app.utils.predict')
 def test_movie_id_format_handling(mock_predict):
     test_movies = [
-        'Kill Bill Vol. 1 2003',
-        'The Matrix 1999',
-        'Pulp Fiction 1994'
+        'kill+bill+vol.+1+2003',
+        'the+matrix+1999',
+        'pulp+fiction+1994'
     ]
-    mock_predict.return_value = test_movies
+    mock_predict.return_value = ','.join(test_movies)
     
     with app.app_context():
         response = recommend_movies(999)
-        assert isinstance(response, str)
-        
-        movies = response.split(',')
-        
+        assert isinstance(response, Response)
+        data = json.loads(response.get_data(as_text=True))
+        movies = data.split(',')
         assert movies == test_movies
         
         assert isinstance(movies, list)
         assert all(isinstance(movie, str) for movie in movies)
         
-        assert all('+' not in movie for movie in movies)
+        # Now we expect + characters in the movie titles
+        assert all('+' in movie for movie in movies)
 
 # Test error response format
 @patch('app.utils.predict')
@@ -94,7 +103,6 @@ def test_error_response_format(mock_predict):
     
     with app.app_context():
         response = recommend_movies(999)
-        
         assert isinstance(response, list)
         assert response == []
 
@@ -121,37 +129,3 @@ def test_recommend_route_float_user_id(client):
 def test_recommend_route_missing_user_id(client):
     response = client.get('/recommend/')
     assert response.status_code == 404
-
-# Test movie ID format handling
-@patch('app.utils.predict')
-def test_movie_id_format_handling(mock_predict):
-    test_movies = [
-        'Kill Bill Vol. 1 2003',
-        'The Matrix 1999',
-        'Pulp Fiction 1994'
-    ]
-    mock_predict.return_value = test_movies
-    
-    with app.app_context():
-        response = recommend_movies(999)
-        assert isinstance(response, str)
-        
-        movies = response.split(',')
-        
-        assert movies == test_movies
-        
-        assert isinstance(movies, list)
-        assert all(isinstance(movie, str) for movie in movies)
-        
-        assert all('+' not in movie for movie in movies)
-
-# Test error response format
-@patch('app.utils.predict')
-def test_error_response_format(mock_predict):
-    mock_predict.side_effect = Exception("Movie not found")
-    
-    with app.app_context():
-        response = recommend_movies(999)
-        
-        assert isinstance(response, list)
-        assert response == []

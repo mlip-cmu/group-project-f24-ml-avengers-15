@@ -273,8 +273,8 @@ def recommend_movies(user_id):
         HEALTH_CHECK_SUCCESS.inc()
 
             # Return recommendations
-        # return jsonify(recommendations)
-        return ','.join(recommendations)
+        return jsonify(recommendations)
+        # return ','.join(recommendations)
 
     except Exception as e:
         # Handle and log errors
@@ -306,7 +306,7 @@ def recommend_movies(user_id):
 def recommend(user_id):
     try:
         recommendations = recommend_movies(user_id)
-        return jsonify(recommendations)
+        return recommendations
     except Exception as e:
         print(f"An error occurred while generating recommendations: {e}")
         traceback.print_exc()

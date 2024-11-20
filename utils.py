@@ -117,6 +117,7 @@ def predict(model, user_id, movie_list, user_movie_list, K=20):
             scores.append((prediction.est, movie))
 
         scores.sort(reverse=True)
+        # Keep movie IDs in original format with + characters
         recommended_ids = [movie for _, movie in scores[:K]]
         
         # Return movie IDs as-is without modification
