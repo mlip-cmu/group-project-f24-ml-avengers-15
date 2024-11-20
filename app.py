@@ -329,7 +329,7 @@ def experiments_dashboard():
 
 @app.route('/metrics', methods=['GET'])
 def metrics():
-    return generate_latest(), 200, {'Content-Type': CONTENT_TYPE_LATEST}
+    return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
 
 
 if __name__ == '__main__':
