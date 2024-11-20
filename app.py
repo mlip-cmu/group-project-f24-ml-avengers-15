@@ -310,12 +310,18 @@ def recommend_movies(user_id):
 def recommend(user_id):
     try:
         recommendations = recommend_movies(user_id)
-        # Return as plain text to avoid JSON formatting
-        return Response(recommendations, mimetype='text/plain')
+        # Convert list to comma-separated string and return as plain text
+        if isinstance(recommendations, list):
+            recommendations = ','.join(recommendations) if recommendations else ''
+        return Response(response=recommendations, 
+                      status=200,
+                      content_type='text/plain; charset=utf-8')
     except Exception as e:
         print(f"An error occurred while generating recommendations: {e}")
         traceback.print_exc()
-        return Response('', mimetype='text/plain')
+        return Response(response='',
+                      status=200,
+                      content_type='text/plain; charset=utf-8')
 
 @app.route('/experiments/dashboard')
 def experiments_dashboard():
