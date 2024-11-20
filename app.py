@@ -18,6 +18,7 @@ from prometheus_client import Counter, Gauge, Histogram, generate_latest, CONTEN
 import mlflow
 import uuid
 import logging
+from flask import Response 
 
 IS_TESTING = os.getenv("TESTING", "false").lower() == "true"
 IS_ONLINE_EVALUATION = os.getenv("ONLINE_EVALUATION", "false").lower() == "true"

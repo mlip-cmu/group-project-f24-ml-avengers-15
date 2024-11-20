@@ -26,4 +26,4 @@ CMD ["mlflow", "server", \
   "--port", "6001", \
   "--backend-store-uri", "file:/app/mlruns", \
   "--default-artifact-root", "file:/app/mlruns/artifacts", \
-  "--gunicorn-opts", "--timeout 120 --workers 4 --threads 4"]
+  "--gunicorn-opts", "--timeout 120 --workers 4 --threads 8"]
