@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+  # MLflow Service
   mlflow:
     build:
       context: .
@@ -9,14 +10,17 @@ services:
     ports:
       - "6001:6001"
     volumes:
-      - ./mlruns:/app/mlruns
+      - ./mlruns:/app/mlruns # Persistent MLflow data
     restart: unless-stopped
     healthcheck:
       test: [ "CMD-SHELL", "curl -f http://0.0.0.0:6001 || exit 1" ]
       interval: 5s
       timeout: 5s
       retries: 3
+    networks:
+      - app-network
 
+  # Flask Recommender Service
   recommender-service:
     build:
       context: .
@@ -24,42 +28,54 @@ services:
     container_name: recommender-service
     ports:
       - "8082:8082"
-    volumes:
-      - ./.git:/app/.git
+    environment:
+      - SERVER_IP=mlflow-service # Service name for MLflow
+      - KAFKA_PORT=9092
+      - LOCAL_PORT=8082
     depends_on:
       mlflow:
         condition: service_healthy
-    environment:
-      - SERVER_IP=127.0.0.1
-      - KAFKA_PORT=9092
-      - LOCAL_PORT=8082
     restart: unless-stopped
+    networks:
+      - app-network
 
+  # Prometheus Monitoring Service
   prometheus:
     image: prom/prometheus
     container_name: prometheus
     volumes:
-      - ./prometheus/:/etc/prometheus/
+      - ./prometheus/:/etc/prometheus/ # Prometheus config file location
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
-    expose:
-      - 9090
     ports:
-      - 9090:9090
+      - "9090:9090"
+    networks:
+      - app-network
 
+  # Node Exporter (System Metrics)
   node-exporter:
     image: quay.io/prometheus/node-exporter:latest
     container_name: nodeexporter
     ports:
-      - 9100:9100
-    expose:
-      - 9100
+      - "9100:9100"
+    networks:
+      - app-network
 
+  # Grafana Visualization Service
   grafana:
     image: grafana/grafana-oss:latest
     container_name: grafana
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_USER=admin # Default username
+      - GF_SECURITY_ADMIN_PASSWORD=admin # Default password
+    depends_on:
+      prometheus:
+        condition: service_started
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
