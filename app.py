@@ -278,8 +278,7 @@ def recommend_movies(user_id):
         HEALTH_CHECK_SUCCESS.inc()
 
             # Return recommendations
-        return jsonify(recommendations)
-        # return ','.join(recommendations)
+        return recommendations
 
     except Exception as e:
         # Handle and log errors
@@ -311,11 +310,12 @@ def recommend_movies(user_id):
 def recommend(user_id):
     try:
         recommendations = recommend_movies(user_id)
-        return recommendations
+        # Return as plain text to avoid JSON formatting
+        return Response(recommendations, mimetype='text/plain')
     except Exception as e:
         print(f"An error occurred while generating recommendations: {e}")
         traceback.print_exc()
-        return []
+        return Response('', mimetype='text/plain')
 
 @app.route('/experiments/dashboard')
 def experiments_dashboard():
