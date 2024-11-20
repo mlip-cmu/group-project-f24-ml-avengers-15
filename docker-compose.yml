@@ -45,6 +45,7 @@ services:
     container_name: prometheus
     volumes:
       - ./prometheus/:/etc/prometheus/ # Prometheus config file location
+      - ./prometheus-data:/prometheus # Persistent Prometheus data
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
@@ -67,6 +68,8 @@ services:
     container_name: grafana
     ports:
       - "3000:3000"
+    volumes:
+      - ./grafana-data:/var/lib/grafana # Persistent Grafana data
     environment:
       - GF_SECURITY_ADMIN_USER=admin # Default username
       - GF_SECURITY_ADMIN_PASSWORD=admin # Default password
