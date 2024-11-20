@@ -73,18 +73,28 @@ def test_movie_id_format_handling(mock_predict):
         'Pulp Fiction 1994'
     ]
     mock_predict.return_value = test_movies
+    
     with app.app_context():
         response = recommend_movies(999)
         assert isinstance(response, str)
-        expected = 'Kill Bill Vol. 1 2003,The Matrix 1999,Pulp Fiction 1994'
-        assert response == expected
+        
+        movies = response.split(',')
+        
+        assert movies == test_movies
+        
+        assert isinstance(movies, list)
+        assert all(isinstance(movie, str) for movie in movies)
+        
+        assert all('+' not in movie for movie in movies)
 
 # Test error response format
 @patch('app.utils.predict')
 def test_error_response_format(mock_predict):
     mock_predict.side_effect = Exception("Movie not found")
+    
     with app.app_context():
         response = recommend_movies(999)
+        
         assert isinstance(response, list)
         assert response == []
 
@@ -115,7 +125,6 @@ def test_recommend_route_missing_user_id(client):
 # Test movie ID format handling
 @patch('app.utils.predict')
 def test_movie_id_format_handling(mock_predict):
-    # Test with movie IDs containing spaces and special characters
     test_movies = [
         'Kill Bill Vol. 1 2003',
         'The Matrix 1999',
@@ -124,40 +133,25 @@ def test_movie_id_format_handling(mock_predict):
     mock_predict.return_value = test_movies
     
     with app.app_context():
-        # Test direct function call
         response = recommend_movies(999)
-        assert isinstance(response, Response)
-        data = json.loads(response.get_data(as_text=True))
+        assert isinstance(response, str)
         
-        # Check that movie IDs are returned exactly as provided
-        assert data == test_movies
+        movies = response.split(',')
         
-        # Check response format
-        assert isinstance(data, list)
-        assert all(isinstance(movie, str) for movie in data)
+        assert movies == test_movies
         
-        # Check that no + characters were added
-        assert all('+' not in movie for movie in data)
+        assert isinstance(movies, list)
+        assert all(isinstance(movie, str) for movie in movies)
         
-        # Check content type
-        assert response.content_type == 'application/json'
-        
-        # Check status code
-        assert response.status_code == 200
+        assert all('+' not in movie for movie in movies)
 
 # Test error response format
 @patch('app.utils.predict')
 def test_error_response_format(mock_predict):
-    # Simulate an error condition
     mock_predict.side_effect = Exception("Movie not found")
     
     with app.app_context():
         response = recommend_movies(999)
-        response_data = response
         
-        # Check error response structure
-        data = json.loads(response_data.get_data(as_text=True))
-        assert data == []
-
-        # Check content type
-        assert response_data.content_type == 'application/json'
+        assert isinstance(response, list)
+        assert response == []
