@@ -274,7 +274,7 @@ def recommend_movies(user_id):
 
             # Return recommendations
         # return jsonify(recommendations)
-        return jsonify(recommendations)
+        return ','.join(recommendations)
 
     except Exception as e:
         # Handle and log errors
@@ -295,7 +295,8 @@ def recommend_movies(user_id):
 
 
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
-        return jsonify([])
+        # return jsonify({'error': str(e)}), 500
+        return []
 
     # finally:
     #     # Ensure no lingering active MLflow runs
@@ -305,7 +306,7 @@ def recommend_movies(user_id):
 def recommend(user_id):
     try:
         recommendations = recommend_movies(user_id)
-        return recommendations
+        return jsonify(recommendations)
     except Exception as e:
         print(f"An error occurred while generating recommendations: {e}")
         traceback.print_exc()
