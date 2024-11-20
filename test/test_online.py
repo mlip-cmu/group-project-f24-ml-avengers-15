@@ -1,5 +1,10 @@
 import pytest
 import pandas as pd
+import os
+
+# Set testing environment variable
+os.environ["TESTING"] = "true"
+
 from evaluation.online_evaluation import calculate_precision_at_k, get_user_relevant_movies
 
 @pytest.fixture

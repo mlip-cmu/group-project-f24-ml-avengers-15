@@ -272,7 +272,8 @@ def recommend_movies(user_id):
         HEALTH_CHECK_SUCCESS.inc()
 
             # Return recommendations
-        return jsonify(recommendations)
+        # return jsonify(recommendations)
+        return ','.join(recommendations)
 
     except Exception as e:
         # Handle and log errors
@@ -283,17 +284,18 @@ def recommend_movies(user_id):
 
         response_time = (time.time() - start_time_inner) * 1000 
 
-        log_prediction_provenance(
-            model_id="unknown",
-            response_time=response_time,
-            status_code=500,  # Error status
-            recommendations=[],
-            user_id=user_id
-        )
+        # log_prediction_provenance(
+        #     model_id="unknown",
+        #     response_time=response_time,
+        #     status_code=500,  # Error status
+        #     recommendations=[],
+        #     user_id=user_id
+        # )
 
 
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
-        return jsonify({'error': str(e)}), 500
+        # return jsonify({'error': str(e)}), 500
+        return []
 
     # finally:
     #     # Ensure no lingering active MLflow runs
@@ -303,7 +305,7 @@ def recommend_movies(user_id):
 def recommend(user_id):
     try:
         recommendations = recommend_movies(user_id)
-        return recommendations
+        return jsonify(recommendations)
     except Exception as e:
         print(f"An error occurred while generating recommendations: {e}")
         traceback.print_exc()
