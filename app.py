@@ -23,7 +23,6 @@ from flask import Response
 IS_TESTING = os.getenv("TESTING", "false").lower() == "true"
 IS_ONLINE_EVALUATION = os.getenv("ONLINE_EVALUATION", "false").lower() == "true"
 
-
 # Initialize Flask app
 app = Flask(__name__, template_folder='experiments/templates')
 app.register_blueprint(experiment_api)
@@ -105,7 +104,7 @@ def log_prediction_provenance(model_id, response_time, status_code, recommendati
         mlflow.log_param("response_time_ms", response_time)
         mlflow.log_param("status_code", status_code)
 
-        mlflow.log_artifact(ratings_file, artifact_path="training_data")
+        # mlflow.log_artifact(ratings_file, artifact_path="training_data")
 
         mlflow.log_param("training_data_path", ratings_file) 
         
@@ -229,13 +228,13 @@ def recommend_movies(user_id):
         latency = (time.time() - start_time_inner) * 1000 
 
         
-        log_prediction_provenance(
-            model_id=model_id,
-            response_time=latency,
-            status_code=200,  
-            recommendations=recommendations,
-            user_id=user_id
-        )
+        # log_prediction_provenance(
+        #     model_id=model_id,
+        #     response_time=latency,
+        #     status_code=200,  
+        #     recommendations=recommendations,
+        #     user_id=user_id
+        # )
 
         user_ratings = utils.get_user_ratings(user_id)
         rmse=None
@@ -294,13 +293,13 @@ def recommend_movies(user_id):
 
         response_time = (time.time() - start_time_inner) * 1000 
 
-        log_prediction_provenance(
-            model_id="unknown",
-            response_time=response_time,
-            status_code=500,  # Error status
-            recommendations=[],
-            user_id=user_id
-        )
+        # log_prediction_provenance(
+        #     model_id="unknown",
+        #     response_time=response_time,
+        #     status_code=500,  # Error status
+        #     recommendations=[],
+        #     user_id=user_id
+        # )
 
 
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
