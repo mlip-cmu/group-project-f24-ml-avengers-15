@@ -23,7 +23,6 @@ from flask import Response
 IS_TESTING = os.getenv("TESTING", "false").lower() == "true"
 IS_ONLINE_EVALUATION = os.getenv("ONLINE_EVALUATION", "false").lower() == "true"
 
-
 # Initialize Flask app
 app = Flask(__name__, template_folder='experiments/templates')
 app.register_blueprint(experiment_api)
@@ -44,6 +43,15 @@ REQUEST_LATENCY = Histogram('request_latency_seconds', 'Request processing time'
 HEALTH_CHECK_SUCCESS = Counter('health_check_success_total', 'Successful health check requests')
 HEALTH_CHECK_FAILURE = Counter('health_check_failure_total', 'Failed health check requests')
 MODEL_ACCURACY = Gauge('model_accuracy', 'Precision at K (e.g., Precision@10) of the recommendation model')
+REQUESTS_PER_IP = Counter(
+    'requests_per_ip_total', 'Total number of requests per IP', ['ip_address']
+)
+INPUT_VARIANCE = Histogram(
+    'input_variance_per_ip', 'Variance of input features per IP'
+)
+OUTPUT_UNIQUENESS = Histogram(
+    'output_uniqueness_per_ip', 'Uniqueness of output responses per IP'
+)
 
 # Start time
 start_time = time.time()
@@ -94,7 +102,7 @@ def log_prediction_provenance(model_id, response_time, status_code, recommendati
     if experiment is None:
         mlflow.create_experiment(experiment_name)
     mlflow.set_experiment(experiment_name)
-    
+
     with mlflow.start_run(run_name=f"Prediction-{run_id}"):
 
         mlflow.set_tag("Model ID", model_id)
@@ -108,10 +116,7 @@ def log_prediction_provenance(model_id, response_time, status_code, recommendati
         # mlflow.log_artifact(ratings_file, artifact_path="training_data")
 
         mlflow.log_param("training_data_path", ratings_file) 
-        mlflow.log_dict(
-            {"user_id": user_id, "recommendations": recommendations},
-            artifact_file=f"recommendations_{user_id}_{run_id}.json"
-        )
+        
 
 def log_retraining_provenance(model_id, training_duration, training_data_path):
     
@@ -232,13 +237,13 @@ def recommend_movies(user_id):
         latency = (time.time() - start_time_inner) * 1000 
 
         
-        log_prediction_provenance(
-            model_id=model_id,
-            response_time=latency,
-            status_code=200,  
-            recommendations=recommendations,
-            user_id=user_id
-        )
+        # log_prediction_provenance(
+        #     model_id=model_id,
+        #     response_time=latency,
+        #     status_code=200,  
+        #     recommendations=recommendations,
+        #     user_id=user_id
+        # )
 
         user_ratings = utils.get_user_ratings(user_id)
         rmse=None
@@ -297,13 +302,13 @@ def recommend_movies(user_id):
 
         response_time = (time.time() - start_time_inner) * 1000 
 
-        log_prediction_provenance(
-            model_id="unknown",
-            response_time=response_time,
-            status_code=500,  # Error status
-            recommendations=[],
-            user_id=user_id
-        )
+        # log_prediction_provenance(
+        #     model_id="unknown",
+        #     response_time=response_time,
+        #     status_code=500,  # Error status
+        #     recommendations=[],
+        #     user_id=user_id
+        # )
 
 
         REQUEST_LATENCY.observe(time.time() - start_time_inner)
@@ -317,7 +322,15 @@ def recommend_movies(user_id):
 @app.route('/recommend/<int:user_id>', methods=['GET'])
 def recommend(user_id):
     try:
+        ip_address = request.remote_addr
         recommendations = recommend_movies(user_id)
+
+        recommendations_hash = hashlib.sha256(",".join(recommendations).encode()).hexdigest()
+
+        # Log metrics
+        REQUESTS_PER_IP.labels(ip_address=ip_address).inc()  # Increment request count
+        OUTPUT_UNIQUENESS.observe(len(set([recommendations_hash])))  # Log unique recommendation hashes
+    
         # Convert list to comma-separated string and return as plain text
         if isinstance(recommendations, list):
             recommendations = ','.join(recommendations) if recommendations else ''
