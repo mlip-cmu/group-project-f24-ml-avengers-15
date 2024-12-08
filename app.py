@@ -43,6 +43,15 @@ REQUEST_LATENCY = Histogram('request_latency_seconds', 'Request processing time'
 HEALTH_CHECK_SUCCESS = Counter('health_check_success_total', 'Successful health check requests')
 HEALTH_CHECK_FAILURE = Counter('health_check_failure_total', 'Failed health check requests')
 MODEL_ACCURACY = Gauge('model_accuracy', 'Precision at K (e.g., Precision@10) of the recommendation model')
+REQUESTS_PER_IP = Counter(
+    'requests_per_ip_total', 'Total number of requests per IP', ['ip_address']
+)
+INPUT_VARIANCE = Histogram(
+    'input_variance_per_ip', 'Variance of input features per IP'
+)
+OUTPUT_UNIQUENESS = Histogram(
+    'output_uniqueness_per_ip', 'Uniqueness of output responses per IP'
+)
 
 # Start time
 start_time = time.time()
@@ -313,7 +322,15 @@ def recommend_movies(user_id):
 @app.route('/recommend/<int:user_id>', methods=['GET'])
 def recommend(user_id):
     try:
+        ip_address = request.remote_addr
         recommendations = recommend_movies(user_id)
+
+        recommendations_hash = hashlib.sha256(",".join(recommendations).encode()).hexdigest()
+
+        # Log metrics
+        REQUESTS_PER_IP.labels(ip_address=ip_address).inc()  # Increment request count
+        OUTPUT_UNIQUENESS.observe(len(set([recommendations_hash])))  # Log unique recommendation hashes
+    
         # Convert list to comma-separated string and return as plain text
         if isinstance(recommendations, list):
             recommendations = ','.join(recommendations) if recommendations else ''
